@@ -20,7 +20,7 @@ else
             <div class="d-flex flex-wrap align-content-start">
                 @foreach ((string tag, int count) in ViewModel.Tags)
                 {
-                    <MudChip Variant="Variant.Outlined" Link="@($"/tags/{tag}")">
+                    <MudChip Variant="Variant.Outlined" Link="@($"tags/{tag}")">
                         @tag ⨉ @count.ToString()
                     </MudChip>
                 }
