@@ -1,0 +1,24 @@
+@using Nullkooland.Client.Services.Markdown
+@inject MarkdownRenderService RenderService
+
+@Components
+
+@code {
+
+    [Parameter]
+    public string Text { get; set; }
+
+    [Parameter]
+    public string BaseUrl { get; set; }
+
+    private RenderFragment Components { get; set; }
+
+    private string Html { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        Components = RenderService.Render(Text, BaseUrl);
+    // Html = RenderService.RenderHtml(Text);
+    }
+
+}

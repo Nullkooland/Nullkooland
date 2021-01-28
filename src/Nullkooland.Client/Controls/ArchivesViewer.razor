@@ -1,0 +1,125 @@
+@inject ArchivesViewerViewModel ViewModel
+
+@if (ViewModel.IsLoading)
+{
+    for (int i = 0; i < 2; i++)
+    {
+        <MudCard>
+            <MudCardHeader>
+                <CardHeaderAvatar>
+                    <MudSkeleton SkeletonType="SkeletonType.Circle" Animation="Animation.Wave" Height="50px" Width="50px"/>
+                </CardHeaderAvatar>
+                <CardHeaderContent>
+                    <MudSkeleton Animation="Animation.Wave" Width="40%"/>
+                    <MudSkeleton Animation="Animation.Wave" Width="60%"/>
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudSkeleton SkeletonType="SkeletonType.Rectangle" Animation="Animation.Wave" Height="30vh"/>
+        </MudCard>
+    }
+}
+else
+{
+    <div class="mt-4 d-flex align-content-space-around flex-wrap">
+
+        <MudHidden Breakpoint="@Breakpoint.SmAndDown">
+            <div class="ml-2 mr-auto d-flex flex-row align-center">
+                <MudText Class="mr=2">Posts per page: </MudText>
+                <MudRadioGroup T="int" @bind-SelectedOption=ViewModel.NumBlogsPerPage>
+                    <MudRadio T="int" Option="8">8</MudRadio>
+                    <MudRadio T="int" Option="16">16</MudRadio>
+                    <MudRadio T="int" Option="32">32</MudRadio>
+                </MudRadioGroup>
+            </div>
+        </MudHidden>
+
+        <div class="d-flex flex-row align-center">
+            <MudText Class="mr-2">Page: </MudText>
+            <MudTextField Variant="Variant.Outlined" Margin="Margin.Dense" Style="width: 90px"
+                          Adornment="Adornment.End" AdornmentText="@($" / {ViewModel.NumPages}")"
+                          T="int" @bind-Value="ViewModel.CurrentPage"/>
+        </div>
+
+        <div class="ml-2 d-flex flex-row">
+            <MudIconButton Class="ml-4" Icon="@Icons.Filled.FirstPage"
+                           OnClick="@ViewModel.OnFirstPageButtonClicked" Disabled="@ViewModel.IsFirstPage"/>
+            <MudIconButton Class="ml-4" Icon="@Icons.Filled.KeyboardArrowLeft"
+                           OnClick="@ViewModel.OnPreviousPageButtonClicked" Disabled="@ViewModel.IsFirstPage"/>
+            <MudIconButton Class="ml-4" Icon="@Icons.Filled.KeyboardArrowRight"
+                           OnClick="@ViewModel.OnNextPageButtonClicked" Disabled="@ViewModel.IsLastPage"/>
+            <MudIconButton Class="ml-4" Icon="@Icons.Filled.LastPage"
+                           OnClick="@ViewModel.OnLastPageButtonClicked" Disabled="@ViewModel.IsLastPage"/>
+        </div>
+
+    </div>
+
+    <MudDivider Class="mt-4 mb-6"/>
+
+    <MudExpansionPanels>
+        @foreach (var post in ViewModel.Posts)
+        {
+            <MudExpansionPanel>
+                <TitleContent>
+                    <div class="d-flex flex-row align-center">
+                        <MudLink Typo="Typo.h6" Color="Color.Secondary" Class="ml-1 mr-auto"
+                                 Href="@post.Url">
+                            @post.Title
+                        </MudLink>
+                        <MudIcon Icon="@Icons.Filled.DateRange" Size="Size.Small" Class="mx-1"/>
+                        <MudText Typo="Typo.body2" Class="mx-1">@post.Date.ToString("yyyy-MM-dd")</MudText>
+                    </div>
+                </TitleContent>
+                <ChildContent>
+                    <div class="d-flex flex-column">
+                        <MudText Class="mb-2">@post.Brief</MudText>
+                        <MudButton Class="pa-0 mud-elevation-2" Style="width: 100%; overflow: hidden;"
+                                   Link="@post.Url">
+                            <img src="@post.HeaderImagePath" style="height: 40vh; width: 100%; object-fit: cover"/>
+                        </MudButton>
+                        <div class="d-flex flex-row mt-2">
+                            <MudButton Class="mr-auto" StartIcon="@Icons.Filled.DoubleArrow"
+                                       Variant="Variant.Text" Color="Color.Primary" Size="Size.Medium"
+                                       Link="@post.Url">
+                                Read Now
+                            </MudButton>
+
+                            <div class="d-flex align-content-end flex-wrap pa-0" style="max-width: 60%">
+                                @foreach (string tag in post.Tags)
+                                {
+                                    <MudChip Variant="Variant.Outlined" Size="Size.Small" Class="ml-1" Link="@($"/tags/{tag}")">
+                                        @tag
+                                    </MudChip>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </ChildContent>
+            </MudExpansionPanel>
+        }
+    </MudExpansionPanels>
+
+
+    if (ViewModel.Count == 0)
+    {
+        <MudText Typo="Typo.h3" Align="Align.Center" Class="my-8">
+            Nothing here!
+        </MudText>
+    }
+}
+
+
+@code {
+
+    [Parameter]
+    public BlogPostType Type
+    {
+        get => ViewModel.Type;
+        set => ViewModel.Type = value;
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await ViewModel.LoadArchivesAsync();
+    }
+
+}

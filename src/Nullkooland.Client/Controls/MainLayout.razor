@@ -1,0 +1,43 @@
+@inherits LayoutComponentBase
+@inject MainLayoutViewModel ViewModel
+
+<MudThemeProvider Theme="@Theme"/>
+<MudLayout>
+    <MudAppBar Color="Color.Primary" Fixed="true">
+        <MudIconButton Icon="@Icons.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
+                       OnClick="@ViewModel.OnNavMenuButtonClicked"/>
+        <MudText Typo="Typo.h5">&nbsp; Nullkooland &nbsp;</MudText>
+        <MudIcon Icon="@CustomIcons.PawWithClaws" Color="Color.Inherit" Size="@Size.Medium"/>
+        <MudAppBarSpacer/>
+        <MudTooltip Text="GitHub">
+            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit"
+                           Link="https://github.com/Goose-Bomb"/>
+        </MudTooltip>
+        <MudTooltip Text="Twitter">
+            <MudIconButton Icon="@Icons.Custom.Brands.Twitter" Color="Color.Inherit"
+                           Link="https://twitter.com/goose_bomb"/>
+        </MudTooltip>
+    </MudAppBar>
+
+    <MudDrawer @bind-Open="@ViewModel.IsNavMenuOpened" Clipped="true" Elevation="2">
+        <NavMenu/>
+    </MudDrawer>
+
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+@code
+{
+    private MudTheme Theme =>
+        new()
+        {
+            Palette = new Palette
+            {
+                Primary = "#562e65",
+                Secondary = "#83469a",
+                Tertiary = "#e2d0e9"
+            }
+        };
+}

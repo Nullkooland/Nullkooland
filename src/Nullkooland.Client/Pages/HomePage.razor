@@ -1,0 +1,57 @@
+﻿@page "/"
+@inject HomePageViewModel ViewModel
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge">
+
+    <MudPaper Class="mt-6 pa-6 d-flex flex-row" Style="width: 100%;">
+        <MudAvatar Image="@ViewModel.AvatarImage" Style="height: 20vh; width: 20vh;"/>
+        <div class="ml-6 d-flex flex-column">
+            <MudText Class="mt-2" Typo="Typo.h3" Style="font-family: Roboto Slab">
+                @ViewModel.GreetingsTitle
+            </MudText>
+            <MudText Class="mt-2" Typo="Typo.h5" Color="Color.Secondary">
+                @ViewModel.GreetingsText
+            </MudText>
+        </div>
+    </MudPaper>
+
+
+    <br/>
+
+    @if (ViewModel.IsLoading)
+    {
+        <MudProgressLinear Indeterminate="true"/>
+    }
+    else
+    {
+        <MudGrid Spacing="2" Justify="Justify.FlexStart">
+            @foreach (var post in ViewModel.RecentPosts)
+            {
+                <MudItem xs="12" md="6" lg="4" xl="3">
+                    <MudCard>
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <MudLink Typo="Typo.h5" Href="@post.Url">@post.Title</MudLink>
+                            </CardHeaderContent>
+                            <CardHeaderActions>
+                                <MudIconButton Icon="@Icons.Filled.ArrowForward" Color="Color.Default" Link="@post.Url"/>
+                            </CardHeaderActions>
+                        </MudCardHeader>
+                        <MudCardMedia Image="@post.HeaderImagePath" Height="200"/>
+                        <MudCardContent>
+                            <MudText Typo="Typo.body2">@post.Brief</MudText>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+    }
+</MudContainer>
+
+@code
+{
+    protected override async Task OnInitializedAsync()
+    {
+        await ViewModel.LoadRecentPostsAsync();
+    }
+}

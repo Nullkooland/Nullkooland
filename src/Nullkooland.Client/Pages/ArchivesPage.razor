@@ -1,0 +1,16 @@
+@page "/archives"
+@inject ArchivesPageViewModel ViewModel
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge">
+    <MudTabs>
+        <MudTabPanel Icon="@Icons.Filled.Memory" Text="Technical">
+            <ArchivesViewer Type="@BlogPostType.Technical"/>
+        </MudTabPanel>
+        <MudTabPanel Class="pa-6" Text="Personal" Icon="@Icons.Filled.NaturePeople">
+            <ArchivesViewer Type="@BlogPostType.Personal"/>
+        </MudTabPanel>
+        <MudTabPanel Class="pa-6" Text="Ramblings" Icon="@Icons.Filled.Grass">
+            <ArchivesViewer Type="@BlogPostType.Ramblings"/>
+        </MudTabPanel>
+    </MudTabs>
+</MudContainer>

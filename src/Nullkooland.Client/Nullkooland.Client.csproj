@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Markdig.Signed" Version="0.23.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.2" PrivateAssets="all" />
+    <PackageReference Include="MudBlazor" Version="1.2.4.10-dev" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\.DS_Store" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\app.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\FONT-LICENSE" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\css\open-iconic-bootstrap.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\fonts\open-iconic.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\fonts\open-iconic.otf" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\fonts\open-iconic.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\fonts\open-iconic.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\fonts\open-iconic.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\ICON-LICENSE" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\README.md" />
+    <_ContentIncludedByDefault Remove="wwwroot\data\weather.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\RIDEON.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\不要停下来啊1.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\不要停下来啊2.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\不要停下来啊3.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\不要停下来啊4.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\不要停下来啊fin.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\事情都已经准备妥当了.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\二次函数.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\什么啊我射得还蛮准的嘛.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\停不下来的奥尔加.gif" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\全部木大.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\只要你们不停下来前面就一定有我.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\呃啊啊啊啊啊啊啊啊啊啊.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\团长你在干什么啊团长.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\团长车子准备好了.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\安静的街道.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\我也是加把劲骑士.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\我可是铁华团团长奥尔加伊兹卡鸭.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\images\暗杀兵泼水.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\posts\orga's requiem\orga's_requiem.md" />
+    <_ContentIncludedByDefault Remove="wwwroot\icons\bear.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\icons\claw_scratch.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\icons\paw_with_claws.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\icons\tiger_side.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\icons" />
+    <Folder Include="wwwroot\posts\1970\never_gonna_give_you_up\images" />
+    <Folder Include="wwwroot\posts\2021\opencv_cross_compilation\images" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nullkooland.Shared\Nullkooland.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
