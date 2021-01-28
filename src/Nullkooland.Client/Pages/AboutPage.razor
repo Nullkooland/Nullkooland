@@ -1,6 +1,30 @@
 @page "/about"
 @inject AboutPageViewModel ViewModel
 
-<MudContainer MaxWidth="MaxWidth.ExtraLarge">
-
+<MudContainer Class="mt-6" MaxWidth="MaxWidth.ExtraLarge">
+    <MudText Typo="Typo.h3" Style="font-family: Roboto Slab">About me</MudText>
+    <MudText Class="mt-4" Typo="Typo.h5">躺尸中，以至于现在什么都没写！∠( ᐛ 」∠ )＿</MudText>
+    
+    <MudDivider Class="my-6"></MudDivider>
+    
+    <MudText Typo="Typo.h3" Style="font-family: Roboto Slab">About the website</MudText>
+    <div class="mt-4 d-flex flex-row align-end">
+        <MudText Typo="Typo.h5">A JS-free-ooland powered by the almighty</MudText>
+        <MudLink Class="ml-2" Typo="Typo.h5"
+                 Href="https://blazor.net">
+            <b>Blazor</b>
+        </MudLink>
+        <img class="ml-2" src="images/blazor.svg" width="40px" height="40px"/>
+    </div>
+    <MudText Typo="Typo.caption" Color="Color.Tertiary">
+        Well, not exactly JS-free, since it still uses some JS-based libraries. But hey, at least I don't need to write JS by myself, sweet!
+    </MudText>
 </MudContainer>
+
+@code
+{
+    protected override void OnInitialized()
+    {
+
+    }
+}

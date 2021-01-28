@@ -39,7 +39,7 @@ jobs:
       run: sed -i 's/<base href="\/"/<base href="\/Nullkooland\/"/g' publish/wwwroot/index.html
       
     # Fix 404 page
-    - name: copy index.html to 404.html
+    - name: Copy index.html to 404.html
       run: cp publish/wwwroot/index.html publish/wwwroot/404.html
       
     # Get lost jekyll, this is cool kids' party!
