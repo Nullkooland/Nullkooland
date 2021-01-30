@@ -6,9 +6,19 @@ name: Deploy Nullkooland to GitHub Pages
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches:
+      - master
+    paths:
+      - 'src/**'
+    paths-ignore: 
+      - 'src/Nullkooland.Client/wwwroot/posts/**'
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
+    paths:
+      - 'src/**'
+    paths-ignore:
+      - 'src/Nullkooland.Client/wwwroot/posts/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
