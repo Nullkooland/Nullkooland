@@ -10,15 +10,13 @@ on:
       - master
     paths:
       - 'src/**'
-    paths-ignore: 
-      - 'src/Nullkooland.Client/wwwroot/posts/**'
+      - '!src/Nullkooland.Client/wwwroot/posts/**'
   pull_request:
     branches:
       - master
     paths:
       - 'src/**'
-    paths-ignore:
-      - 'src/Nullkooland.Client/wwwroot/posts/**'
+      - '!src/Nullkooland.Client/wwwroot/posts/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
