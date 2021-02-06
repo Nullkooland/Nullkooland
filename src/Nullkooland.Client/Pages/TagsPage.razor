@@ -9,11 +9,11 @@ else
     <MudContainer Class="mt-6" MaxWidth="MaxWidth.ExtraLarge">
         @if (Tag == "all")
         {
-            <MudTextField @bind-Value="@ViewModel.SearchKeyword"
-                           Label="Search"
+            <MudTextField @bind-Value="@ViewModel.FilterKeyword"
+                           Label="Filter tags"
                            Variant="Variant.Outlined"
                            Adornment="Adornment.End"
-                           AdornmentIcon="@Icons.Filled.Search"/>
+                           AdornmentIcon="@Icons.Outlined.FilterAlt"/>
 
             <MudDivider Class="my-6"/>
 

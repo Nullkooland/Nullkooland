@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,13 +19,13 @@ namespace Nullkooland.Client.ViewModels
 
         public bool IsLoading { get; set; } = true;
 
-        public string SearchKeyword { get; set; }
+        public string FilterKeyword { get; set; }
 
-        public IEnumerable<KeyValuePair<string, int>> Tags => string.IsNullOrEmpty(SearchKeyword)
+        public IEnumerable<KeyValuePair<string, int>> Tags => string.IsNullOrWhiteSpace(FilterKeyword)
             ? _tags
                 .OrderByDescending(pair => pair.Value)
             : _tags
-                .Where(tag => tag.Key.Contains(SearchKeyword))
+                .Where(tag => tag.Key.Contains(FilterKeyword, StringComparison.OrdinalIgnoreCase))
                 .OrderByDescending(pair => pair.Value);
 
         public IEnumerable<BlogPost> PostsWithCurrentTag(string tag)
