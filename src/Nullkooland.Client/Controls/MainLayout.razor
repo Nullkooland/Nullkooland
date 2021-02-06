@@ -19,12 +19,15 @@
         </MudTooltip>
     </MudAppBar>
 
-    <MudDrawer @bind-Open="@ViewModel.IsNavMenuOpened" Clipped="true" Elevation="2">
+    <MudDrawer @bind-Open="@ViewModel.IsNavMenuOpened" ClipMode="DrawerClipMode.Always" Elevation="2">
         <NavMenu/>
     </MudDrawer>
 
     <MudMainContent>
         @Body
+        <MudScrollToTop TopOffset="700" ScrollBehavior="ScrollBehavior.Smooth" Style="opacity: 0.75">
+            <MudFab Icon="@Icons.Material.Filled.KeyboardArrowUp" Color="Color.Primary"/>
+        </MudScrollToTop>
     </MudMainContent>
 </MudLayout>
 
