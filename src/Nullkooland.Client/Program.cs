@@ -20,13 +20,11 @@ namespace Nullkooland.Client
             builder.Services.AddScoped(
                 sp => new HttpClient {BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)});
 
+            builder.Services.AddMudServices();
+            
             builder.Services.AddScoped<IBlogPostService, LocalBlogPostService>();
             builder.Services.AddScoped<MarkdownRenderService>();
-
-            builder.Services.AddMudBlazorDialog();
-            builder.Services.AddMudBlazorSnackbar();
-            builder.Services.AddMudBlazorResizeListener();
-
+            
             AddViewModels(builder);
 
             await builder.Build().RunAsync();
