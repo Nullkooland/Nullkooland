@@ -1,0 +1,63 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Update blog posts
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/Nullkooland.Client/wwwroot/posts/**'
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'src/Nullkooland.Client/wwwroot/posts/**'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  update-blog-posts:
+    # Use ubuntu-latest image to run this job
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out master branch
+      - name: Checkout master
+        uses: actions/checkout@v2
+        with: 
+          ref: master
+          path: master
+
+      # Checks-out gh-pages branch
+      - name: Checkout gh-pages
+        uses: actions/checkout@v2
+        with: 
+          ref: gh-pages
+          path: gh-pages
+
+      # Copy the 'master/src/Nullkooland.Client/wwwroot/posts directory' to 'gh-pages/wwwroot/'
+      - name: Copy posts over
+        run: rsync -q -av --delete --checksum --progress master/src/Nullkooland.Client/wwwroot/posts gh-pages/wwwroot/
+
+      # Commit changes in gh-pages branch
+      - name: Commit changes
+        run: |
+          cd gh-pages
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add .
+          git commit -m "Update posts"
+
+      # Push gh-pages branch to GitHub repo
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          directory: gh-pages
