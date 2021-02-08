@@ -25,11 +25,6 @@ set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR aarch64)
 
 # Specify LLVM as cross-compilation toolchain
-# Specify target environment
-set(CMAKE_SYSTEM_NAME Linux)
-set(CMAKE_SYSTEM_PROCESSOR aarch64)
-
-# Specify LLVM as cross-compilation toolchain
 set(LLVM_ROOT "/usr/local/opt/llvm")
 set(CLANG_TARGET_TRIPLE aarch64-linux-gnu)
 
