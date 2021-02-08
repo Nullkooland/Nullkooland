@@ -41,9 +41,9 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      # Copy the 'master/src/Nullkooland.Client/wwwroot/posts directory' to 'gh-pages/wwwroot/'
+      # Copy the 'master/src/Nullkooland.Client/wwwroot/posts directory' to 'gh-pages/'
       - name: Copy posts over
-        run: rsync -q -av --delete --checksum --progress master/src/Nullkooland.Client/wwwroot/posts gh-pages/wwwroot/
+        run: rsync -q -av --delete --checksum --progress master/src/Nullkooland.Client/wwwroot/posts gh-pages/
 
       # Commit changes in gh-pages branch
       - name: Commit changes
