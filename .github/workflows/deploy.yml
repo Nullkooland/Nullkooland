@@ -30,7 +30,7 @@ jobs:
     steps:
     # Checkout code from master branch
     - name: Checkout
-      uses: actions/checkout@main
+      uses: actions/checkout@v2
       
     # Setup .NET SDK
     - name: Setup .NET 5
