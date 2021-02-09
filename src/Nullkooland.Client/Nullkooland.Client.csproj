@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Nullkooland.Shared\Nullkooland.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\posts\**" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+
 </Project>
