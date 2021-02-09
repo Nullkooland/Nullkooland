@@ -5,6 +5,7 @@
 $\{X(t), t \in T\}$ is a real stochastic process, $\forall n > 1, t_1, t_2, \cdots, t_n \in T$ and $\tau \in T$, the two random vectors:
 $$
 [X(t_1), X(t_2), \cdots, X(t_n)]^\top \text{ and } [X(t_1 + \tau), X(t_2 + \tau), \cdots, X(t_n + \tau)]^\top
+\text{KA}\TeX
 $$
 have the same joint CDF, then we call $\{X(t), t \in T\}$ a strictly stationary process. (Finite dimension distribution is unchanged by time)
 
