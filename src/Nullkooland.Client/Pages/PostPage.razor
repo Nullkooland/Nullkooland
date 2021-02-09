@@ -17,7 +17,7 @@
 }
 </style>
 
-<div Class="ma-0 pa-4">
+<MudContainer MaxWidth="MaxWidth.Large" Class="pa-4">
     @if (ViewModel.IsLoading)
     {
         <MudPaper Elevation="3" Style="overflow: hidden;">
@@ -85,7 +85,7 @@
             <MediaBlock Source="images/dont_you_ever_stop.png"/>
         }
     }
-</div>
+</MudContainer>
 
 
 @code {
@@ -95,8 +95,6 @@
 
     [Parameter]
     public string Id { get; set; }
-
-    private bool _isHeaderOverlayShown;
 
     protected override async Task OnParametersSetAsync()
     {
