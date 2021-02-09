@@ -23,7 +23,7 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
             string fontStyle = GetFontStyle(emphasisInline.DelimiterChar, emphasisInline.DelimiterCount);
             renderer.Builder.AddAttribute(3, "Style", fontStyle);
 
-            string text = emphasisInline.FirstChild.ToString();
+            string? text = emphasisInline.FirstChild.ToString();
             renderer.Builder.AddAttribute(5, "ChildContent",
                 (RenderFragment) (builder => builder.AddContent(6, text))
             );

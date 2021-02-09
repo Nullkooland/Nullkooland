@@ -5,22 +5,29 @@ namespace Nullkooland.Shared.Models.Post
 {
     public record BlogPost
     {
-        public string Id { get; set; }
+        public string Id { get; init; }
 
-        public BlogPostType Type { get; set; }
+        public BlogPostType Type { get; init; }
 
-        public DateTime Date { get; set; }
+        public DateTime Date { get; init; }
 
-        [JsonIgnore] public string Url => $"posts/{Date.Year}/{Id}";
+        [JsonIgnore]
+        public string Url => $"posts/{Date.Year}/{Id}";
 
-        public string Title { get; set; }
+        public string Title { get; init; }
 
-        public string Brief { get; set; }
+        public string Brief { get; init; }
 
-        public string HeaderImage { get; set; }
+        public string HeaderImage { get; init; }
 
-        [JsonIgnore] public string HeaderImagePath => $"{Url}/images/{HeaderImage}";
+        [JsonIgnore]
+        public string HeaderImagePath => $"{Url}/images/{HeaderImage}";
 
-        public string[] Tags { get; set; }
+        public string[] Tags { get; init; }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
     }
 }

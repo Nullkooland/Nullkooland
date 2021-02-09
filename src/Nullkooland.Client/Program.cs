@@ -21,10 +21,10 @@ namespace Nullkooland.Client
                 sp => new HttpClient {BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)});
 
             builder.Services.AddMudServices();
-            
+
             builder.Services.AddScoped<IBlogPostService, LocalBlogPostService>();
             builder.Services.AddScoped<MarkdownRenderService>();
-            
+
             AddViewModels(builder);
 
             await builder.Build().RunAsync();
