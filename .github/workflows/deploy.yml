@@ -56,9 +56,14 @@ jobs:
       
     # Commit published wwwroot to GitHub Pages
     - name: Commit to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+      uses: JamesIves/github-pages-deploy-action@4.0.0
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages # The branch the action should deploy to.
-        FOLDER: publish/wwwroot # The folder the action should deploy.
-        CLEAN: true # Automatically remove deleted files from the deploy branch
+        # Deploy to gh-pages branch
+        branch: gh-pages
+        # Deploy everything in wwwroot
+        folder: publish/wwwroot 
+        # Automatically remove deleted files from the deploy branch
+        clean: true 
+        # Don't touch posts dir
+        clean-exclude: |
+          posts
