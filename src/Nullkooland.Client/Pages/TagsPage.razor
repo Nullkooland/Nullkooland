@@ -3,6 +3,9 @@
 
 @if (ViewModel.IsLoading)
 {
+    <div class="mt-8 d-flex flex-row justify-center align-center">
+        <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true"/>
+    </div>
 }
 else
 {
@@ -40,7 +43,7 @@ else
             <MudGrid Justify="Justify.FlexStart">
                 @foreach (var post in ViewModel.PostsWithCurrentTag(Tag))
                 {
-                    <MudItem xs="12">
+                    <MudItem xs="12" lg="6">
                         <MudButton Class="pa-0 pa-xs-0 d-flex flex-row mud-elevation-2"
                                    Style="height: 25vh; text-transform: none; overflow: hidden;"
                                    Link="@post.Url">
