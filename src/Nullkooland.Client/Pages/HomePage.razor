@@ -3,7 +3,7 @@
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge">
 
-    <MudPaper Class="mt-6 pa-6 d-flex flex-row" Style="width: 100%;">
+    <MudPaper Class="my-6 pa-6 d-flex flex-row" Style="width: 100%;">
         <MudAvatar Image="@ViewModel.AvatarImage" Style="height: 20vh; width: 20vh;"/>
         <div class="ml-6 d-flex flex-column">
             <MudText Class="mt-2" Typo="Typo.h3" Style="font-family: Roboto Slab">
@@ -15,12 +15,11 @@
         </div>
     </MudPaper>
 
-
-    <br/>
-
     @if (ViewModel.IsLoading)
     {
-        <MudProgressLinear Indeterminate="true"/>
+        <div class="mt-8 d-flex flex-row justify-center align-center">
+            <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true"/>
+        </div>
     }
     else
     {
@@ -28,7 +27,7 @@
             @foreach (var post in ViewModel.RecentPosts)
             {
                 <MudItem xs="12" md="6" lg="4" xl="3">
-                    
+
                     <MudCard>
                         <MudCardHeader>
                             <CardHeaderContent>
