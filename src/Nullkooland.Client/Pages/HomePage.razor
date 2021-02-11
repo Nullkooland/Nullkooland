@@ -28,6 +28,7 @@
             @foreach (var post in ViewModel.RecentPosts)
             {
                 <MudItem xs="12" md="6" lg="4" xl="3">
+                    
                     <MudCard>
                         <MudCardHeader>
                             <CardHeaderContent>
@@ -37,7 +38,7 @@
                                 <MudIconButton Icon="@Icons.Filled.ArrowForward" Color="Color.Default" Link="@post.Url"/>
                             </CardHeaderActions>
                         </MudCardHeader>
-                        <MudCardMedia Image="@post.HeaderImagePath" Height="200"/>
+                        <MudCardMedia Image="@post.HeaderImagePath"/>
                         <MudCardContent>
                             <MudText Typo="Typo.body2">@post.Brief</MudText>
                         </MudCardContent>
