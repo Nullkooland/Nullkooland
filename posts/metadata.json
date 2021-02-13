@@ -1,85 +1,15 @@
 [
-  {
-    "id": "opencv_cross_compilation",
-    "type": 0,
-    "date": "2021-01-06T00:00:00+08:00",
-    "title": "为 Rockchip 嵌入式 Linux 平台交叉编译 OpenCV",
-    "brief": "Cross-compilation is such a pain in the ass, but you gotta deal with it!",
-    "headerImage": "eaidk310_plugged.jpg",
-    "tags": [
-      "OpenCV",
-      "C++",
-      "CMake",
-      "交叉编译"
-    ]
-  },
-  {
-    "id": "adventure_with_bell_crickets",
-    "type": 1,
-    "date": "2021-01-28T18:00:00+08:00",
-    "title": "与金钟儿同行",
-    "brief": "有虫黑色，锐前而丰后，须尾皆歧，以跃飞，以翼鸣，其声蹬棱棱，秋虫也。",
-    "headerImage": "金钟儿在野.jpg",
-    "tags": [
-      "金钟儿",
-      "蟋蟀",
-      "鸣虫",
-      "直翅目"
-    ]
-  },
-  {
-    "id": "orga_s_requiem",
-    "type": 2,
-    "date": "1970-01-01T00:00:00+00:00",
-    "title": "停不下来的团长",
-    "brief": "那个停不下来的男人与刻在 DNA 里的街道",
-    "headerImage": "不要停下来啊.jpeg",
-    "tags": [
-      "奥尔加团长",
-      "Ride On",
-      "不要停下来啊",
-      "加把劲骑士",
-      "搞笑",
-      "网站部署测试"
-    ]
-  },
-  {
-    "id": "extreme_dinosaurs_go",
-    "type": 2,
-    "date": "1970-01-01T00:00:00+00:00",
-    "title": "Extreme Dinosaurs, Go!",
-    "brief": "Something is really rocking, on planet No.3!",
-    "headerImage": "extreme_team.jpg",
-    "tags": [
-      "Extreme Dinosaurs",
-      "星际恐龙",
-      "🦕",
-      "🦖",
-      "网站部署测试"
-    ]
-  },
-  {
-    "id": "never_gonna_give_you_up",
-    "type": 2,
-    "date": "1970-01-01T00:00:00+00:00",
-    "title": "Never Gonna Give You Up",
-    "brief": "You know the rules, and so do I",
-    "headerImage": "album_cover.jpg",
-    "tags": [
-      "Rickroll",
-      "Music",
-      "网站部署测试"
-    ]
-  },
-  {
-    "id": "test",
-    "type": 2,
-    "date": "1970-01-01T00:00:00+00:00",
-    "title": "测试",
-    "brief": "Test markdown rendering",
-    "headerImage": "snow_leopard.jpg",
-    "tags": [
-      "网站部署测试"
-    ]
-  }
+    {
+        "id": "intro",
+        "type": 1,
+        "date": "2021-02-13T22:22:00+08:00",
+        "title": "开场",
+        "brief": "Nullkooland是怎么来的？",
+        "headerImage": "nullkooland.png",
+        "tags": [
+            "Nullkooland",
+            "Intro",
+            "随想"
+        ]
+    }
 ]
