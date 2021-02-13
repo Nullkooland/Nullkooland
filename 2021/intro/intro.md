@@ -58,4 +58,4 @@ $$
 - ~~无 可 奉 告~~
 
 ## 那就开始吧！
-**Let's get started!**
+**Let's get started!** [!moonbear](images/moonbear.jpg "inline")
