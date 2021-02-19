@@ -7,14 +7,10 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches:
-      - master
-    paths:
-      - 'src/Nullkooland.Client/wwwroot/posts/**'
+      - 'posts/**'
   pull_request:
     branches:
-      - master
-    paths:
-      - 'src/Nullkooland.Client/wwwroot/posts/**'
+      - 'posts/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,12 +23,12 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out master branch
-      - name: Checkout master
+      # Checks-out posts branch
+      - name: Checkout posts
         uses: actions/checkout@v2
         with: 
-          ref: master
-          path: master
+          ref: posts
+          path: posts
 
       # Checks-out gh-pages branch
       - name: Checkout gh-pages
@@ -41,9 +37,9 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      # Copy the 'master/src/Nullkooland.Client/wwwroot/posts directory' to 'gh-pages/'
+      # Copy the 'posts/' to 'gh-pages/'
       - name: Copy posts over
-        run: rsync -q -av --delete --checksum --progress master/src/Nullkooland.Client/wwwroot/posts gh-pages/
+        run: rsync -q -av --delete --checksum --progress posts gh-pages/
 
       # Commit changes in gh-pages branch
       - name: Commit changes
