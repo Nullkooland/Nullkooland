@@ -8,9 +8,9 @@ on:
   push:
     branches:
       - posts
-  pull_request:
-    branches:
-      - posts
+    paths-ignore:
+      - '.gitignore'
+      - '.github/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
