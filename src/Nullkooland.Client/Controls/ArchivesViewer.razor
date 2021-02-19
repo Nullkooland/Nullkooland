@@ -74,7 +74,7 @@ else
                         <MudText Class="mb-2">@post.Brief</MudText>
                         <MudButton Class="pa-0 mud-elevation-2" Style="width: 100%; overflow: hidden;"
                                    Link="@post.Url">
-                            <img src="@post.HeaderImagePath" style="height: 40vh; width: 100%; object-fit: cover"/>
+                            <img src="@post.HeaderImagePath" alt="@post.Id" style="height: 40vh; width: 100%; object-fit: cover"/>
                         </MudButton>
                         <div class="d-flex flex-row mt-2">
                             <MudButton Class="mr-auto" StartIcon="@Icons.Filled.DoubleArrow"
@@ -86,7 +86,7 @@ else
                             <div class="d-flex align-content-end flex-wrap pa-0" style="max-width: 60%">
                                 @foreach (string tag in post.Tags)
                                 {
-                                    <MudChip Variant="Variant.Outlined" Size="Size.Small" Class="ml-1" Link="@($"/tags/{tag}")">
+                                    <MudChip Variant="Variant.Outlined" Size="Size.Small" Class="ml-1" Link="@($"tags/{tag}")">
                                         @tag
                                     </MudChip>
                                 }
