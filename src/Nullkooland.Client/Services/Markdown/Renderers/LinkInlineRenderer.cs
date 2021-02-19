@@ -49,19 +49,25 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
                     renderer.Builder.AddAttribute(11, "Fit", "cover");
                 }
 
+                if (isInline)
+                {
+                    renderer.Builder.AddAttribute(12, "Elevation", 0);
+                    renderer.Builder.AddAttribute(13, "Rounded", false);
+                }
+
                 renderer.Builder.CloseComponent();
 
                 if (!isInline) renderer.Builder.CloseElement();
             }
             else
             {
-                renderer.Builder.OpenComponent<MudLink>(12);
-                renderer.Builder.AddAttribute(13, "Href", url);
+                renderer.Builder.OpenComponent<MudLink>(14);
+                renderer.Builder.AddAttribute(15, "Href", url);
 
                 if (string.IsNullOrEmpty(displayText)) displayText = url;
 
-                renderer.Builder.AddAttribute(14, "ChildContent",
-                    (RenderFragment) (builder => builder.AddContent(15, displayText))
+                renderer.Builder.AddAttribute(16, "ChildContent",
+                    (RenderFragment) (builder => builder.AddContent(17, displayText))
                 );
 
                 renderer.Builder.CloseComponent();

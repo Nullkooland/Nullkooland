@@ -14,7 +14,7 @@
     }
 </style>
 
-<div class="mud-elevation-@Elevation rounded"
+<div class="mud-elevation-@Elevation @(Rounded ? "rounded" : "")"
      style="height: @Height;
             width: @Width;
             max-height: @MaxHeight;
@@ -60,6 +60,9 @@
 
     [Parameter]
     public int Elevation { get; set; } = 1;
+
+    [Parameter]
+    public bool Rounded { get; set; } = true;
 
     [Parameter]
     public string Height { get; set; } = "fit-content";
