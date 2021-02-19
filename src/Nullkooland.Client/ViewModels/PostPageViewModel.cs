@@ -23,6 +23,8 @@ namespace Nullkooland.Client.ViewModels
 
         public BlogPost Post { get; set; }
 
+        public Typo TitleTypo => Post.Title.Length > 12 ? Typo.h3 : Typo.h2;
+
         public string Content { get; set; }
 
         public async ValueTask LoadMarkdownAsync(string id)
