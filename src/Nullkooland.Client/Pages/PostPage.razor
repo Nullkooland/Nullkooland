@@ -17,7 +17,7 @@
 }
 </style>
 
-<MudContainer MaxWidth="MaxWidth.Large" Class="pa-4">
+<MudContainer MaxWidth="MaxWidth.Medium" Class="pa-4">
     @if (ViewModel.IsLoading)
     {
         <MudPaper Elevation="3" Style="overflow: hidden;">
@@ -65,7 +65,10 @@
                 </div>
 
                 <div class="pa-6">
-                    <MudText Typo="@ViewModel.TitleTypo" Style="font-family: 'Roboto Slab', sans-serif">@ViewModel.Post.Title</MudText>
+                    <MudText Class="mt-6"
+                             Typo="@ViewModel.TitleTypo" Style="font-family: 'Roboto Slab', sans-serif">
+                        @ViewModel.Post.Title
+                    </MudText>
                     <MudDivider Class="mt-6"/>
                     <MarkdownSection Text="@ViewModel.Content"
                                      BaseUrl="@ViewModel.Post.Url"/>

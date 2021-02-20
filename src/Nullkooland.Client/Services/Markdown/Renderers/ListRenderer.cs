@@ -16,14 +16,13 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
 
 
                 renderer.Builder.OpenComponent<MudText>(2);
-                renderer.Builder.AddAttribute(3, "Class", "mt-2");
+                renderer.Builder.AddAttribute(3, "Class", "mt-2 mr-2");
                 renderer.Builder.AddAttribute(4, "Style", "font-weight: bolder");
 
                 string bullet = GetBullet(listBlock.BulletType, i);
                 renderer.Builder.AddAttribute(5, "ChildContent",
                     (RenderFragment) (builder => builder.AddMarkupContent(6, bullet))
                 );
-
 
                 renderer.Builder.AddAttribute(7, "Color", Color.Primary);
                 renderer.Builder.CloseComponent();
@@ -37,12 +36,12 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
         {
             return type switch
             {
-                '-' => "✧ &nbsp;",
-                '*' => "✱ &nbsp;",
-                '1' => $"{index + 1}. &nbsp;",
-                'a' => $"{(char) ('a' + index)}. &nbsp;",
-                'A' => $"{(char) ('A' + index)}. &nbsp;",
-                'i' => $"{new string('i', index + 1)}. &nbsp;",
+                '-' => "✧",
+                '*' => "✱",
+                '1' => $"{index + 1}.",
+                'a' => $"{(char) ('a' + index)}.",
+                'A' => $"{(char) ('A' + index)}.",
+                'i' => $"{new string('i', index + 1)}.",
                 _ => null
             };
         }

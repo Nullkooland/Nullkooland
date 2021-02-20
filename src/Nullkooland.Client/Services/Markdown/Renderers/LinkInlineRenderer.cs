@@ -34,7 +34,7 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
                 {
                     renderer.Builder.AddAttribute(4, "Source", playerUrl);
                     renderer.Builder.AddAttribute(5, "IsVideo", true);
-                    renderer.Builder.AddAttribute(7, "Width", "800px");
+                    renderer.Builder.AddAttribute(7, "Width", "100%");
                 }
                 else
                 {

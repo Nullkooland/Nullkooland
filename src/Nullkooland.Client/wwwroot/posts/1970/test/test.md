@@ -67,6 +67,7 @@ For stationary process $\{X(t), t\in T\}$, we have:
 * $R_{X'}(\tau) = -R''_{X}(\tau)$
 * $R_{XX'}(\tau) = R'_{X}(0) = 0$
 * $X(t)$ and $X'(t)$ are independent
+* 你看啊我的老伙计，我要写很多 the power of the darkness bullshit! Cao zou rua! 你个老鸡娃儿，老鸭娃儿，fö!
 
 ## 4.3 Ergodic Process
 ### 4.3.1 Ergodicity of Stationary Stochastic Process
