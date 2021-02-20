@@ -1,6 +1,7 @@
 using System.IO;
 using Markdig.Extensions.Mathematics;
 using Markdig.Extensions.MediaLinks;
+using Markdig.Extensions.Tables;
 using Markdig.Renderers;
 using Markdig.Syntax;
 using Microsoft.AspNetCore.Components;
@@ -16,6 +17,8 @@ namespace Nullkooland.Client.Services.Markdown
         public ComponentRenderer()
         {
             // Block renderers
+            ObjectRenderers.Add(new QuoteBlockRenderer());
+            ObjectRenderers.Add(new TableRenderer());
             ObjectRenderers.Add(new MathBlockRenderer());
             ObjectRenderers.Add(new CodeBlockRenderer());
             ObjectRenderers.Add(new HeadingsRenderer());
@@ -34,6 +37,7 @@ namespace Nullkooland.Client.Services.Markdown
 
             _htmlRenderer = new HtmlRenderer(new StringWriter());
             _htmlRenderer.ObjectRenderers.Add(new HtmlMathInlineRenderer());
+            _htmlRenderer.ObjectRenderers.Add(new HtmlTableRenderer());
 
             var mediaExtension = new MediaLinkExtension();
             mediaExtension.Setup(null, _htmlRenderer);

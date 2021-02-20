@@ -24,7 +24,7 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
                 if (!isInline)
                 {
                     renderer.Builder.OpenElement(0, "div");
-                    renderer.Builder.AddAttribute(1, "class", "my-4 d-flex flex-row justify-center align-center");
+                    renderer.Builder.AddAttribute(1, "class", "my-2 d-flex flex-row justify-center align-center");
                     renderer.Builder.AddAttribute(2, "style", "width: 100%");
                 }
 

@@ -264,3 +264,17 @@ Skywalker Jr. Gonna cry?
 找不到黑猫猫了 ![404](images/not_found.png "inline") 咋办嘛 ![404](images/not_found.png "inline")
 
 ~~终 极 鹊 鸲 崽~~ ![OMR](images/oritental_magpie_robin.png "inline")  ~鹊鸲崽子冬天吃得超肥变成了四喜丸子~ ！
+
+### Quote blocks
+无内鬼，来点小表格好吗：
+> 悄悄 rua 一把树袋熊！\
+> wiwi! \
+> Kill: $f(x) = \cfrac{1}{2}\ln(-x^{x})$ \
+> `IAsyncEnumerable` is quite a new concept!
+
+### Table
+| Emm...Yummy! | Yucks! | Little cuties! |
+| :----------- | :----- | :------------- |
+| 山莓         | 地胆草 | 山姜           |
+| 鼠麴草       | 车前草 | 落地梅         |
+| 杜茎山       | 鱼腥草 | 十大功劳       |
