@@ -25,5 +25,17 @@
             "随想",
             "北碚"
         ]
+    },
+    {
+        "id": "give_vscode_camera_access",
+        "type": 0,
+        "date": "2021-02-21T21:53:00+08:00",
+        "title": "Give VS Code Camera Access Permission on macOS",
+        "brief": "VS Code is nice, we should set it loose!",
+        "headerImage": "spinning_lights.jpg",
+        "tags": [
+            "VS Code",
+            "macOS"
+        ]
     }
 ]
