@@ -1,7 +1,7 @@
 ---
 type: "technical"
 date: "2021-03-01T12:12:00+08:00"
-title: "Camera Calibration 1: The Basics"
+title: "Camera Calibration 0: The Basics"
 brief: "The basics of image formation and camera geometry"
 headerImage: "pinhole_photography.jpg"
 tags: ["Computer Vision", "Camera Calibration"]
@@ -204,3 +204,4 @@ $$
 denote as $z_c \overline{\mathbf{x}}_p = \mathbf{K} \mathbf{x}_c$, where $\mathbf{K}$ is **Intrinsic Matrix**, it destribes the internal properties of the camera.
 
 ### 1.4 Conclusion
+$z_c\overline{\mathbf{x}}_p = \mathbf{K}[\mathbf{R}|\mathbf{t}]\overline{\mathbf{x}}_w$
