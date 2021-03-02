@@ -30,6 +30,14 @@ jobs:
           ref: posts
           path: posts
 
+      # Read metadata from posts and generate indexing json
+      - name: Read metadata and generate index
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Python version range
+          architecture: x64
+        run: python3 tools/gen_index.py --dir posts
+
       # Checks-out gh-pages branch
       - name: Checkout gh-pages
         uses: actions/checkout@v2
