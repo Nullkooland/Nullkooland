@@ -3,6 +3,9 @@ import io
 import os
 from argparse import ArgumentParser
 
+PROP_KEYS = [
+    "type", "date", "title", "brief", "headerImage", "tags"]
+
 
 def get_posts(base_dir: str):
     """Get all posts markdown files from the base directory
@@ -44,6 +47,9 @@ def read_metadata(post_md_file: str):
         in_metadata_section = False
         for line in f:
             line: str = line
+            # Skip whitespace line
+            if line.isspace():
+                continue
             # Detect the boundary of metadata section
             if line.startswith("---"):
                 if in_metadata_section:
@@ -55,7 +61,11 @@ def read_metadata(post_md_file: str):
             # Now we can read metadata
             pos_delimiter = line.find(':')
             key = line[:pos_delimiter]
-            value = line[pos_delimiter + 2:].strip("\"\n")
+            value = line[pos_delimiter + 2 :].strip("\"\n")
+            
+            # Must be one of the valid property keys
+            if not key in PROP_KEYS:
+                continue
 
             # Interpret post type
             if key == "type":
