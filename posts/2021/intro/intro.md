@@ -1,3 +1,11 @@
+---
+type: "personal"
+date: "2021-02-13T22:22:00+08:00"
+title: "Nullkooland: The Intro"
+brief: "Nullkooland 是怎么来的？"
+headerImage: "nullkooland.png"
+tags: ["Nullkooland", "Intro", "随想"]
+---
 # Nullkooland: The Intro
 
 ## 引子

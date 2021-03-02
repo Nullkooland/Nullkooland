@@ -1,3 +1,12 @@
+---
+type: "technical"
+date: "2021-02-21T21:53:00+08:00"
+title: "Give VS Code Camera Access Permission on macOS"
+brief: "VS Code is nice, we should set it loose!"
+headerImage: "spinning_lights.jpg"
+tags: ["vscode", "macOS"]
+---
+
 # Give VS Code Camera Access Permission on macOS
 
 ## Why?
@@ -39,4 +48,4 @@ if __name__ == "__main__":
         cv2.imshow('Frame', frame)
 ```
 
-It should run just fine.
+It should run like charm.

@@ -1,0 +1,33 @@
+{
+    "vscode": [
+        "give_vscode_camera_access"
+    ],
+    "macOS": [
+        "give_vscode_camera_access"
+    ],
+    "灯儿晃": [
+        "meandering_souls_ep1"
+    ],
+    "游记": [
+        "meandering_souls_ep1"
+    ],
+    "随想": [
+        "meandering_souls_ep1",
+        "intro"
+    ],
+    "北碚": [
+        "meandering_souls_ep1"
+    ],
+    "Nullkooland": [
+        "intro"
+    ],
+    "Intro": [
+        "intro"
+    ],
+    "Computer Vision": [
+        "camera_calib_0"
+    ],
+    "Camera Calibration": [
+        "camera_calib_0"
+    ]
+}
