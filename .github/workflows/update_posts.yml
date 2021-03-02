@@ -39,7 +39,7 @@ jobs:
 
       # Read metadata from posts and generate indexing json
       - name: Read metadata and generate index
-        run: python3 tools/gen_index.py --dir posts
+        run: python3 posts/tools/gen_index.py --dir posts
 
       # Checks-out gh-pages branch
       - name: Checkout gh-pages
@@ -50,7 +50,7 @@ jobs:
 
       # Copy the 'posts/' to 'gh-pages/'
       - name: Copy posts over
-        run: rsync -q -av --delete --checksum --progress posts gh-pages/
+        run: rsync -q -av --delete --checksum --progress --exclude={'.gitignore','.github','tools'} posts/ gh-pages/posts/
 
       # Commit changes in gh-pages branch
       - name: Commit changes
