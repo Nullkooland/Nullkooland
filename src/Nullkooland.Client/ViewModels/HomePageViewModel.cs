@@ -16,7 +16,7 @@ namespace Nullkooland.Client.ViewModels
         {
             _blogPostService = blogPostService;
             // Hardcode for now, we'll tweak this later
-            AvatarImage = "images/nullko.png";
+            AvatarImage = "images/nullko.webp";
             GreetingsTitle = "Hey, you've found my ooland";
             GreetingsText = "I've been hibernating in my cave, waiting for spring flowers to blossom.";
         }

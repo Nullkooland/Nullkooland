@@ -10,7 +10,7 @@ namespace Nullkooland.Client.ViewModels
     public class TagsPageViewModel
     {
         private readonly IBlogPostService _blogPostService;
-        private IDictionary<string, int> _tags;
+        private IDictionary<string, string[]> _tagToPosts;
 
         public TagsPageViewModel(IBlogPostService blogPostService)
         {
@@ -21,17 +21,19 @@ namespace Nullkooland.Client.ViewModels
 
         public string FilterKeyword { get; set; }
 
-        public IEnumerable<KeyValuePair<string, int>> Tags => string.IsNullOrWhiteSpace(FilterKeyword)
-            ? _tags
-                .OrderByDescending(pair => pair.Value)
-            : _tags
+        public IEnumerable<(string tag, int count)> Tags => string.IsNullOrWhiteSpace(FilterKeyword)
+            ? _tagToPosts
+                .Select(pair => (pair.Key, pair.Value.Length))
+                .OrderByDescending(pair => pair.Length)
+
+            : _tagToPosts
                 .Where(tag => tag.Key.Contains(FilterKeyword, StringComparison.OrdinalIgnoreCase))
-                .OrderByDescending(pair => pair.Value);
+                .Select(pair => (pair.Key, pair.Value.Length))
+                .OrderByDescending(pair => pair.Length);
 
         public IEnumerable<BlogPost> PostsWithCurrentTag(string tag)
         {
-            return _blogPostService
-                .Query(post => post.Tags.Contains(tag));
+            return _tagToPosts[tag].Select(id => _blogPostService.GetById(id));
         }
 
         public async ValueTask LoadAllTags()
@@ -39,7 +41,7 @@ namespace Nullkooland.Client.ViewModels
             IsLoading = true;
 
             await _blogPostService.LoadAsync();
-            _tags = _blogPostService.GetAllTags();
+            _tagToPosts = _blogPostService.GetAllTags();
 
             IsLoading = false;
         }

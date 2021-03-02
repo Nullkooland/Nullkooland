@@ -14,6 +14,8 @@ namespace Nullkooland.Client.Services.Post
 
         private Dictionary<string, BlogPost> _posts;
 
+        private Dictionary<string, string[]> _tags;
+
         public LocalBlogPostService(HttpClient client)
         {
             _client = client;
@@ -24,10 +26,9 @@ namespace Nullkooland.Client.Services.Post
             // Metadata already loaded, return immediately
             if (_posts?.Any() ?? false) return _posts.Count;
 
-            var metasRaw = await _client.GetFromJsonAsync<BlogPost[]>("posts/metadata.json");
-            if (metasRaw == null || metasRaw.Length == 0) return 0;
-
-            _posts = metasRaw.ToDictionary(post => post.Id, post => post);
+            _posts= await _client.GetFromJsonAsync<Dictionary<string, BlogPost>>("posts/index.json");
+            _tags = await _client.GetFromJsonAsync<Dictionary<string, string[]>>("posts/tags.json");
+            
             return _posts.Count;
         }
 
@@ -38,14 +39,10 @@ namespace Nullkooland.Client.Services.Post
             return _posts.Values;
         }
 
-        public IDictionary<string, int> GetAllTags()
+        public IDictionary<string, string[]> GetAllTags()
         {
-            return _posts.Values
-                .SelectMany(post => post.Tags)
-                .GroupBy(tag => tag)
-                .ToDictionary(group => group.Key, group => group.Count());
+            return _tags;
         }
-
 
         public BlogPost GetById(string id)
         {
@@ -59,9 +56,17 @@ namespace Nullkooland.Client.Services.Post
             return _posts.Values.Where(post => filter(post));
         }
 
-        public Task<string> GetContentAsync(BlogPost post)
+        public async Task<string> GetContentAsync(BlogPost post)
         {
-            return _client.GetStringAsync($"{post.Url}/{post.Id}.md");
+            string content = await _client.GetStringAsync($"{post.Url}/{post.Id}.md");
+            
+            // Skip metadata section at the beginning of the markdown file
+            int offset = content.IndexOf("---");
+            offset = content.IndexOf('\n', offset);
+            offset = content.IndexOf("---", offset);
+            offset = content.IndexOf('\n', offset);
+            
+            return content[(offset + 1)..];
         }
     }
 }

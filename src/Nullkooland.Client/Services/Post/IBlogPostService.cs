@@ -12,7 +12,7 @@ namespace Nullkooland.Client.Services.Post
 
         IEnumerable<BlogPost> GetAll();
 
-        IDictionary<string, int> GetAllTags();
+        IDictionary<string, string[]> GetAllTags();
 
         BlogPost GetById(string id);
 

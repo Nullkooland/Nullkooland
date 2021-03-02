@@ -1,3 +1,11 @@
+---
+type: "technical"
+date: "2021-01-06T00:00:00+08:00"
+title: "为 Rockchip 嵌入式 Linux 平台交叉编译 OpenCV"
+brief: "Cross-compilation is such a pain in the ass, but you gotta deal with it!"
+headerImage: "eaidk310_plugged.webp"
+tags: ["OpenCV", "C++", "CMake", "交叉编译"]
+---
 # 为 Rockchip 嵌入式 Linux 平台交叉编译 OpenCV
 
 ## 简介
