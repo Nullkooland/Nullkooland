@@ -64,7 +64,7 @@ def read_metadata(post_md_file: str):
             value = line[pos_delimiter + 2 :].strip("\"\n")
             
             # Must be one of the valid property keys
-            if not key in PROP_KEYS:
+            if key not in PROP_KEYS:
                 continue
 
             # Interpret post type
