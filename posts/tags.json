@@ -1,4 +1,10 @@
 {
+    "OpenCV": [
+        "use_libheif"
+    ],
+    "HEIF": [
+        "use_libheif"
+    ],
     "vscode": [
         "give_vscode_camera_access"
     ],

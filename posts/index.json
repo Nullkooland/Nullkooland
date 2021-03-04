@@ -1,4 +1,16 @@
 {
+    "use_libheif": {
+        "id": "use_libheif",
+        "type": 0,
+        "date": "2021-03-04T23:07:13+08:00",
+        "title": "Use libheif to read HEIF Images",
+        "brief": "早就看那一堆 png 测试图片不爽了！",
+        "headerImage": "bathing_moonbear.avif",
+        "tags": [
+            "OpenCV",
+            "HEIF"
+        ]
+    },
     "give_vscode_camera_access": {
         "id": "give_vscode_camera_access",
         "type": 0,
