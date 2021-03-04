@@ -8,7 +8,7 @@ tags: ["OpenCV", "HEIF"]
 ---
 # Use `libheif` to read HEIF Images
 ## Why?
-Because the photos I've taken using my 林檎爪机（大嘘）are all in `HEIF/HEIC` formats, and I am more than bothered to convert them into antiquated `JPEG` or huge `PNG` formats when I feel like taking some of them as the test images in computer vision algorithms demos.
+Because the photos I've taken using my 林檎爪机（大嘘）are all in `HEIF/HEIC` format, and I am more than bothered to convert them into antiquated `JPEG` or huge `PNG` formats when I feel like taking some of them as the test images in my computer vision algorithms demos.
 
 ## How?
 I found a library to decode/encode `HEIF` images here: [libheif](https://github.com/strukturag/libheif) here, great.
@@ -43,7 +43,7 @@ def read_as_numpy(fp, apply_transformations=True, convert_hdr_to_8bit=True):
     )
     return np.array(img)
 ```
-Yeah, I've never liked `Pillow` anyway...
+Yeah, I never liked `Pillow` anyway...
 
 Now we can use it with `OpenCV` or `matplotlib` happily!
 ```python
@@ -51,13 +51,13 @@ import cv2
 import matplotlib.pyplot as plt
 import pyheif
 
-rgb_img = pyheif.read_as_numpy("./images/nullko_the_moonbear.heic")
-bgr_img = cv2.cvtColor(rgb_img, cv2.COLOR_RGB2BGR)
+img_rgb = pyheif.read_as_numpy("./images/nullko_the_moonbear.heic")
+img_bgr = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)
 
-plt.imshow(rgb_img)
+plt.imshow(img_rgb)
 plt.show()
 
-cv2.imshow("Hello HEIF", bgr_img)
+cv2.imshow("Hello HEIF", img_bgr)
 cv2.waitKey()
 ```
 
@@ -98,14 +98,14 @@ int stride;
 uint8_t* pixels = heifImage.get_plane(heif_channel_interleaved, &stride);
 
 // Wrap the pixel buffer into cv::Mat 
-auto src_img = cv::Mat(height, width, CV_8UC3, pixels, stride);
+auto img_src = cv::Mat(height, width, CV_8UC3, pixels, stride);
 
 // OpenCV just prefer BGR over RGB, what a spoiled kid!
-cv::cvtColor(src_img, src_img, cv::COLOR_RGB2BGR);
+cv::cvtColor(img_src, img_src, cv::COLOR_RGB2BGR);
 cv::imshow("HEIF (AVIF: XD) rocks and JPEG sucks", src_img);
 ```
 
-### Command line tools
+### Command line tool
 The `libheif` also ships with a handy command line tool to convert images in other formats into `HEIF` or `AVIF` images.
 ```shell
 heif-enc kingfisher.png -q 80 -o emperorfisher.heic
