@@ -3,7 +3,7 @@ type: "personal"
 date: "2021-02-24T12:15:48+08:00"
 title: "灯儿晃记：2021年 第二期"
 brief: "这次从后面上云山（¿"
-headerImage: "candy_old_community.jpg"
+headerImage: "feet_in_mountain_spring_stream.avif"
 tags: ["灯儿晃", "游记", "随想", "云山", "川东平行岭谷", "AVIF"]
 ---
 
@@ -28,80 +28,83 @@ tags: ["灯儿晃", "游记", "随想", "云山", "川东平行岭谷", "AVIF"]
 今天我学聪明了，我还是在附中上车，但是坐 518 先到澄江，再坐 510 区间车（指从澄江发车的）去烟湖滩。
 
 前面座位上的广告让我很不爽，春天难道不是应该到处灯儿晃，上🔨的补习班哦！
-![在518上](images/on_518_bus.avif)
+![在518上](images/on_518_bus.avif "noclip")
 
 在澄江恰了午饭，就坐 510 区间车往缙云山后面开，可惜终点站烟湖滩离我以往翻山下来的地方实在很远，所以还得走好长一段路！
 
 先沿着垂直于缙云山脉的方向，往后山山脚下行进。途中过壁北河，河滩上见到满多水鸲之类小鸟，这边环境还是不错的！
-![壁北河](images/bibei_river.avif)
+![壁北河](images/bibei_river.avif "noclip")
 
 到了一个叫柏林村的地方，似乎正在修一个小公园。旁边还专门弄了一段沙滩，看起来可以玩水就去踩了两jio！并且窃喜自己今天穿凉hai出来是一个多么棒的决定！
-![柏林村在建公园](images/ooland_under_construction.avif)
+![柏林村在建公园](images/ooland_under_construction.avif "noclip")
 
 **社会主义新农村建设yyds！**
 
 春天真的到了啊，好多植物都开始发芽开花了。在山里我最喜欢这种叫木姜子的樟科植物，现在它们的花开满了一整枝，带着浓烈又清新的樟树的香味。
-![木姜子](images/litsea.avif)
+![木姜子](images/litsea.avif "noclip")
 
 阿拉伯婆婆纳。呐，虽然是入侵物种但是颜值还是挺高的，毕竟能带有蓝色的植物很少见？（麦冬：敢不敢跟我（的果果儿）比划比划！真没见过🔵！）呐呐呐，俺认识这个，说明俺是老三次元了！
-![阿拉伯婆婆纳](images/persian_speedwell.avif)
+![阿拉伯婆婆纳](images/persian_speedwell.avif "noclip")
 
 路旁经常见到这种茄科植物，似乎是黄果茄，现在正结着很多黄黄的圆圆的黏黏的（~~当然是被我rua爆之后才知道~~）的果果。
-![黄果茄果儿](images/yellow_fruit_nightshade_fruit.avif)
+![黄果茄果儿](images/yellow_fruit_nightshade_fruit.avif "noclip")
 
 不过它似乎不喜欢我去rua它，因为它的枝条甚至叶子上都长满了刺！
-![黄果茄叶儿](images/yellow_fruit_nightshade_leaf.avif)
+![黄果茄叶儿](images/yellow_fruit_nightshade_leaf.avif "noclip")
 
 wiwi! 在威威的监督下能有什么坏人敢带火源进山呢！
-![再次见到防火虎威威](images/weiwei_the_wood_fire_preventing_tiger.avif)
+![再次见到防火虎威威](images/weiwei_the_wood_fire_preventing_tiger.avif "noclip")
 
 啊，年轻的落地梅新叶，看上去嫩嫩的。可能再等两个月它们中间就会长出一堆亮亮黄黄的花花了！
-![年轻落地梅叶](images/lysimachia_paridiformis.avif)
+![年轻落地梅叶](images/lysimachia_paridiformis.avif "noclip")
 
 当我问这种可爱的长着娇艳欲滴红果果儿的植物的名字，朋友用 emoji 打给我：“💜🥇🐮”。是紫金牛啦，可是这个名字怎么来的我却很奇怪，毕竟它既不紫也没像牛牛啊。想起两三年前的寒假我爬云山时也在地上找到过，当时还以为是什么地上长的小樱桃🍒！
-![紫金牛儿](images/marlberry.avif)
+![紫金牛儿](images/marlberry.avif "noclip")
 
 说到牛牛，我快要走到山脚下了，突然看到路旁到泥凼凼头泡起个水牛🐃！然后就在那里驻足看了好久！它也这么一直呆呆地看着我，估计心里想着：“瓜批城头娃儿，嫩个稀奇嗦，以前没见过老子迈！”
-![凼凼头泡起个水牛儿](images/water_buffalo.avif)
+![凼凼头泡起个水牛儿](images/water_buffalo.avif "noclip")
 
 别了牛牛，到了一片软塌塌的苔藓地，让人忍不住上去踩两jio（~~千翻儿娃儿！~~）
-![踩苔藓地](images/moss_land.avif)
+![踩苔藓地](images/moss_land.avif "noclip")
+
+凑近了看，苔藓的叶子长得丝丝茸茸的，在阳光下镀上一层金色。里面还混入了几株清明菜的嫩芽。
+![苔藓近景](images/moss_land_closeup.avif "noclip")
 
 苔藓地上生了很多窝堇菜，开着精致的紫花花，友人说可能是紫花地丁因为比较常见。不过友人又说：“开花了，老了，不好吃了！” 其实我觉得吧，如果蒜瓣，花椒颗颗儿，干海椒，一起和菜油炝炒对付不了它的话，那就放点火腿肠丁丁儿！（~~被素食主义的友人打死~~）
-![堇菜](images/viola.avif)
+![堇菜](images/viola.avif "noclip")
 
 然后走了半天，感觉怕是走不到之前下山的地方就天黑了！忽然遇到了一处山泉。常识告诉我，有泉水的地方就有上山的路，泉水流下的石壁上凿出的简易阶梯也证实了我的推断。于是改变原先的计划决定直接从这里上山。
-![山泉潭](images/mountain_spring.avif)
+![山泉潭](images/mountain_spring.avif "noclip")
 
 当然啦，有山泉的地方怎么能不进去踩两jio呢！喜欢自然与自由的友人（和前文里那个喜欢次各种野菜的友人不是同一个）也买了我的同款凉hai，而且他说就在今天到货了，看到我的描述，他似乎也能对我这样自由自在地踩水的喜悦产生共鸣☺️！
-![踩两jio泉流](images/feet_in_mountain_spring_stream.avif)
+![踩两jio泉流](images/feet_in_mountain_spring_stream.avif "noclip")
 
 在密林中艰难行进了一段时间，终于豁然开朗，半山腰上是一片片的竹林，从中传出各种林雀的转鸣，还有竹子被风吹动发出的声音：一种是叶子摆动摩擦的沙沙声，另一种是竹竿变形的咯咯声（听上去像在敲击一样，所以古人描述为“风敲竹”）。
 
-![云山山麓](images/yunshan_foothill.avif)
+![云山山麓](images/yunshan_foothill.avif "noclip")
 
 下午的暖阳把我身上的汗水照得亮晶晶的，然后变成了很细的盐粒，感觉比炒菜用的盐巴要细很多。不知道有没有什么测量它们粗细的方法。（真是奇怪的脑洞！）
-![山麓阳光](images/yunshan_foothill_sunshine.avif)
+![山麓阳光](images/yunshan_foothill_sunshine.avif "noclip")
 
 接近山顶的地方，进入了一片竹沟。
 一种结有红色果果的小灌木吸引了我的注意。细看，上面的果果末端都形成了四个小尖尖，显得特别可爱。识别知这种植物叫虎刺，和之前见到的紫金牛一样也被用作观赏植物。
-![虎刺](images/damnacanthus.avif)
+![虎刺](images/damnacanthus.avif "noclip")
 
 杜茎山，名字里就带个山，只在山上的阴湿处生长。现在正巧赶上它们结出了一堆肉肉的的果果，而且是可以吃的。我抓起一把就吃，有点淡淡的甜味，但是果肉很渣，口感不太好（山上的果果儿还是刺泡儿好吃啊，可惜现在它们都还是花！）说起来，杜茎山和紫金牛算是亲戚，同属于紫金牛科。
-![杜茎山](images/maesa.avif)
+![杜茎山](images/maesa.avif "noclip")
 
 横越过山顶的区域，感觉路渐渐下行。开始下山了。有趣的是这里正好有个燃气管线，所以一路上都立着提升禁止开挖的小碑，倒是很方便找到路！
-![下山](images/downhill.avif)
+![下山](images/downhill.avif "noclip")
 
 下山路上有很多叫里白的蕨类植物，现在正发着幼叶。一开始是一根小卷卷，长到一定高度便会二叉分枝，变成螳螂。（~~幻视~~）
-![中华里白](images/hicriopteris_chinensis.avif)
-![中华里白二分](images/hicriopteris_chinensis_bifurcation.avif)
+![中华里白](images/hicriopteris_chinensis.avif "noclip")
+![中华里白二分](images/hicriopteris_chinensis_bifurcation.avif "noclip")
 
 急行，下坡得jio杆打闪闪。再次豁然开朗，已是到了云山另一边的半山腰，是歇马的地界了。看来我动作还挺快，还能赶在太阳落入云山之前从他里面出来。
-![云山的日落](images/yunshan_sunset.avif)
+![云山的日落](images/yunshan_sunset.avif "noclip")
 
 山边的乡村，梨花，豌豆花，胡豆花，油菜花，金佛山荚蒾花……都开了。kksk！
-![田园牧歌](images/pea_flowers.avif)
+![田园牧歌](images/pea_flowers.avif "noclip")
 
 ## 终了
 这次反向翻山完全是出于心血来潮，不管是想要从八塘那边开始，还是出门的时候换上了凉鞋，还是半路从未知的位置上山，都是 on a hunch。虽然上山的时候也有过怀疑这个路到底走不走得通，不过最后还是柳暗花明又一村！真好，又找回了些许几年前我第一次探索翻越云山的冒险感觉！
