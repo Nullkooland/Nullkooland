@@ -24,7 +24,7 @@ else
                 @foreach ((string tag, int count) in ViewModel.Tags)
                 {
                     <MudChip Variant="Variant.Outlined" Link="@($"tags/{tag}")">
-                        @tag ⨉ @count.ToString()
+                        @tag ✕ @count.ToString()
                     </MudChip>
                 }
             </div>

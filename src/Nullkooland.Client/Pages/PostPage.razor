@@ -17,7 +17,7 @@
 }
 </style>
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="pa-4">
+<MudContainer MaxWidth="MaxWidth.Medium" Class="pa-6">
     @if (ViewModel.IsLoading)
     {
         <MudPaper Elevation="3" Style="overflow: hidden;">
@@ -74,7 +74,7 @@
                                      BaseUrl="@ViewModel.Post.Url"/>
                 </div>
 
-                <MudDivider DividerType="DividerType.Middle"/>
+                <MudDivider Class="mx-6"/>
 
                 <div class="d-flex flex-row justify-center align-center py-6">
                     <MudIcon Icon="@CustomIcons.ClawScratch" Color="Color.Tertiary" Size="Size.Large"/>
@@ -83,6 +83,20 @@
                         EOF
                     </MudText>
                 </div>
+            </MudPaper>
+
+            <MudPaper Class="mt-6 pa-6 d-flex flex-column" Elevation="3">
+                <div class="d-flex flex-row align-center">
+                    <MudIcon Icon="@Icons.Material.Filled.Chat" Size="Size.Large" Color="Color.Primary"/>
+                    <MudText Class="ml-4" Typo="Typo.h5"
+                             Style="text-transform: uppercase; font-weight: bold">
+                        @ViewModel.CommentTitle
+                    </MudText>
+                </div>
+                
+                <MudDivider Class="my-4"/>
+
+                <Comment/>
             </MudPaper>
         }
         else

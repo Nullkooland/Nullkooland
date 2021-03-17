@@ -1,15 +1,22 @@
 ﻿@page "/"
 @inject HomePageViewModel ViewModel
 
-<MudContainer MaxWidth="MaxWidth.ExtraLarge">
+<style>
+.greeting-box {
+    background-image: url("images/bg_pattern_nullko.svg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+</style>
 
-    <MudPaper Class="my-6 pa-6 d-flex flex-row" Style="width: 100%;">
-        <MudAvatar Image="@ViewModel.AvatarImage" Style="height: 20vh; width: 20vh;"/>
+<MudContainer MaxWidth="MaxWidth.ExtraLarge">
+    <MudPaper Class="my-6 pa-6 d-flex flex-row greeting-box" Style="width: 100%;">
+        <MudAvatar Image="@ViewModel.AvatarImage" Color="Color.Dark" Style="height: 20vh; width: 20vh; backdrop-filter: blur(8px)"/>
         <div class="ml-6 d-flex flex-column">
             <MudText Class="mt-2" Typo="Typo.h3" Style="font-family: Roboto Slab">
                 @ViewModel.GreetingsTitle
             </MudText>
-            <MudText Class="mt-2" Typo="Typo.h5" Color="Color.Secondary">
+            <MudText Class="mt-2" Typo="Typo.h5" Color="Color.Primary">
                 @ViewModel.GreetingsText
             </MudText>
         </div>
@@ -27,11 +34,10 @@
             @foreach (var post in ViewModel.RecentPosts)
             {
                 <MudItem xs="12" md="6" lg="4" xl="3">
-
                     <MudCard>
                         <MudCardHeader>
                             <CardHeaderContent>
-                                <MudLink Typo="Typo.h5" Href="@post.Url">@post.Title</MudLink>
+                                <MudLink Typo="Typo.h5" Color="Color.Secondary" Href="@post.Url">@post.Title</MudLink>
                             </CardHeaderContent>
                             <CardHeaderActions>
                                 <MudIconButton Icon="@Icons.Filled.ArrowForward" Color="Color.Default" Link="@post.Url"/>
