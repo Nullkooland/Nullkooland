@@ -17,7 +17,7 @@
 }
 </style>
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="pa-6">
+<MudContainer MaxWidth="MaxWidth.Medium" Class="pa-0 pa-sm-6">
     @if (ViewModel.IsLoading)
     {
         <MudPaper Elevation="3" Style="overflow: hidden;">
@@ -48,19 +48,22 @@
                      style="background-image: url(@ViewModel.Post.HeaderImagePath);">
 
                     <div class="header-title-bar d-flex flex-wrap align-center pa-1 md-elevation-2">
-                        <MudIcon Icon=@Icons.Filled.DateRange Size="Size.Small" Class="ml-2"/>
+                        <MudIcon Class="ml-2" Icon=@Icons.Filled.DateRange Size="Size.Small"/>
                         <MudText Class="ml-2 mr-auto">
                             @ViewModel.Post.Date.ToString("dddd yyyy-MM-dd")
                         </MudText>
 
-                        <MudIconButton Class="mr-1" Link="tags"
-                                       Icon=@Icons.Filled.Style Size="Size.Small"/>
-                        @foreach (string tag in ViewModel.Post.Tags)
-                        {
-                            <MudChip Label="true" Size="Size.Small" Class="ml-1" Link="@($"tags/{tag}")">
-                                @tag
-                            </MudChip>
-                        }
+                        <div class="d-inline">
+                            <MudIconButton Class="mr-1 d-none d-sm-flex" Link="tags"
+                                           Icon=@Icons.Filled.Style Size="Size.Small"/>
+                            
+                            @foreach (string tag in ViewModel.Post.Tags)
+                            {
+                                <MudChip Label="true" Size="Size.Small" Class="ml-1" Link="@($"tags/{tag}")">
+                                    @tag
+                                </MudChip>
+                            }
+                        </div>
                     </div>
                 </div>
 
@@ -85,7 +88,7 @@
                 </div>
             </MudPaper>
 
-            <MudPaper Class="mt-6 pa-6 d-flex flex-column" Elevation="3">
+            <MudPaper Class="mt-2 mt-sm-6 pa-6 d-flex flex-column" Elevation="3">
                 <div class="d-flex flex-row align-center">
                     <MudIcon Icon="@Icons.Material.Filled.Chat" Size="Size.Large" Color="Color.Primary"/>
                     <MudText Class="ml-4" Typo="Typo.h5"
@@ -93,7 +96,7 @@
                         @ViewModel.CommentTitle
                     </MudText>
                 </div>
-                
+
                 <MudDivider Class="my-4"/>
 
                 <Comment/>

@@ -25,15 +25,15 @@
                     <MudButton Class="pa-0 pa-xs-0 d-flex flex-row mud-elevation-2"
                                Style="height: 25vh; overflow: hidden; text-transform: none"
                                Link="@post.Url">
-                        <div class="pa-4 d-flex flex-column align-start" style="height: 25vh;">
+                        <div class="pa-4 d-flex flex-column align-start" style="height: 25vh; width: 60%">
                             <MudLink Typo="Typo.h5" Href="@post.Url">
                                 <MudHighlighter Class="mud-error-text" Style="font-size: x-large; background-color:transparent; font-weight:bold"
                                                 Text="@post.Title" HighlightedText="@keyword"/>
                             </MudLink>
-
-
+                            
                             <div class="mt-4">
-                                <MudHighlighter Class="mud-error-text" Style="background-color:transparent; font-weight:bold;"
+                                <MudHighlighter Class="mud-error-text d-inline-block" 
+                                                Style="background-color:transparent; font-weight:bold;"
                                                 Text="@matchedText" HighlightedText="@keyword"/>
                             </div>
 

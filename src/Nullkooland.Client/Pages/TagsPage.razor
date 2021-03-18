@@ -33,7 +33,7 @@ else
         {
             <div class="d-flex flex-wrap">
                 <MudText Typo="Typo.h4" Inline="true">Posts with tag </MudText>
-                <MudText Typo="Typo.h3" Inline="true" Color="Color.Secondary">
+                <MudText Typo="Typo.h4" Inline="true" Color="Color.Secondary" Style="font-weight: bold">
                     「 @Tag 」
                 </MudText>
             </div>
@@ -47,11 +47,14 @@ else
                         <MudButton Class="pa-0 pa-xs-0 d-flex flex-row mud-elevation-2"
                                    Style="height: 25vh; text-transform: none; overflow: hidden;"
                                    Link="@post.Url">
-                            <div class="pa-4 d-flex flex-column align-start" style="height: 25vh;">
+                            <div class="pa-4 d-flex flex-column align-start" 
+                                 style="height: 25vh; width: 40%">
                                 <MudText Typo="Typo.h5" Color="Color.Primary">
                                     @post.Title
                                 </MudText>
-                                <MudText Class="mt-2">@post.Brief</MudText>
+                                <MudText Class="mt-2 d-none d-sm-flex" Typo="Typo.body2">
+                                    @post.Brief
+                                </MudText>
 
                                 <div class="mt-auto d-flex flex-row align-center">
                                     <MudIcon Icon="@Icons.Filled.DateRange" Size="Size.Small"/>
