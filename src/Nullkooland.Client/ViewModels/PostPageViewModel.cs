@@ -29,7 +29,8 @@ namespace Nullkooland.Client.ViewModels
         {
             BlogPostType.Technical => "Share your thoughts",
             BlogPostType.Personal => "Leave a shout!",
-            BlogPostType.Ramblings => "感觉好安静啊，评论区也没有人开腔！"
+            BlogPostType.Ramblings => "感觉好安静啊，评论区也没有人开腔！",
+            _ => null
         };
 
         public string Content { get; set; }
