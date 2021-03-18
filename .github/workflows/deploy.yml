@@ -43,8 +43,8 @@ jobs:
       run: dotnet publish src/Nullkooland.Client -c Release -o publish --nologo
       
     # Change the base url in index.html to repo name
-    - name: Change base url
-      run: sed -i 's/<base href="\/"/<base href="\/Nullkooland\/"/g' publish/wwwroot/index.html
+#    - name: Change base url
+#      run: sed -i 's/<base href="\/"/<base href="\/Nullkooland\/"/g' publish/wwwroot/index.html
       
     # Fix 404 page
     - name: Copy index.html to 404.html
