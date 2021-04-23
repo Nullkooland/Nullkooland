@@ -54,12 +54,14 @@
                         </MudText>
 
                         <div class="d-flex flex-row">
-                            <MudIconButton Class="mr-1 d-none d-sm-flex" Link="tags"
-                                           Icon=@Icons.Filled.Style Size="Size.Small"/>
+                            <MudIconButton Class="mr-1" Style="background: transparent"
+                                           Icon=@Icons.Filled.Style Size="Size.Small"
+                                           Link="tags"/>
                             
                             @foreach (string tag in ViewModel.Post.Tags)
                             {
-                                <MudChip Label="true" Size="Size.Small" Class="ml-1" Link="@($"tags/{tag}")">
+                                <MudChip Class="ml-1" Label="true" Size="Size.Small" 
+                                         Link="@($"tags/{tag}")">
                                     @tag
                                 </MudChip>
                             }
