@@ -9,14 +9,37 @@
         <MudText Typo="Typo.h5">&nbsp; Nullkooland &nbsp;</MudText>
         <MudIcon Icon="@CustomIcons.PawWithClaws" Color="Color.Inherit" Size="@Size.Medium"/>
         <MudAppBarSpacer/>
-        <MudTooltip Text="GitHub">
-            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit"
-                           Link="https://github.com/Goose-Bomb"/>
-        </MudTooltip>
-        <MudTooltip Text="Twitter">
-            <MudIconButton Icon="@Icons.Custom.Brands.Twitter" Color="Color.Inherit"
-                           Link="https://twitter.com/goose_bomb"/>
-        </MudTooltip>
+
+        <div class="d-none d-md-flex align-center">
+            <MudTooltip Text="GitHub">
+                <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit"
+                               Link="https://github.com/Goose-Bomb"/>
+            </MudTooltip>
+            <MudTooltip Text="Twitter">
+                <MudIconButton Icon="@Icons.Custom.Brands.Twitter" Color="Color.Inherit"
+                               Link="https://twitter.com/goose_bomb"/>
+            </MudTooltip>
+            <MudTooltip Text="YouTube">
+                <MudIconButton Icon="@Icons.Custom.Brands.YouTube" Color="Color.Inherit"
+                               Link="https://www.youtube.com/channel/UCQHgWIkGEddRLtvvCxRcqPw"/>
+            </MudTooltip>
+        </div>
+
+        <MudMenu Class="d-md-none" Icon="@Icons.Filled.MoreVert"
+                 Color="Color.Inherit" Dense="true" Direction="Direction.Right" OffsetY="true">
+            <MudNavLink Icon="@Icons.Custom.Brands.GitHub"
+                        Href="https://github.com/Goose-Bomb">
+                GitHub
+            </MudNavLink>
+            <MudNavLink Icon="@Icons.Custom.Brands.Twitter"
+                        Href="https://twitter.com/goose_bomb">
+                Twitter
+            </MudNavLink>
+            <MudNavLink Icon="@Icons.Custom.Brands.YouTube"
+                        Href="https://www.youtube.com/channel/UCQHgWIkGEddRLtvvCxRcqPw">
+                YouTube
+            </MudNavLink>
+        </MudMenu>
     </MudAppBar>
 
     <MudDrawer @bind-Open="@ViewModel.IsNavMenuOpened" ClipMode="DrawerClipMode.Docked" Elevation="2">
