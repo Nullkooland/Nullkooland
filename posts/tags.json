@@ -5,27 +5,29 @@
     "HEIF": [
         "use_libheif"
     ],
-    "vscode": [
-        "give_vscode_camera_access"
-    ],
-    "macOS": [
-        "give_vscode_camera_access"
-    ],
     "灯儿晃": [
-        "meandering_souls_ep1",
-        "meandering_souls_ep2"
+        "meandering_souls_ep3",
+        "meandering_souls_ep2",
+        "meandering_souls_ep1"
     ],
     "游记": [
-        "meandering_souls_ep1",
-        "meandering_souls_ep2"
-    ],
-    "随想": [
-        "meandering_souls_ep1",
-        "intro",
-        "meandering_souls_ep2"
-    ],
-    "北碚": [
+        "meandering_souls_ep3",
+        "meandering_souls_ep2",
         "meandering_souls_ep1"
+    ],
+    "云山": [
+        "meandering_souls_ep3",
+        "meandering_souls_ep2"
+    ],
+    "川东平行岭谷": [
+        "meandering_souls_ep3",
+        "meandering_souls_ep2"
+    ],
+    "嘉陵江": [
+        "meandering_souls_ep3"
+    ],
+    "鸣虫": [
+        "meandering_souls_ep3"
     ],
     "Nullkooland": [
         "intro"
@@ -33,19 +35,27 @@
     "Intro": [
         "intro"
     ],
+    "随想": [
+        "intro",
+        "meandering_souls_ep2",
+        "meandering_souls_ep1"
+    ],
+    "vscode": [
+        "give_vscode_camera_access"
+    ],
+    "macOS": [
+        "give_vscode_camera_access"
+    ],
+    "AVIF": [
+        "meandering_souls_ep2"
+    ],
+    "北碚": [
+        "meandering_souls_ep1"
+    ],
     "Computer Vision": [
         "camera_calib_0"
     ],
     "Camera Calibration": [
         "camera_calib_0"
-    ],
-    "云山": [
-        "meandering_souls_ep2"
-    ],
-    "川东平行岭谷": [
-        "meandering_souls_ep2"
-    ],
-    "AVIF": [
-        "meandering_souls_ep2"
     ]
 }

@@ -11,30 +11,20 @@
             "HEIF"
         ]
     },
-    "give_vscode_camera_access": {
-        "id": "give_vscode_camera_access",
-        "type": 0,
-        "date": "2021-02-21T21:53:00+08:00",
-        "title": "Give VS Code Camera Access Permission on macOS",
-        "brief": "VS Code is nice, we should set it loose!",
-        "headerImage": "spinning_lights.jpg",
-        "tags": [
-            "vscode",
-            "macOS"
-        ]
-    },
-    "meandering_souls_ep1": {
-        "id": "meandering_souls_ep1",
+    "meandering_souls_ep3": {
+        "id": "meandering_souls_ep3",
         "type": 1,
-        "date": "2021-02-14T08:30:00+08:00",
-        "title": "灯儿晃记：2021年 第一期",
-        "brief": "2021 年寒假的灯儿晃记录",
-        "headerImage": "candy_old_community.jpg",
+        "date": "2021-05-05T23:14:00+08:00",
+        "title": "灯儿晃记：2021年 第三期",
+        "brief": "劳动节在老家地界零成本旅游",
+        "headerImage": "温塘峡之大沱口2021.avif",
         "tags": [
             "灯儿晃",
             "游记",
-            "随想",
-            "北碚"
+            "云山",
+            "川东平行岭谷",
+            "嘉陵江",
+            "鸣虫"
         ]
     },
     "intro": {
@@ -50,16 +40,16 @@
             "随想"
         ]
     },
-    "camera_calib_0": {
-        "id": "camera_calib_0",
+    "give_vscode_camera_access": {
+        "id": "give_vscode_camera_access",
         "type": 0,
-        "date": "2021-03-01T12:12:00+08:00",
-        "title": "Camera Calibration 0: The Basics",
-        "brief": "The basics of image formation and camera geometry",
-        "headerImage": "pinhole_photography.jpg",
+        "date": "2021-02-21T21:53:00+08:00",
+        "title": "Give VS Code Camera Access Permission on macOS",
+        "brief": "VS Code is nice, we should set it loose!",
+        "headerImage": "spinning_lights.jpg",
         "tags": [
-            "Computer Vision",
-            "Camera Calibration"
+            "vscode",
+            "macOS"
         ]
     },
     "meandering_souls_ep2": {
@@ -76,6 +66,32 @@
             "云山",
             "川东平行岭谷",
             "AVIF"
+        ]
+    },
+    "meandering_souls_ep1": {
+        "id": "meandering_souls_ep1",
+        "type": 1,
+        "date": "2021-02-14T08:30:00+08:00",
+        "title": "灯儿晃记：2021年 第一期",
+        "brief": "2021 年寒假的灯儿晃记录",
+        "headerImage": "candy_old_community.jpg",
+        "tags": [
+            "灯儿晃",
+            "游记",
+            "随想",
+            "北碚"
+        ]
+    },
+    "camera_calib_0": {
+        "id": "camera_calib_0",
+        "type": 0,
+        "date": "2021-03-01T12:12:00+08:00",
+        "title": "Camera Calibration 0: The Basics",
+        "brief": "The basics of image formation and camera geometry",
+        "headerImage": "pinhole_photography.jpg",
+        "tags": [
+            "Computer Vision",
+            "Camera Calibration"
         ]
     }
 }
