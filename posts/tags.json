@@ -1,27 +1,51 @@
 {
+    "vscode": [
+        "give_vscode_camera_access",
+        "stm32_dev_with_vscode"
+    ],
+    "macOS": [
+        "give_vscode_camera_access"
+    ],
+    "灯儿晃": [
+        "meandering_souls_ep2",
+        "meandering_souls_ep1",
+        "meandering_souls_ep3"
+    ],
+    "游记": [
+        "meandering_souls_ep2",
+        "meandering_souls_ep1",
+        "meandering_souls_ep3"
+    ],
+    "随想": [
+        "meandering_souls_ep2",
+        "meandering_souls_ep1",
+        "intro"
+    ],
+    "云山": [
+        "meandering_souls_ep2",
+        "meandering_souls_ep3"
+    ],
+    "川东平行岭谷": [
+        "meandering_souls_ep2",
+        "meandering_souls_ep3"
+    ],
+    "AVIF": [
+        "meandering_souls_ep2"
+    ],
+    "Computer Vision": [
+        "camera_calib_0"
+    ],
+    "Camera Calibration": [
+        "camera_calib_0"
+    ],
     "OpenCV": [
         "use_libheif"
     ],
     "HEIF": [
         "use_libheif"
     ],
-    "灯儿晃": [
-        "meandering_souls_ep3",
-        "meandering_souls_ep2",
+    "北碚": [
         "meandering_souls_ep1"
-    ],
-    "游记": [
-        "meandering_souls_ep3",
-        "meandering_souls_ep2",
-        "meandering_souls_ep1"
-    ],
-    "云山": [
-        "meandering_souls_ep3",
-        "meandering_souls_ep2"
-    ],
-    "川东平行岭谷": [
-        "meandering_souls_ep3",
-        "meandering_souls_ep2"
     ],
     "嘉陵江": [
         "meandering_souls_ep3"
@@ -35,27 +59,10 @@
     "Intro": [
         "intro"
     ],
-    "随想": [
-        "intro",
-        "meandering_souls_ep2",
-        "meandering_souls_ep1"
+    "STM32": [
+        "stm32_dev_with_vscode"
     ],
-    "vscode": [
-        "give_vscode_camera_access"
-    ],
-    "macOS": [
-        "give_vscode_camera_access"
-    ],
-    "AVIF": [
-        "meandering_souls_ep2"
-    ],
-    "北碚": [
-        "meandering_souls_ep1"
-    ],
-    "Computer Vision": [
-        "camera_calib_0"
-    ],
-    "Camera Calibration": [
-        "camera_calib_0"
+    "Embedded": [
+        "stm32_dev_with_vscode"
     ]
 }

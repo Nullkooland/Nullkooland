@@ -1,4 +1,44 @@
 {
+    "give_vscode_camera_access": {
+        "id": "give_vscode_camera_access",
+        "type": 0,
+        "date": "2021-02-21T21:53:00+08:00",
+        "title": "Give VS Code Camera Access Permission on macOS",
+        "brief": "VS Code is nice, we should set it loose!",
+        "headerImage": "spinning_lights.jpg",
+        "tags": [
+            "vscode",
+            "macOS"
+        ]
+    },
+    "meandering_souls_ep2": {
+        "id": "meandering_souls_ep2",
+        "type": 1,
+        "date": "2021-02-24T12:15:48+08:00",
+        "title": "灯儿晃记：2021年 第二期",
+        "brief": "这次从后面上云山（¿",
+        "headerImage": "feet_in_mountain_spring_stream.avif",
+        "tags": [
+            "灯儿晃",
+            "游记",
+            "随想",
+            "云山",
+            "川东平行岭谷",
+            "AVIF"
+        ]
+    },
+    "camera_calib_0": {
+        "id": "camera_calib_0",
+        "type": 0,
+        "date": "2021-03-01T12:12:00+08:00",
+        "title": "Camera Calibration 0: The Basics",
+        "brief": "The basics of image formation and camera geometry",
+        "headerImage": "pinhole_photography.jpg",
+        "tags": [
+            "Computer Vision",
+            "Camera Calibration"
+        ]
+    },
     "use_libheif": {
         "id": "use_libheif",
         "type": 0,
@@ -9,6 +49,20 @@
         "tags": [
             "OpenCV",
             "HEIF"
+        ]
+    },
+    "meandering_souls_ep1": {
+        "id": "meandering_souls_ep1",
+        "type": 1,
+        "date": "2021-02-14T08:30:00+08:00",
+        "title": "灯儿晃记：2021年 第一期",
+        "brief": "2021 年寒假的灯儿晃记录",
+        "headerImage": "candy_old_community.jpg",
+        "tags": [
+            "灯儿晃",
+            "游记",
+            "随想",
+            "北碚"
         ]
     },
     "meandering_souls_ep3": {
@@ -40,58 +94,17 @@
             "随想"
         ]
     },
-    "give_vscode_camera_access": {
-        "id": "give_vscode_camera_access",
+    "stm32_dev_with_vscode": {
+        "id": "stm32_dev_with_vscode",
         "type": 0,
-        "date": "2021-02-21T21:53:00+08:00",
-        "title": "Give VS Code Camera Access Permission on macOS",
-        "brief": "VS Code is nice, we should set it loose!",
-        "headerImage": "spinning_lights.jpg",
+        "date": "2021-05-21T18:31:00+08:00",
+        "title": "STM32 Embedded Development with VS Code",
+        "brief": "With STM32CubeMX + ST-Link + CMake",
+        "headerImage": "dusty_nucleo_h743zi_devboard.avif",
         "tags": [
+            "STM32",
             "vscode",
-            "macOS"
-        ]
-    },
-    "meandering_souls_ep2": {
-        "id": "meandering_souls_ep2",
-        "type": 1,
-        "date": "2021-02-24T12:15:48+08:00",
-        "title": "灯儿晃记：2021年 第二期",
-        "brief": "这次从后面上云山（¿",
-        "headerImage": "feet_in_mountain_spring_stream.avif",
-        "tags": [
-            "灯儿晃",
-            "游记",
-            "随想",
-            "云山",
-            "川东平行岭谷",
-            "AVIF"
-        ]
-    },
-    "meandering_souls_ep1": {
-        "id": "meandering_souls_ep1",
-        "type": 1,
-        "date": "2021-02-14T08:30:00+08:00",
-        "title": "灯儿晃记：2021年 第一期",
-        "brief": "2021 年寒假的灯儿晃记录",
-        "headerImage": "candy_old_community.jpg",
-        "tags": [
-            "灯儿晃",
-            "游记",
-            "随想",
-            "北碚"
-        ]
-    },
-    "camera_calib_0": {
-        "id": "camera_calib_0",
-        "type": 0,
-        "date": "2021-03-01T12:12:00+08:00",
-        "title": "Camera Calibration 0: The Basics",
-        "brief": "The basics of image formation and camera geometry",
-        "headerImage": "pinhole_photography.jpg",
-        "tags": [
-            "Computer Vision",
-            "Camera Calibration"
+            "Embedded"
         ]
     }
 }
