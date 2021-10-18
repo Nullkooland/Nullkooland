@@ -6,19 +6,24 @@ brief: "Cross-compilation is such a pain in the ass, but you gotta deal with it!
 headerImage: "eaidk310_plugged.webp"
 tags: ["OpenCV", "C++", "CMake", "交叉编译"]
 ---
+
 # 为 Rockchip 嵌入式 Linux 平台交叉编译 OpenCV
 
 ## 简介
+
 使用 LLVM 工具链为 Rockchip ARM Linux 嵌入式平台进行 OpenCV 的交叉编译。
 
 ## 环境
-### Host:
+
+### Host
+
 - Platform: `x86_64`
 - OS: `macOS 10.15` ~~特卡琳娜~~
 - Toolchain: `LLVM 11.0`
 - Builder: `CMake 3.19.x`
 
-### Target: 
+### Target
+
 - Platform: `AArch64`
 - OS: `Arch Linux ARM`
 - Dependencies: `pkg-config`, `openblas`, `python3`
@@ -132,5 +137,6 @@ cmake .. \
 -D INSTALL_PYTHON_EXAMPLES=OFF
 ```
 
-## 坑 
+## 坑
+
 需要在 CMake 生成的 `link.txt` 与 `relink.txt` 中在有`-lopenblas` 的地方手动添加链接选项: `-lcblas` `-llapack`，不然运行时找不到一些符号！
