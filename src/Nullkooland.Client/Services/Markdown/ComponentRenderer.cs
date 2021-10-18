@@ -7,6 +7,7 @@ using Markdig.Syntax;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Nullkooland.Client.Services.Markdown.Renderers;
+using Nullkooland.Client.Services.Markdown.Renderers.Inlines;
 
 namespace Nullkooland.Client.Services.Markdown
 {

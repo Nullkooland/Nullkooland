@@ -2,7 +2,7 @@ using Markdig.Syntax.Inlines;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
-namespace Nullkooland.Client.Services.Markdown.Renderers
+namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 {
     public class LiteralInlineRenderer : ComponentObjectRenderer<LiteralInline>
     {

@@ -1,7 +1,7 @@
 using Markdig.Extensions.Mathematics;
 using MathBlock = Nullkooland.Client.Controls.MathBlock;
 
-namespace Nullkooland.Client.Services.Markdown.Renderers
+namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 {
     public class MathInlineRenderer : ComponentObjectRenderer<MathInline>
     {

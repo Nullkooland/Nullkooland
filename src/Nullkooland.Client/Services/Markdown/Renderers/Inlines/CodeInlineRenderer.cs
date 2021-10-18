@@ -1,7 +1,7 @@
 using Markdig.Syntax.Inlines;
 using Nullkooland.Client.Controls;
 
-namespace Nullkooland.Client.Services.Markdown.Renderers
+namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 {
     public class CodeInlineRenderer : ComponentObjectRenderer<CodeInline>
     {

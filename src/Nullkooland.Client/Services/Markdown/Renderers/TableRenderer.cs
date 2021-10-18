@@ -9,10 +9,10 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
         protected override void Write(ComponentRenderer renderer, Table table)
         {
             renderer.Builder.OpenComponent<MudSimpleTable>(0);
-            renderer.Builder.AddAttribute(1, "Class", "my-2");
-            renderer.Builder.AddAttribute(2, "FixedHeader", true);
-            renderer.Builder.AddAttribute(3, "Hover", true);
-            
+            renderer.Builder.AddAttribute(1, "FixedHeader", true);
+            renderer.Builder.AddAttribute(2, "Hover", true);
+            renderer.Builder.AddAttribute(3, "Striped", true);
+
             // Render table contents using HtmlRenderer and trim the '<table></table>' tag
             string tableContent = renderer.RenderHtml(table)[8..^9];
             renderer.Builder.AddAttribute(4, "ChildContent",

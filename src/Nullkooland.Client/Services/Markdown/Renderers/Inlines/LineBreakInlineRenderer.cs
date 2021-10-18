@@ -1,6 +1,6 @@
 using Markdig.Syntax.Inlines;
 
-namespace Nullkooland.Client.Services.Markdown.Renderers
+namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 {
     public class LineBreakInlineRenderer : ComponentObjectRenderer<LineBreakInline>
     {
