@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31808.319
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nullkooland.Client", "src\Nullkooland.Client\Nullkooland.Client.csproj", "{AC1C6795-DCAE-4472-8B2F-C0AB088C04A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nullkooland.Shared", "src\Nullkooland.Shared\Nullkooland.Shared.csproj", "{FC63233B-3032-4556-9A55-D2BBB43CD5A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nullkooland.Shared", "src\Nullkooland.Shared\Nullkooland.Shared.csproj", "{FC63233B-3032-4556-9A55-D2BBB43CD5A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

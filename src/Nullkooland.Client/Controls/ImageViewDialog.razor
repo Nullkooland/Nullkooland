@@ -1,0 +1,26 @@
+﻿
+<div class="d-flex justify-center pa-2"
+     style="overflow: hidden;
+            height: 100%;
+            width: fit-content;
+            background: transparent;">
+    <img class="rounded mud-elevation-2"
+         src="@Source"
+         alt="@Caption"
+         style="max-height: 90vh;
+                max-width:90vw;
+                object-fit: contain;
+                object-position: center" />
+</div>
+
+
+@code {
+    [Parameter]
+    public string? Source { get; set; }
+
+    [Parameter]
+    public string? Caption { get; set; }
+
+    [Parameter]
+    public string? Description { get; set; }
+}

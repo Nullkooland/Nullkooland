@@ -49,7 +49,7 @@
 
                     <div class="header-title-bar d-flex flex-wrap align-center pa-1 md-elevation-2">
                         <MudIcon Class="ml-2" Icon=@Icons.Filled.DateRange Size="Size.Small"/>
-                        <MudText Class="ml-2 mr-auto">
+                        <MudText Class="ml-2 mr-auto" Typo="Typo.body2">
                             @ViewModel.Post.Date.ToString("dddd yyyy-MM-dd")
                         </MudText>
 
@@ -106,7 +106,7 @@
         }
         else
         {
-            <MediaBlock Source="images/dont_you_ever_stop.webp"/>
+            <ImageBlock Source="images/dont_you_ever_stop.webp"/>
         }
     }
 </MudContainer>

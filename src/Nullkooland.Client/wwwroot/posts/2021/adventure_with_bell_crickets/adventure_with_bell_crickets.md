@@ -35,9 +35,8 @@ tags: ["金钟儿", "蟋蟀", "鸣虫", "直翅目"]
 
 ---
 
-小区绿化带中的金钟儿，拍摄于2020年9月，详情见
+小区绿化带中的金钟儿，拍摄于2020年9月，详情见 [iNaturalist 观察记录](https://www.inaturalist.org/observations/58732954)
 
-[iNaturalist 观察记录](https://www.inaturalist.org/observations/58732954)
 ![金钟儿在小区](images/金钟儿在小区.webp)
 
 ---

@@ -1,5 +1,6 @@
 using System.Linq;
 using Markdig.Syntax.Inlines;
+using Markdig.Helpers;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using Nullkooland.Client.Controls;
@@ -12,62 +13,47 @@ namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 
         protected override void Write(ComponentRenderer renderer, LinkInline link)
         {
-            string displayText = renderer.RenderHtml(link.FirstChild);
+            string? captionText = link.FirstChild?.ToString();
             string url = link.Url.Contains("://") ? link.Url : $"{BaseUrl}/{link.Url}";
 
             if (link.IsImage)
             {
-                string[] attributes = link.Title.Split();
-                bool isInline = attributes.Any(attr => attr == "inline");
-                bool isNoClip = attributes.Any(attr => attr == "noclip");
-
-                if (!isInline)
-                {
-                    renderer.Builder.OpenElement(0, "div");
-                    renderer.Builder.AddAttribute(1, "class", "d-flex flex-row justify-center align-center");
-                    renderer.Builder.AddAttribute(2, "style", "width: 100%");
-                }
-
-                renderer.Builder.OpenComponent<MediaBlock>(3);
-
                 if (TryParseVideoSource(url, out string playerUrl))
                 {
-                    renderer.Builder.AddAttribute(4, "Source", playerUrl);
-                    renderer.Builder.AddAttribute(5, "IsVideo", true);
-                    renderer.Builder.AddAttribute(7, "Width", "100%");
+                    renderer.Builder.OpenComponent<VideoBlock>(0);
+                    renderer.Builder.AddAttribute(1, "Source", playerUrl);
+                    renderer.Builder.AddAttribute(2, "Width", "100%");
+                    renderer.Builder.CloseComponent();
                 }
                 else
                 {
-                    renderer.Builder.AddAttribute(8, "Source", url);
+
+                    renderer.Builder.OpenComponent<ImageBlock>(3);
+                    renderer.Builder.AddAttribute(4, "Source", url);
+                    renderer.Builder.AddAttribute(5, "Caption", captionText);
+                    renderer.Builder.AddAttribute(6, "Description", link.Title);
+
+                    bool isInline = (link.PreviousSibling != null && link.PreviousSibling is not LineBreakInline);
+                    renderer.Builder.AddAttribute(7, "Inlined", isInline);
+
+                    if (!isInline)
+                    {
+                        renderer.Builder.AddAttribute(8, "Width", "100%");
+                        renderer.Builder.AddAttribute(9, "MaxHeight", "75vh");
+                    }
+
+                    renderer.Builder.CloseComponent();
                 }
-
-                renderer.Builder.AddAttribute(9, "Caption", displayText);
-
-                if (!(isInline || isNoClip))
-                {
-                    renderer.Builder.AddAttribute(10, "MaxHeight", "75vh");
-                    renderer.Builder.AddAttribute(11, "Fit", "cover");
-                }
-
-                if (isInline)
-                {
-                    renderer.Builder.AddAttribute(12, "Elevation", 0);
-                    renderer.Builder.AddAttribute(13, "Rounded", false);
-                }
-
-                renderer.Builder.CloseComponent();
-
-                if (!isInline) renderer.Builder.CloseElement();
             }
             else
             {
-                renderer.Builder.OpenComponent<MudLink>(14);
-                renderer.Builder.AddAttribute(15, "Href", url);
+                renderer.Builder.OpenComponent<MudLink>(10);
+                renderer.Builder.AddAttribute(11, "Href", url);
 
-                if (string.IsNullOrEmpty(displayText)) displayText = url;
+                if (string.IsNullOrEmpty(captionText)) captionText = url;
 
-                renderer.Builder.AddAttribute(16, "ChildContent",
-                    (RenderFragment) (builder => builder.AddContent(17, displayText))
+                renderer.Builder.AddAttribute(12, "ChildContent",
+                    (RenderFragment)(builder => builder.AddContent(13, captionText))
                 );
 
                 renderer.Builder.CloseComponent();
