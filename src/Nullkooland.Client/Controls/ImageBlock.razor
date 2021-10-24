@@ -13,6 +13,7 @@ else
                OnClick="OnClick">
         <img src="@Source" 
              alt="@Caption"
+             title="@Caption"
              loading="lazy"
              @onload="@(() => _isLoading = false)"
              style="height: 100%;
@@ -67,10 +68,9 @@ else
 
         var options = new DialogOptions
         {
-            MaxWidth=MudBlazor.MaxWidth.ExtraExtraLarge,
-            CloseButton = true,
+            MaxWidth=MudBlazor.MaxWidth.ExtraLarge,
             FullWidth = false,
-            NoHeader = true,
+            NoHeader=true
         };
 
         DialogService.Show<ImageViewDialog>(Caption, parameters, options);

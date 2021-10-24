@@ -1,20 +1,44 @@
-﻿
-<div class="d-flex justify-center pa-2"
-     style="overflow: hidden;
-            height: 100%;
-            width: fit-content;
-            background: transparent;">
-    <img class="rounded mud-elevation-2"
-         src="@Source"
+﻿<style>
+    .blur-behind-header {
+        position: absolute;
+        top: 0px;
+        height: 2.5rem;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.36);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+    }
+</style>
+
+<div class="d-flex pa-0 rounded"
+     style="position:relative;
+            overflow: hidden;
+            height: fit-content;
+            width: fit-content;">
+
+    <img src="@Source"
          alt="@Caption"
-         style="max-height: 90vh;
-                max-width:90vw;
+         style="position: center;
+                max-height: 96vh;
+                max-width: 96vw;
                 object-fit: contain;
                 object-position: center" />
+
+    <div class="d-flex flex-row align-center blur-behind-header">
+        <MudText Class="ml-2 mr-auto">
+            @Caption
+        </MudText>
+        <MudIconButton Class="mr-2"
+                       Icon="@Icons.Material.Filled.Close"
+                       Size="Size.Small"
+                       OnClick="OnClose" />
+    </div>
 </div>
 
-
 @code {
+    [CascadingParameter]
+    MudDialogInstance MudDialog { get; set; }
+
     [Parameter]
     public string? Source { get; set; }
 
@@ -23,4 +47,6 @@
 
     [Parameter]
     public string? Description { get; set; }
+
+    void OnClose() => MudDialog.Close(DialogResult.Ok(true));
 }
