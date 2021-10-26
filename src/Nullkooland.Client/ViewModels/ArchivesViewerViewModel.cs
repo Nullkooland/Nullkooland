@@ -12,7 +12,7 @@ namespace Nullkooland.Client.ViewModels
     {
         private readonly IBlogPostService _blogPostService;
 
-        private ImmutableList<BlogPost> _posts;
+        private ImmutableList<BlogPost>? _posts;
 
         public ArchivesViewerViewModel(IBlogPostService blogPostService)
         {
@@ -23,15 +23,11 @@ namespace Nullkooland.Client.ViewModels
 
         public bool IsLoading { get; set; }
 
-        public IEnumerable<BlogPost> Posts => _posts
-            .Skip(CurrentPage * NumBlogsPerPage)
+        public IEnumerable<BlogPost>? Posts => _posts?
+            .Skip((CurrentPage - 1) * NumBlogsPerPage)
             .Take(NumBlogsPerPage);
 
-        public int CurrentPage { get; set; }
-
-        public bool IsFirstPage => CurrentPage == 1;
-
-        public bool IsLastPage => CurrentPage == NumPages;
+        public int CurrentPage { get; set; } = 1;
 
         public int NumPages => (Count - 1) / NumBlogsPerPage + 1;
 
