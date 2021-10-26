@@ -12,7 +12,6 @@ namespace Nullkooland.Client.ViewModels
     {
         private readonly IBlogPostService _blogPostService;
 
-        private int _currentPage = 1;
         private ImmutableList<BlogPost> _posts;
 
         public ArchivesViewerViewModel(IBlogPostService blogPostService)
@@ -25,14 +24,10 @@ namespace Nullkooland.Client.ViewModels
         public bool IsLoading { get; set; }
 
         public IEnumerable<BlogPost> Posts => _posts
-            .Skip((CurrentPage - 1) * NumBlogsPerPage)
+            .Skip(CurrentPage * NumBlogsPerPage)
             .Take(NumBlogsPerPage);
 
-        public int CurrentPage
-        {
-            get => _currentPage;
-            set => _currentPage = Math.Min(Math.Max(value, 1), NumPages);
-        }
+        public int CurrentPage { get; set; }
 
         public bool IsFirstPage => CurrentPage == 1;
 
@@ -43,26 +38,6 @@ namespace Nullkooland.Client.ViewModels
         public int NumBlogsPerPage { get; set; } = 8;
 
         public int Count => _posts?.Count ?? 0;
-
-        public void OnFirstPageButtonClicked()
-        {
-            CurrentPage = 1;
-        }
-
-        public void OnPreviousPageButtonClicked()
-        {
-            CurrentPage--;
-        }
-
-        public void OnNextPageButtonClicked()
-        {
-            CurrentPage++;
-        }
-
-        public void OnLastPageButtonClicked()
-        {
-            CurrentPage = NumPages;
-        }
 
         public async ValueTask LoadArchivesAsync()
         {

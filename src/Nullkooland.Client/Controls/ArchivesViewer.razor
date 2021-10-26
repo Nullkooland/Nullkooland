@@ -20,38 +20,13 @@
 }
 else
 {
-    <div class="mt-4 d-flex align-content-space-around flex-wrap">
-
-        <MudHidden Breakpoint="@Breakpoint.SmAndDown">
-            <div class="ml-2 mr-auto d-flex flex-row align-center">
-                <MudText Class="mr-2">Posts per page: </MudText>
-                <MudRadioGroup T="int" @bind-SelectedOption=ViewModel.NumBlogsPerPage>
-                    <MudRadio T="int" Option="8">8</MudRadio>
-                    <MudRadio T="int" Option="16">16</MudRadio>
-                    <MudRadio T="int" Option="32">32</MudRadio>
-                </MudRadioGroup>
-            </div>
-        </MudHidden>
-
-        <div class="d-flex flex-row align-center">
-            <MudText Class="mr-2">Page: </MudText>
-            <MudTextField Variant="Variant.Outlined" Margin="Margin.Dense" Style="width: 90px"
-                          Adornment="Adornment.End" AdornmentText="@($" / {ViewModel.NumPages}")"
-                          T="int" @bind-Value="ViewModel.CurrentPage"/>
-        </div>
-
-        <div class="ml-2 d-flex flex-row">
-            <MudIconButton Class="ml-4" Icon="@Icons.Material.Filled.FirstPage"
-                           OnClick="@ViewModel.OnFirstPageButtonClicked" Disabled="@ViewModel.IsFirstPage"/>
-            <MudIconButton Class="ml-4" Icon="@Icons.Material.Filled.KeyboardArrowLeft"
-                           OnClick="@ViewModel.OnPreviousPageButtonClicked" Disabled="@ViewModel.IsFirstPage"/>
-            <MudIconButton Class="ml-4" Icon="@Icons.Material.Filled.KeyboardArrowRight"
-                           OnClick="@ViewModel.OnNextPageButtonClicked" Disabled="@ViewModel.IsLastPage"/>
-            <MudIconButton Class="ml-4" Icon="@Icons.Material.Filled.LastPage"
-                           OnClick="@ViewModel.OnLastPageButtonClicked" Disabled="@ViewModel.IsLastPage"/>
-        </div>
-
-    </div>
+    <MudPagination Class="mt-4"
+                   ShowPreviousButton="true"
+                   ShowNextButton="true"
+                   ShowFirstButton="true"
+                   ShowLastButton="true"
+                   Count="@ViewModel.NumPages"
+                   Selected="@ViewModel.CurrentPage"/>
 
     <MudDivider Class="mt-4 mb-6"/>
 
