@@ -4,21 +4,19 @@
 @Components
 
 @code {
-
+    [EditorRequired]
     [Parameter]
-    public string Text { get; set; }
+    public string? Content { get; set; }
 
+    [EditorRequired]
     [Parameter]
-    public string BaseUrl { get; set; }
+    public string? BaseUrl { get; set; }
 
-    private RenderFragment Components { get; set; }
-
-    private string Html { get; set; }
+    private RenderFragment? Components { get; set; }
 
     protected override void OnParametersSet()
     {
-        Components = RenderService.Render(Text, BaseUrl);
-    // Html = RenderService.RenderHtml(Text);
+        Components = RenderService.Render(Content!, BaseUrl);
     }
 
 }

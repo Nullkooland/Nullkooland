@@ -10,12 +10,12 @@ else
 }
 
 @code {
+    [EditorRequired]
+    [Parameter]
+    public string? MathText { get; set; }
 
     [Parameter]
-    public bool Inline { get; set; }
-
-    [Parameter]
-    public string MathText { get; set; }
+    public bool Inline { get; set; } = false;
 
     private ElementReference _mathElement;
 

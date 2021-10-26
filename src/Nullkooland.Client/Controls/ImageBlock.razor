@@ -1,8 +1,11 @@
 @inject IDialogService DialogService
 
-@if (Inlined)
+@if (Inline)
 {
-    <img src="@Source" alt="@Caption" loading="lazy" />
+    <img src="@Source"
+         alt="@Caption"
+         title="@Caption"
+         loading="lazy" />
 }
 else
 {
@@ -32,10 +35,11 @@ else
 
 
 @code {
-
+    [EditorRequired]
     [Parameter]
     public string? Source { get; set; }
 
+    [EditorRequired]
     [Parameter]
     public string? Caption { get; set; }
 
@@ -43,7 +47,7 @@ else
     public string? Description { get; set; }
 
     [Parameter]
-    public bool Inlined { get; set; }
+    public bool Inline { get; set; } = false;
 
     [Parameter]
     public string Height { get; set; } = "fit-content";

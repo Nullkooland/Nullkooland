@@ -13,10 +13,11 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
             {
                 renderer.Builder.OpenComponent<CodeBlock>(0);
 
-                string language = fencedCodeBlock.Info;
-                renderer.Builder.AddAttribute(1, "Language", language);
                 string code = ExtractSourceCode(codeBlock);
-                renderer.Builder.AddAttribute(2, "Code", code);
+                renderer.Builder.AddAttribute(1, "Code", code);
+                string? language = fencedCodeBlock.Info;
+                renderer.Builder.AddAttribute(2, "Language", language);
+                renderer.Builder.AddAttribute(3, "Inline", false);
 
                 renderer.Builder.CloseComponent();
             }

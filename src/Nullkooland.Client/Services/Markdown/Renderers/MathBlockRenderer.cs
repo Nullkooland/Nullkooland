@@ -9,10 +9,9 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
         {
             renderer.Builder.OpenComponent<MathBlock>(0);
 
-            renderer.Builder.AddAttribute(1, "Inline", false);
-
             string mathText = mathBlock.Lines.ToString();
-            renderer.Builder.AddAttribute(2, "MathText", mathText);
+            renderer.Builder.AddAttribute(1, "MathText", mathText);
+            renderer.Builder.AddAttribute(2, "Inline", false);
 
             renderer.Builder.CloseComponent();
         }

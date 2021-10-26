@@ -9,16 +9,16 @@ namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 {
     public class LinkInlineRenderer : ComponentObjectRenderer<LinkInline>
     {
-        public string BaseUrl { get; set; }
+        public string? BaseUrl { get; set; }
 
         protected override void Write(ComponentRenderer renderer, LinkInline link)
         {
+            string url = link.Url!.Contains("://") ? link.Url : $"{BaseUrl}/{link.Url}";
             string? captionText = link.FirstChild?.ToString();
-            string url = link.Url.Contains("://") ? link.Url : $"{BaseUrl}/{link.Url}";
 
             if (link.IsImage)
             {
-                if (TryParseVideoSource(url, out string playerUrl))
+                if (TryParseVideoSource(url, out string? playerUrl))
                 {
                     renderer.Builder.OpenComponent<VideoBlock>(0);
                     renderer.Builder.AddAttribute(1, "Source", playerUrl);
@@ -27,14 +27,13 @@ namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
                 }
                 else
                 {
-
                     renderer.Builder.OpenComponent<ImageBlock>(3);
                     renderer.Builder.AddAttribute(4, "Source", url);
                     renderer.Builder.AddAttribute(5, "Caption", captionText);
                     renderer.Builder.AddAttribute(6, "Description", link.Title);
 
                     bool isInline = (link.PreviousSibling != null && link.PreviousSibling is not LineBreakInline);
-                    renderer.Builder.AddAttribute(7, "Inlined", isInline);
+                    renderer.Builder.AddAttribute(7, "Inline", isInline);
 
                     if (!isInline)
                     {
@@ -60,7 +59,7 @@ namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
             }
         }
 
-        private static bool TryParseVideoSource(string url, out string playerUrl)
+        private static bool TryParseVideoSource(string url, out string? playerUrl)
         {
             if (url.StartsWith("https://www.youtube.com/watch"))
             {

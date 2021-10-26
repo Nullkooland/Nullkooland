@@ -27,11 +27,11 @@
             @onload="@(() => _isLoading = false)"
             frameborder="0"
             allow="fullscreen;
-                    autoplay;
-                    encrypted-media;
-                    accelerometer;
-                    gyroscope;
-                    picture-in-picture;">
+                   autoplay;
+                   encrypted-media;
+                   accelerometer;
+                   gyroscope;
+                   picture-in-picture;">
     </iframe>
 
     <MudOverlay Visible="@_isLoading" Absolute="true" DarkBackground="true">
@@ -42,6 +42,7 @@
 
 
 @code {
+    [EditorRequired]
     [Parameter]
     public string? Source { get; set; }
 

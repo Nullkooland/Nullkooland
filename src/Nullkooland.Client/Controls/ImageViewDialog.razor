@@ -44,7 +44,7 @@
 
 @code {
     [CascadingParameter]
-    MudDialogInstance MudDialog { get; set; }
+    MudDialogInstance? MudDialog { get; set; }
 
     [Parameter]
     public string? Source { get; set; }
@@ -55,5 +55,5 @@
     [Parameter]
     public string? Description { get; set; }
 
-    void OnClose() => MudDialog.Close(DialogResult.Ok(true));
+    void OnClose() => MudDialog!.Close(DialogResult.Ok(true));
 }

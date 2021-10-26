@@ -29,7 +29,7 @@ namespace Nullkooland.Client.Services.Markdown
             return Markdig.Markdown.ToHtml(markdown, _pipeline);
         }
 
-        public RenderFragment Render(string markdown, string baseUrl = null)
+        public RenderFragment Render(string markdown, string? baseUrl = null)
         {
             if (baseUrl != null)
             {
@@ -37,7 +37,7 @@ namespace Nullkooland.Client.Services.Markdown
                 if (linkRenderer != null) linkRenderer.BaseUrl = baseUrl;
             }
 
-            return (RenderFragment) Markdig.Markdown.Convert(markdown, _renderer, _pipeline);
+            return (RenderFragment)Markdig.Markdown.Convert(markdown, _renderer, _pipeline);
         }
     }
 }
