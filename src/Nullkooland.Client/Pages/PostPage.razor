@@ -66,13 +66,13 @@
                     <img src="@ViewModel.Post.HeaderImagePath" alt="@ViewModel.Post.HeaderImage" />
 
                     <div class="d-flex flex-row align-center">
-                        <MudIcon Class="ml-2" Icon=@Icons.Filled.DateRange Size="Size.Small" />
+                        <MudIcon Class="ml-2" Icon=@Icons.Material.Filled.Event Size="Size.Small" />
                         <MudText Class="ml-2" Typo="Typo.subtitle2">
                             @ViewModel.Post.Date.ToString("yyyy/MM/dd")
                         </MudText>
 
                         <MudIconButton Class="ml-auto"
-                               Icon=@Icons.Filled.Style Size="Size.Small"
+                               Icon=@Icons.Material.Filled.Style Size="Size.Small"
                                Link="tags" />
                         <span class="mr-1 d-flex flex-row">
                             @foreach (string tag in ViewModel.Post.Tags)
