@@ -21,10 +21,10 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
 
                 string bullet = GetBullet(listBlock.BulletType, i);
                 renderer.Builder.AddAttribute(5, "ChildContent",
-                    (RenderFragment) (builder => builder.AddMarkupContent(6, bullet))
+                    (RenderFragment)(builder => builder.AddMarkupContent(6, bullet))
                 );
 
-                renderer.Builder.AddAttribute(7, "Color", Color.Primary);
+                renderer.Builder.AddAttribute(7, "Color", Color.Secondary);
                 renderer.Builder.CloseComponent();
 
                 renderer.Write(item[0]);
@@ -39,8 +39,8 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
                 '-' => "✧",
                 '*' => "✱",
                 '1' => $"{index + 1}.",
-                'a' => $"{(char) ('a' + index)}.",
-                'A' => $"{(char) ('A' + index)}.",
+                'a' => $"{(char)('a' + index)}.",
+                'A' => $"{(char)('A' + index)}.",
                 'i' => $"{new string('i', index + 1)}.",
                 _ => null
             };

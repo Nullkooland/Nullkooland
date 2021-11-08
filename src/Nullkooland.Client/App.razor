@@ -1,10 +1,26 @@
 ﻿<Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
     <NotFound>
+        <PageTitle>哦豁！</PageTitle>
         <LayoutView Layout="@typeof(MainLayout)">
-            <NotFoundPage></NotFoundPage>
+            <iframe src="https://www.youtube.com/embed/bPZSDBvDmVw?autoplay=1"
+                    frameborder="0"
+                    style="position:fixed;
+                           top:0;
+                           left:0;
+                           bottom:0;
+                           right:0;
+                           width: 100%;
+                           height: 100%;"
+                    allow="autoplay;
+                           encrypted-media;
+                           accelerometer;
+                           gyroscope;
+                           picture-in-picture;">
+            </iframe>
         </LayoutView>
     </NotFound>
 </Router>

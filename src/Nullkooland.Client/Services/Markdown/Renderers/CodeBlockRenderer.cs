@@ -1,6 +1,6 @@
 using System.Text;
 using Markdig.Syntax;
-using CodeBlock = Nullkooland.Client.Controls.CodeBlock;
+using CodeBlock = Nullkooland.Client.Views.Components.CodeBlock;
 using CodeBlockSyntax = Markdig.Syntax.CodeBlock;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers
@@ -32,10 +32,16 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
             {
                 var line = lines[i];
                 var slice = line.Slice;
-                if (slice.Text == null) continue;
+                if (slice.Text == null)
+                {
+                    continue;
+                }
 
                 string lineText = slice.Text.Substring(slice.Start, slice.Length);
-                if (i > 0) code.AppendLine();
+                if (i > 0)
+                {
+                    code.AppendLine();
+                }
 
                 code.Append(lineText);
             }

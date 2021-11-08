@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Nullkooland.Client.Services.Markdown.Renderers;
 using Nullkooland.Client.Services.Markdown.Renderers.Inlines;
+using Nullkooland.Client.Services.Theme;
 
 namespace Nullkooland.Client.Services.Markdown
 {
@@ -15,8 +16,10 @@ namespace Nullkooland.Client.Services.Markdown
     {
         private readonly HtmlRenderer _htmlRenderer;
 
-        public ComponentRenderer()
+        public ComponentRenderer(IThemeService themeService)
         {
+            ThemeService = themeService;
+
             // Block renderers
             ObjectRenderers.Add(new QuoteBlockRenderer());
             ObjectRenderers.Add(new TableRenderer());
@@ -45,6 +48,8 @@ namespace Nullkooland.Client.Services.Markdown
         }
 
         public RenderTreeBuilder Builder { get; private set; }
+
+        public IThemeService ThemeService { get; private set; }
 
         public override RenderFragment Render(MarkdownObject markdownObject)
         {

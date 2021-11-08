@@ -13,7 +13,7 @@ namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
             renderer.Builder.AddAttribute(1, "Href", linkInline.Url);
 
             renderer.Builder.AddAttribute(2, "ChildContent",
-                (RenderFragment) (builder => builder.AddContent(4, linkInline.Url))
+                (RenderFragment)(builder => builder.AddContent(4, linkInline.Url))
             );
 
             renderer.Builder.CloseComponent();

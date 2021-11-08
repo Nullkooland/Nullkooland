@@ -1,4 +1,4 @@
-using Nullkooland.Client.Controls;
+using MathBlock = Nullkooland.Client.Views.Components.MathBlock;
 using MathBlockSyntax = Markdig.Extensions.Mathematics.MathBlock;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers

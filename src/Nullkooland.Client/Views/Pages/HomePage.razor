@@ -1,0 +1,72 @@
+﻿@page "/"
+@using Nullkooland.Client.ViewModels.Pages
+@inject IThemeService ThemeService
+@inject HomePageViewModel ViewModel
+
+<style>
+    .greetings-box {
+        background-attachment: fixed;
+        background-size: contain;
+        background-image: linear-gradient(to right, 
+        @ThemeService.Colors.BackgroundGrey.SetAlpha(0.75) 50%, 
+        @ThemeService.Colors.BackgroundGrey.SetAlpha(0.0)), 
+        url("@ViewModel.BackgroundPattern");
+    }
+</style>
+
+<PageTitle>@ViewModel.PageTitle</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge">
+    <MudPaper Class="my-6 pa-6 d-block d-sm-flex flex-row greetings-box">
+        <MudAvatar Image="@ViewModel.AvatarImage" Color="Color.Dark" Style="height: 20vh; width: 20vh;" />
+        <div class="ml-6 d-flex flex-column">
+            <MudText Class="mt-2" Typo="Typo.h3" Style="font-family: Roboto Slab">
+                @ViewModel.GreetingsTitle
+            </MudText>
+            <MudText Class="mt-2" Typo="Typo.h5" Color="Color.Primary">
+                @ViewModel.GreetingsContent
+            </MudText>
+        </div>
+    </MudPaper>
+
+    @if (ViewModel.IsLoading)
+    {
+        <div class="mt-8 d-flex flex-row justify-center align-center">
+            <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true" />
+        </div>
+    }
+    else
+    {
+        <MudGrid Spacing="2" Justify="Justify.FlexStart">
+            @foreach (var post in ViewModel.RecentPosts)
+            {
+                <MudItem xs="12" md="6" lg="4" xl="3">
+                    <MudCard>
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <MudLink Typo="Typo.h5" Color="Color.Secondary" Href="@post.Url">@post.Title</MudLink>
+                            </CardHeaderContent>
+                            <CardHeaderActions>
+                                <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Default" Link="@post.Url" />
+                            </CardHeaderActions>
+                        </MudCardHeader>
+                        <MudCardMedia Image="@post.HeaderImagePath" />
+                        <MudCardContent>
+                            <MudText Typo="Typo.body2">@post.Brief</MudText>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+    }
+</MudContainer>
+<Footer />
+
+@code
+{
+    protected override async Task OnInitializedAsync()
+    {
+        ThemeService.ThemeChanged += (_, themeType) => StateHasChanged();
+        await ViewModel.LoadRecentPostsAsync();
+    }
+}

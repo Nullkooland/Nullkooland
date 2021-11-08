@@ -1,16 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<InvariantGlobalization>true</InvariantGlobalization>
+		<BlazorEnableCompression>false</BlazorEnableCompression>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Markdig" Version="0.26.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-rc.2.21480.10" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-rc.2.21480.10" PrivateAssets="all" />
-		<PackageReference Include="MudBlazor" Version="5.2.0-rc5" />
+		<PackageReference Include="MudBlazor" Version="5.2.0" />
 		<PackageReference Include="System.Net.Http.Json" Version="6.0.0-rc.2.21480.5" />
 	</ItemGroup>
 

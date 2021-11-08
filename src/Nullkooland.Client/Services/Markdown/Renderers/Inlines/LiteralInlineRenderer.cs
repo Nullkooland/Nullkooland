@@ -15,7 +15,7 @@ namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 
             string text = literalInline.Content.ToString();
             renderer.Builder.AddAttribute(3, "ChildContent",
-                (RenderFragment) (builder => builder.AddContent(4, text))
+                (RenderFragment)(builder => builder.AddContent(4, text))
             );
 
             renderer.Builder.CloseComponent();

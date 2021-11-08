@@ -1,8 +1,0 @@
-@inject NavMenuViewModel ViewModel
-
-<MudNavMenu>
-    @foreach (var item in ViewModel.Items)
-    {
-        <MudNavLink Href="@item.Url" Icon="@item.Icon">@item.Title</MudNavLink>
-    }
-</MudNavMenu>

@@ -1,5 +1,5 @@
 using Markdig.Extensions.Mathematics;
-using MathBlock = Nullkooland.Client.Controls.MathBlock;
+using MathBlock = Nullkooland.Client.Views.Components.MathBlock;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 {

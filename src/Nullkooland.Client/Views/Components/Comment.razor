@@ -1,0 +1,17 @@
+@inject IJSRuntime JS
+
+<div @ref="_commentElement" />
+
+
+@code
+{
+    private ElementReference _commentElement;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("utterancesHelper.render", _commentElement);
+        }
+    }
+}

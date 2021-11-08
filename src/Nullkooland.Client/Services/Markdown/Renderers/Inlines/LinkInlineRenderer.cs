@@ -1,9 +1,7 @@
-using System.Linq;
 using Markdig.Syntax.Inlines;
-using Markdig.Helpers;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using Nullkooland.Client.Controls;
+using Nullkooland.Client.Views.Components;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 {
@@ -49,7 +47,10 @@ namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
                 renderer.Builder.OpenComponent<MudLink>(10);
                 renderer.Builder.AddAttribute(11, "Href", url);
 
-                if (string.IsNullOrEmpty(captionText)) captionText = url;
+                if (string.IsNullOrEmpty(captionText))
+                {
+                    captionText = url;
+                }
 
                 renderer.Builder.AddAttribute(12, "ChildContent",
                     (RenderFragment)(builder => builder.AddContent(13, captionText))

@@ -16,8 +16,8 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
             // Render table contents using HtmlRenderer and trim the '<table></table>' tag
             string tableContent = renderer.RenderHtml(table)[8..^9];
             renderer.Builder.AddAttribute(4, "ChildContent",
-                (RenderFragment) (builder => builder.AddMarkupContent(5, tableContent)));
-            
+                (RenderFragment)(builder => builder.AddMarkupContent(5, tableContent)));
+
             renderer.Builder.CloseComponent();
         }
     }

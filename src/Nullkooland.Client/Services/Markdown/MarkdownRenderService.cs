@@ -1,6 +1,7 @@
 using Markdig;
 using Microsoft.AspNetCore.Components;
 using Nullkooland.Client.Services.Markdown.Renderers.Inlines;
+using Nullkooland.Client.Services.Theme;
 
 namespace Nullkooland.Client.Services.Markdown
 {
@@ -10,7 +11,7 @@ namespace Nullkooland.Client.Services.Markdown
 
         private readonly ComponentRenderer _renderer;
 
-        public MarkdownRenderService()
+        public MarkdownRenderService(IThemeService themeService)
         {
             _pipeline = new MarkdownPipelineBuilder()
                 .UseAdvancedExtensions()
@@ -21,7 +22,7 @@ namespace Nullkooland.Client.Services.Markdown
                 .UseMathematics()
                 .Build();
 
-            _renderer = new ComponentRenderer();
+            _renderer = new ComponentRenderer(themeService);
         }
 
         public string RenderHtml(string markdown)
@@ -31,11 +32,8 @@ namespace Nullkooland.Client.Services.Markdown
 
         public RenderFragment Render(string markdown, string? baseUrl = null)
         {
-            if (baseUrl != null)
-            {
-                var linkRenderer = _renderer.ObjectRenderers.FindExact<LinkInlineRenderer>();
-                if (linkRenderer != null) linkRenderer.BaseUrl = baseUrl;
-            }
+            var linkRenderer = _renderer.ObjectRenderers.FindExact<LinkInlineRenderer>();
+            linkRenderer!.BaseUrl = baseUrl;
 
             return (RenderFragment)Markdig.Markdown.Convert(markdown, _renderer, _pipeline);
         }

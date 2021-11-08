@@ -1,5 +1,5 @@
 using Markdig.Syntax.Inlines;
-using Nullkooland.Client.Controls;
+using Nullkooland.Client.Views.Components;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 {

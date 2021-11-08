@@ -11,26 +11,30 @@ namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
             bool isBold = emphasisInline.DelimiterChar == '*' && emphasisInline.DelimiterCount > 1;
             if (isBold)
             {
-                renderer.Builder.OpenElement(-1, "div");
-                renderer.Builder.AddAttribute(-1, "class", "d-inline-flex px-1 py-0 grey lighten-3 rounded");
+                renderer.Builder.OpenElement(0, "div");
+                renderer.Builder.AddAttribute(1, "class", "d-inline-flex px-1 py-0 mud-action-default rounded");
+                renderer.Builder.AddAttribute(2, "style", "background-color: var(--mud-palette-drawer-background)");
             }
 
-            renderer.Builder.OpenComponent<MudText>(0);
+            renderer.Builder.OpenComponent<MudText>(3);
 
-            renderer.Builder.AddAttribute(1, "Typo", Typo.body1);
-            renderer.Builder.AddAttribute(2, "Inline", true);
+            renderer.Builder.AddAttribute(4, "Typo", Typo.body1);
+            renderer.Builder.AddAttribute(5, "Inline", true);
 
             string fontStyle = GetFontStyle(emphasisInline.DelimiterChar, emphasisInline.DelimiterCount);
-            renderer.Builder.AddAttribute(3, "Style", fontStyle);
+            renderer.Builder.AddAttribute(6, "Style", fontStyle);
 
             string? text = emphasisInline.FirstChild.ToString();
-            renderer.Builder.AddAttribute(5, "ChildContent",
-                (RenderFragment) (builder => builder.AddContent(6, text))
+            renderer.Builder.AddAttribute(7, "ChildContent",
+                (RenderFragment)(builder => builder.AddContent(8, text))
             );
 
             renderer.Builder.CloseComponent();
 
-            if (isBold) renderer.Builder.CloseElement();
+            if (isBold)
+            {
+                renderer.Builder.CloseElement();
+            }
         }
 
         private static string GetFontStyle(char delimiter, int count)
