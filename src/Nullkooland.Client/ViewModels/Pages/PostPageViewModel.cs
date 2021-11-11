@@ -21,7 +21,7 @@ namespace Nullkooland.Client.ViewModels.Pages
 
         public bool IsLoading { get; set; } = true;
 
-        public string PageTitle => $"{(IsLoading ? "Loading" : Post.Title)} - {_themeService.SiteTitle}";
+        public string PageTitle => $"{(IsLoading ? "Loading" : Post?.Title ?? "(ﾟ∀ﾟ )是想去静观镇吗？")} - {_themeService.SiteTitle}";
 
         public string TagsIcon => _themeService.Type switch
         {
@@ -30,11 +30,11 @@ namespace Nullkooland.Client.ViewModels.Pages
             _ => string.Empty,
         };
 
-        public BlogPost Post { get; private set; }
+        public BlogPost? Post { get; private set; }
 
-        public Typo TitleTypo => Post.Title.Length > 12 ? Typo.h3 : Typo.h2;
+        public Typo TitleTypo => Post?.Title.Length > 12 ? Typo.h3 : Typo.h2;
 
-        public string CommentTitle => Post.Type switch
+        public string? CommentTitle => Post?.Type switch
         {
             BlogPostType.Technical => "Share your thoughts",
             BlogPostType.Personal => "Leave a shout!",
