@@ -42,12 +42,13 @@
 
 <PageTitle>@ViewModel.PageTitle</PageTitle>
 
+<MudContainer Class="pa-0 pa-sm-6"
+              MaxWidth="MaxWidth.Medium">
 @if (ViewModel.IsLoading)
 {
-    <MudPaper Class="pa-0 pa-sm-6 post-papper" Elevation="3">
+    <MudPaper Class="post-papper" Elevation="3">
         <MudSkeleton SkeletonType="SkeletonType.Rectangle" Height="50vh" />
         <div class="d-flex flex-column pa-4">
-
             <MudSkeleton Width="30%" Height="60px;" />
             <MudDivider Class="my-6" />
 
@@ -63,95 +64,90 @@
         </div>
     </MudPaper>
 }
-else
+else if (ViewModel.Post != null)
 {
-    @if (ViewModel.Post != null)
-    {
-        <MudContainer Class="pa-0 pa-sm-6"
-                      MaxWidth="MaxWidth.Medium">
-            <MudPaper Class="post-papper" Elevation="3">
-                <div class="post-header">
-                    <img src="@ViewModel.Post.HeaderImagePath" alt="@ViewModel.Post.HeaderImage" />
+    <MudPaper Class="post-papper" Elevation="3">
+        <div class="post-header">
+            <img src="@ViewModel.Post.HeaderImagePath" alt="@ViewModel.Post.HeaderImage" />
 
-                    <div class="d-flex flex-row align-center">
-                        <MudIcon Class="ml-2" Icon=@Icons.Material.Filled.Event Size="Size.Small" />
-                        <MudText Class="ml-2" Typo="Typo.subtitle2">
-                            @ViewModel.Post.Date.ToString("yyyy/MM/dd")
-                        </MudText>
+            <div class="d-flex flex-row align-center">
+                <MudIcon Class="ml-2" Icon=@Icons.Material.Filled.Event Size="Size.Small" />
+                <MudText Class="ml-2" Typo="Typo.subtitle2">
+                    @ViewModel.Post.Date.ToString("yyyy/MM/dd")
+                </MudText>
 
-                        <MudIconButton Class="ml-auto"
-                                       Icon=@ViewModel.TagsIcon
-                                       Size="Size.Small"
-                                       Link="tags" />
-                        <span class="mr-1 d-flex flex-row">
-                            @foreach (string tag in ViewModel.Post.Tags)
-                            {
-                                <MudChip Class="ml-1"
-                                         Label="true"
-                                         Size="Size.Small"
-                                         Link="@($"tags/{tag}")">
-                                    @tag
-                                </MudChip>
-                            }
-                        </span>
-                    </div>
-                </div>
+                <MudIconButton Class="ml-auto"
+                            Icon=@ViewModel.TagsIcon
+                            Size="Size.Small"
+                            Link="tags" />
+                <span class="mr-1 d-flex flex-row">
+                    @foreach (string tag in ViewModel.Post.Tags)
+                    {
+                        <MudChip Class="ml-1"
+                            Label="true"
+                            Size="Size.Small"
+                            Link="@($"tags/{tag}")">
+                            @tag
+                        </MudChip>
+                    }
+                </span>
+            </div>
+        </div>
 
-                <div class="pa-6">
-                    <MudText Class="mt-6"
-                             Typo="@ViewModel.TitleTypo"
-                             Style="font-family: 'Roboto Slab', serif">
-                        @ViewModel.Post.Title
-                    </MudText>
-                    <MudDivider Class="mt-6" />
-                    <Markdown Content="@ViewModel.Content"
-                              BaseUrl="@ViewModel.Post.Url" />
-                </div>
+        <div class="pa-6">
+            <MudText Class="mt-6"
+                    Typo="@ViewModel.TitleTypo"
+                    Style="font-family: 'Roboto Slab', serif">
+                @ViewModel.Post.Title
+            </MudText>
+            <MudDivider Class="mt-6" />
+            <Markdown Content="@ViewModel.Content"
+                    BaseUrl="@ViewModel.Post.Url" />
+        </div>
 
-                <MudDivider Class="mx-6" />
+        <MudDivider Class="mx-6" />
 
-                <div class="py-6 d-flex flex-row justify-center align-center post-papper">
-                    <MudIcon Icon="@CustomIcons.ClawScratch" Color="Color.Tertiary" Size="Size.Large" />
-                    <MudText Class="mx-4"
-                             Typo="Typo.h4"
-                             Color="Color.Tertiary"
-                             Style="font-family: Roboto Slab; font-style: italic;">
-                        EOF
-                    </MudText>
-                </div>
-            </MudPaper>
+        <div class="py-6 d-flex flex-row justify-center align-center post-papper">
+            <MudIcon Icon="@CustomIcons.ClawScratch" Color="Color.Tertiary" Size="Size.Large" />
+            <MudText Class="mx-4"
+                    Typo="Typo.h4"
+                    Color="Color.Tertiary"
+                    Style="font-family: Roboto Slab; font-style: italic;">
+                EOF
+            </MudText>
+        </div>
+    </MudPaper>
 
-            <MudPaper Class="mt-2 mt-sm-6 pa-6 d-flex flex-column post-papper" Elevation="3">
-                <div class="d-flex flex-row align-center">
-                    <MudIcon Icon="@Icons.Material.Filled.Chat" Size="Size.Large" Color="Color.Primary" />
-                    <MudText Class="ml-4" Typo="Typo.h5"
-                        Style="text-transform: uppercase; font-weight: bold">
-                        @ViewModel.CommentTitle
-                    </MudText>
-                </div>
+    <MudPaper Class="mt-2 mt-sm-6 pa-6 d-flex flex-column post-papper" Elevation="3">
+        <div class="d-flex flex-row align-center">
+            <MudIcon Icon="@Icons.Material.Filled.Chat" Size="Size.Large" Color="Color.Primary" />
+            <MudText Class="ml-4" Typo="Typo.h5"
+                    Style="text-transform: uppercase; font-weight: bold">
+                @ViewModel.CommentTitle
+            </MudText>
+        </div>
 
-                <MudDivider Class="my-4" />
+        <MudDivider Class="my-4" />
 
-                <Comment />
-            </MudPaper>
-        </MudContainer>
-    }
-    else
-    {
-        <img src="images/amid_the_zhongliang_mountain.avif"
-             title="29° 52′ 16″ N 106° 31′ 12″ E"
-             style="position:fixed;
-                    top:0;
-                    left:0;
-                    bottom:0;
-                    right:0;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    object-position: center" />
-    } 
+        <Comment />
+    </MudPaper>
 }
+</MudContainer>
 
+@if (!ViewModel.IsLoading && ViewModel.Post == null)
+{
+    <img src="images/amid_the_zhongliang_mountain.avif"
+         title="29° 52′ 16″ N 106° 31′ 12″ E"
+         style="position:fixed;
+                top:0;
+                left:0;
+                bottom:0;
+                right:0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center" />
+}
 
 @code
 {
