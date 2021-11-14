@@ -34,6 +34,14 @@ namespace Nullkooland.Client.ViewModels.Pages
 
         public Typo TitleTypo => Post?.Title.Length > 12 ? Typo.h3 : Typo.h2;
 
+        public string? TitleFontFamily => Post?.Type switch
+        {
+            BlogPostType.Technical => "Roboto Slab",
+            BlogPostType.Personal => "LXGW WenKai",
+            BlogPostType.Ramblings => "LXGW WenKai",
+            _ => "Roboto",
+        };
+
         public string? CommentTitle => Post?.Type switch
         {
             BlogPostType.Technical => "Share your thoughts",
