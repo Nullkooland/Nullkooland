@@ -2,12 +2,14 @@ using Markdig.Syntax.Inlines;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 {
-    public class LineBreakInlineRenderer : ComponentObjectRenderer<LineBreakInline>
+    public class LineBreakInlineRenderer : RazorComponentObjectRenderer<LineBreakInline>
     {
-        protected override void Write(ComponentRenderer renderer, LineBreakInline obj)
+        protected override void Write(RazorComponentRenderer renderer, LineBreakInline obj)
         {
-            renderer.Builder.OpenElement(0, "br");
-            renderer.Builder.CloseElement();
+            var builder = renderer.BuilderStack.Peek();
+
+            builder.OpenElement(renderer.Sequence++, "br");
+            builder.CloseElement();
         }
     }
 }

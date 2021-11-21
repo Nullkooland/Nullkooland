@@ -100,9 +100,8 @@
                      Style="@($"font-family: {ViewModel.TitleFontFamily}")">
                     @ViewModel.Post?.Title
                 </MudText>
-                <MudDivider Class="mt-6" />
-                <Markdown Content="@ViewModel.Content"
-                          BaseUrl="@ViewModel.Post.Url" />
+                <MudDivider Class="my-6" />
+                @ViewModel.Markdown
             </div>
 
             <MudDivider Class="mx-6" />

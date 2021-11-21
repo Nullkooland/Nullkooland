@@ -1,17 +1,40 @@
 using Markdig.Syntax;
+using Microsoft.AspNetCore.Components;
+using MudBlazor;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers
 {
-    public class ParagraphRenderer : ComponentObjectRenderer<ParagraphBlock>
+    public class ParagraphRenderer : RazorComponentObjectRenderer<ParagraphBlock>
     {
-        protected override void Write(ComponentRenderer renderer, ParagraphBlock paragraphBlock)
+        public string FontFamily { get; set; } = "sans-serif";
+
+        protected override void Write(RazorComponentRenderer renderer, ParagraphBlock paragraphBlock)
         {
-            renderer.Builder.OpenElement(0, "p");
-            renderer.Builder.AddAttribute(1, "class", "mt-2");
+            if (paragraphBlock.Inline == null)
+            {
+                return;
+            }
 
-            renderer.WriteChildren(paragraphBlock.Inline);
+            var builder = renderer.BuilderStack.Peek();
 
-            renderer.Builder.CloseElement();
+            builder.OpenComponent<MudText>(renderer.Sequence++);
+
+            if (paragraphBlock.Parent is MarkdownDocument)
+            {
+                // Only add vertical margin for non-inlined paragraph blocks.
+                builder.AddAttribute(renderer.Sequence++, "Class", "my-4");
+            }
+            
+            builder.AddAttribute(renderer.Sequence++, "Style", $"font-family: {FontFamily}");
+
+            builder.AddAttribute(renderer.Sequence++, "ChildContent", (RenderFragment)(inlineBuilder =>
+            {
+                renderer.BuilderStack.Push(inlineBuilder);
+                renderer.WriteChildren(paragraphBlock.Inline);
+                renderer.BuilderStack.Pop();
+            }));
+
+            builder.CloseElement();
         }
     }
 }

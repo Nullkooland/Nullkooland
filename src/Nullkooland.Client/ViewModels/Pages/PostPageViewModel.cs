@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
 using MudBlazor;
+using Nullkooland.Client.Services.Markdown;
 using Nullkooland.Client.Services.Post;
 using Nullkooland.Client.Services.Theme;
 using Nullkooland.Shared.Models.Post;
@@ -10,13 +12,16 @@ namespace Nullkooland.Client.ViewModels.Pages
     {
         private readonly IThemeService _themeService;
         private readonly IBlogPostService _blogPostService;
+        private readonly MarkdownRenderService _markdownRenderService;
 
         public PostPageViewModel(
             IThemeService themeService,
-            IBlogPostService blogPostService)
+            IBlogPostService blogPostService,
+            MarkdownRenderService markdownRenderService)
         {
             _themeService = themeService;
             _blogPostService = blogPostService;
+            _markdownRenderService = markdownRenderService;
         }
 
         public bool IsLoading { get; set; } = true;
@@ -31,6 +36,8 @@ namespace Nullkooland.Client.ViewModels.Pages
         };
 
         public BlogPost? Post { get; private set; }
+
+        public RenderFragment? Markdown { get; set; }
 
         public Typo TitleTypo => Post?.Title.Length > 12 ? Typo.h3 : Typo.h2;
 
@@ -50,8 +57,6 @@ namespace Nullkooland.Client.ViewModels.Pages
             _ => string.Empty
         };
 
-        public string Content { get; set; }
-
         public async ValueTask LoadMarkdownAsync(string id)
         {
             IsLoading = true;
@@ -70,7 +75,18 @@ namespace Nullkooland.Client.ViewModels.Pages
                 return;
             }
 
-            Content = await _blogPostService.GetContentAsync(Post);
+            string? content = await _blogPostService.GetContentAsync(Post);
+
+            string? fontFamily = Post?.Type switch
+            {
+                BlogPostType.Technical => "Roboto, sans-serif",
+                BlogPostType.Personal => "LXGW WenKai",
+                BlogPostType.Ramblings => "LXGW WenKai",
+                _ => "Roboto",
+            };
+
+            Markdown = _markdownRenderService.Render(content, fontFamily, Post.Url);
+
             IsLoading = false;
         }
     }

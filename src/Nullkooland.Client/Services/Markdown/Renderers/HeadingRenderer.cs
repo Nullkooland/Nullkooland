@@ -5,51 +5,56 @@ using MudBlazor;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers
 {
-    public class HeadingsRenderer : ComponentObjectRenderer<HeadingBlock>
+    public class HeadingsRenderer : RazorComponentObjectRenderer<HeadingBlock>
     {
         private static readonly Typo[] _headingTypos =
         {
-            Typo.h3,
-            Typo.h4,
-            Typo.h5,
-            Typo.h6,
-            Typo.subtitle1,
-            Typo.subtitle2
+            Typo.h4, // Level 2
+            Typo.h5, // Level 3
+            Typo.h6, // Level 4
         };
 
-        protected override void Write(ComponentRenderer renderer, HeadingBlock heading)
+        protected override void Write(RazorComponentRenderer renderer, HeadingBlock heading)
         {
-            int level = Math.Min(Math.Max(heading.Level, 1), 6);
+            if (heading.Inline == null)
+            {
+                return;
+            }
 
-            // Ignore the level 1 title and let PostPage to render it with greater flexibilities.
+            // Only supports 1/2/3/4 level.
+            int level = Math.Min(Math.Max(heading.Level, 1), 4);
+
+            // Ignore the post (level 1) title,
+            // let PostPage component to render it with greater flexibilities.
             if (level == 1)
             {
                 return;
             }
 
-            string title = renderer.RenderHtml(heading.Inline);
-            string posId = heading.Inline.ToPositionText();
+            string title = renderer.RenderHtml(heading.Inline)!;
+            string id = heading.Inline.ToPositionText();
 
-            renderer.Builder.OpenComponent<MudText>(0);
+            var builder = renderer.BuilderStack.Peek();
 
-            renderer.Builder.AddAttribute(1, "id", posId);
-            renderer.Builder.AddAttribute(2, "Typo", _headingTypos[level - 1]);
+            builder.OpenComponent<MudText>(renderer.Sequence++);
+            builder.AddAttribute(renderer.Sequence++, "id", id);
+            builder.AddAttribute(renderer.Sequence++, "Class", $"my-{6 - level}");
+            builder.AddAttribute(renderer.Sequence++, "Typo", _headingTypos[level - 2]);
 
             if (level == 2)
             {
-                renderer.Builder.AddAttribute(3, "Color", Color.Primary);
+                // Use primary color for section (level 2) title.
+                builder.AddAttribute(renderer.Sequence++, "Color", Color.Primary);
             }
 
-            if (level < 5)
+            builder.AddAttribute(renderer.Sequence++, "ChildContent", (RenderFragment)(inlineBuilder =>
             {
-                renderer.Builder.AddAttribute(4, "Class", $"mt-{(5 - level) * 2}");
-            }
+                renderer.BuilderStack.Push(inlineBuilder);
+                renderer.WriteChildren(heading.Inline);
+                renderer.BuilderStack.Pop();
+            }));
 
-            renderer.Builder.AddAttribute(5, "ChildContent",
-                (RenderFragment)(builder => builder.AddMarkupContent(6, title))
-            );
-
-            renderer.Builder.CloseComponent();
+            builder.CloseComponent();
         }
     }
 }

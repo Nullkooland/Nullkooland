@@ -4,31 +4,32 @@ using MudBlazor;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers
 {
-    public class ListRenderer : ComponentObjectRenderer<ListBlock>
+    public class ListRenderer : RazorComponentObjectRenderer<ListBlock>
     {
-        protected override void Write(ComponentRenderer renderer, ListBlock listBlock)
+        protected override void Write(RazorComponentRenderer renderer, ListBlock listBlock)
         {
+            var builder = renderer.BuilderStack.Peek();
+
             for (int i = 0; i < listBlock.Count; i++)
             {
-                var item = listBlock[i] as ListItemBlock;
-                renderer.Builder.OpenElement(0, "div");
-                renderer.Builder.AddAttribute(1, "class", "ml-4 d-flex flex-row justify-start align-start");
+                var item = (listBlock[i] as ListItemBlock)!;
+                builder.OpenElement(renderer.Sequence++, "div");
+                builder.AddAttribute(renderer.Sequence++, "class", "ml-4 d-flex flex-row justify-start align-center");
 
-
-                renderer.Builder.OpenComponent<MudText>(2);
-                renderer.Builder.AddAttribute(3, "Class", "mt-2 mr-2");
-                renderer.Builder.AddAttribute(4, "Style", "font-weight: bolder");
+                builder.OpenComponent<MudText>(renderer.Sequence++);
+                builder.AddAttribute(renderer.Sequence++, "Class", "mr-2");
+                builder.AddAttribute(renderer.Sequence++, "Style", "font-weight: bolder");
 
                 string bullet = GetBullet(listBlock.BulletType, i);
-                renderer.Builder.AddAttribute(5, "ChildContent",
-                    (RenderFragment)(builder => builder.AddMarkupContent(6, bullet))
+                builder.AddAttribute(renderer.Sequence++, "ChildContent",
+                    (RenderFragment)(inlineBuilder => inlineBuilder.AddContent(renderer.Sequence++, bullet))
                 );
 
-                renderer.Builder.AddAttribute(7, "Color", Color.Secondary);
-                renderer.Builder.CloseComponent();
+                builder.AddAttribute(renderer.Sequence++, "Color", Color.Secondary);
+                builder.CloseComponent();
 
                 renderer.Write(item[0]);
-                renderer.Builder.CloseElement();
+                builder.CloseElement();
             }
         }
 
@@ -36,13 +37,13 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
         {
             return type switch
             {
-                '-' => "✧",
+                '-' => "•",
                 '*' => "✱",
                 '1' => $"{index + 1}.",
                 'a' => $"{(char)('a' + index)}.",
                 'A' => $"{(char)('A' + index)}.",
                 'i' => $"{new string('i', index + 1)}.",
-                _ => null
+                _ => string.Empty
             };
         }
     }

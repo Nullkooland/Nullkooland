@@ -5,21 +5,22 @@ using CodeBlockSyntax = Markdig.Syntax.CodeBlock;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers
 {
-    public class CodeBlockRenderer : ComponentObjectRenderer<CodeBlockSyntax>
+    public class CodeBlockRenderer : RazorComponentObjectRenderer<CodeBlockSyntax>
     {
-        protected override void Write(ComponentRenderer renderer, CodeBlockSyntax codeBlock)
+        protected override void Write(RazorComponentRenderer renderer, CodeBlockSyntax codeBlock)
         {
             if (codeBlock is FencedCodeBlock fencedCodeBlock)
             {
-                renderer.Builder.OpenComponent<CodeBlock>(0);
-
                 string code = ExtractSourceCode(codeBlock);
-                renderer.Builder.AddAttribute(1, "Code", code);
                 string? language = fencedCodeBlock.Info;
-                renderer.Builder.AddAttribute(2, "Language", language);
-                renderer.Builder.AddAttribute(3, "Inline", false);
 
-                renderer.Builder.CloseComponent();
+                var builder = renderer.BuilderStack.Peek();
+
+                builder.OpenComponent<CodeBlock>(renderer.Sequence++);
+                builder.AddAttribute(renderer.Sequence++, "Code", code);
+                builder.AddAttribute(renderer.Sequence++, "Language", language);
+                builder.AddAttribute(renderer.Sequence++, "Inline", false);
+                builder.CloseComponent();
             }
         }
 

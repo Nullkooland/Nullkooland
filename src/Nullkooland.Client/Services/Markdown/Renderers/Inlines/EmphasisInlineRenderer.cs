@@ -1,49 +1,29 @@
 using Markdig.Syntax.Inlines;
-using Microsoft.AspNetCore.Components;
-using MudBlazor;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 {
-    public class EmphasisInlineRenderer : ComponentObjectRenderer<EmphasisInline>
+    public class EmphasisInlineRenderer : RazorComponentObjectRenderer<EmphasisInline>
     {
-        protected override void Write(ComponentRenderer renderer, EmphasisInline emphasisInline)
+        protected override void Write(RazorComponentRenderer renderer, EmphasisInline emphasisInline)
         {
-            bool isBold = emphasisInline.DelimiterChar == '*' && emphasisInline.DelimiterCount > 1;
-            if (isBold)
-            {
-                renderer.Builder.OpenElement(0, "div");
-                renderer.Builder.AddAttribute(1, "class", "d-inline-flex px-1 py-0 mud-action-default rounded");
-                renderer.Builder.AddAttribute(2, "style", "background-color: var(--mud-palette-drawer-background)");
-            }
+            string emphasisElement = GetEmphasisElement(emphasisInline.DelimiterChar, emphasisInline.DelimiterCount);
 
-            renderer.Builder.OpenComponent<MudText>(3);
+            var builder = renderer.BuilderStack.Peek();
 
-            renderer.Builder.AddAttribute(4, "Typo", Typo.body1);
-            renderer.Builder.AddAttribute(5, "Inline", true);
-
-            string fontStyle = GetFontStyle(emphasisInline.DelimiterChar, emphasisInline.DelimiterCount);
-            renderer.Builder.AddAttribute(6, "Style", fontStyle);
-
-            string? text = emphasisInline.FirstChild.ToString();
-            renderer.Builder.AddAttribute(7, "ChildContent",
-                (RenderFragment)(builder => builder.AddContent(8, text))
-            );
-
-            renderer.Builder.CloseComponent();
-
-            if (isBold)
-            {
-                renderer.Builder.CloseElement();
-            }
+            builder.OpenElement(renderer.Sequence++, emphasisElement);
+            renderer.WriteChildren(emphasisInline);
+            builder.CloseElement();
         }
 
-        private static string GetFontStyle(char delimiter, int count)
+        private static string GetEmphasisElement(char delimiter, int count)
         {
-            return delimiter switch
+            return (delimiter, count) switch
             {
-                '*' => count == 1 ? "font-style: italic" : "font-weight: bold",
-                '~' => count == 1 ? "text-decoration: underline" : "text-decoration: line-through",
-                _ => "font-weight: bold"
+                ('*', 2) => "b",
+                ('*', 1) => "i",
+                ('~', 2) => "del",
+                ('_', 2) => "ins",
+                _ => "b"
             };
         }
     }

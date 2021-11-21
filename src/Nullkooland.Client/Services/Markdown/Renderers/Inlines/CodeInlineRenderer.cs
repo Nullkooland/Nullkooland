@@ -3,16 +3,16 @@ using Nullkooland.Client.Views.Components;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 {
-    public class CodeInlineRenderer : ComponentObjectRenderer<CodeInline>
+    public class CodeInlineRenderer : RazorComponentObjectRenderer<CodeInline>
     {
-        protected override void Write(ComponentRenderer renderer, CodeInline codeInline)
+        protected override void Write(RazorComponentRenderer renderer, CodeInline codeInline)
         {
-            renderer.Builder.OpenComponent<CodeBlock>(0);
+            var builder = renderer.BuilderStack.Peek();
 
-            renderer.Builder.AddAttribute(1, "Code", codeInline.Content);
-            renderer.Builder.AddAttribute(2, "Inline", true);
-
-            renderer.Builder.CloseComponent();
+            builder.OpenComponent<CodeBlock>(renderer.Sequence++);
+            builder.AddAttribute(renderer.Sequence++, "Code", codeInline.Content);
+            builder.AddAttribute(renderer.Sequence++, "Inline", true);
+            builder.CloseComponent();
         }
     }
 }

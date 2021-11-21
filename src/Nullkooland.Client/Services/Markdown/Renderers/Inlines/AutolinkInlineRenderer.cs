@@ -4,19 +4,20 @@ using MudBlazor;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 {
-    public class AutolinkInlineRenderer : ComponentObjectRenderer<AutolinkInline>
+    public class AutolinkInlineRenderer : RazorComponentObjectRenderer<AutolinkInline>
     {
-        protected override void Write(ComponentRenderer renderer, AutolinkInline linkInline)
+        protected override void Write(RazorComponentRenderer renderer, AutolinkInline linkInline)
         {
-            renderer.Builder.OpenComponent<MudLink>(0);
+            var builder = renderer.BuilderStack.Peek();
 
-            renderer.Builder.AddAttribute(1, "Href", linkInline.Url);
+            builder.OpenComponent<MudLink>(renderer.Sequence++);
+            builder.AddAttribute(renderer.Sequence++, "Href", linkInline.Url);
 
-            renderer.Builder.AddAttribute(2, "ChildContent",
-                (RenderFragment)(builder => builder.AddContent(4, linkInline.Url))
+            builder.AddAttribute(renderer.Sequence++, "ChildContent",
+                (RenderFragment)(inlineBuilder => inlineBuilder.AddContent(renderer.Sequence++, linkInline.Url))
             );
 
-            renderer.Builder.CloseComponent();
+            builder.CloseComponent();
         }
     }
 }

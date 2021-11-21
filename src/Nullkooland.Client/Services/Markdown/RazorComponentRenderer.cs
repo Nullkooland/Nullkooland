@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.IO;
+using Markdig;
 using Markdig.Extensions.Mathematics;
 using Markdig.Extensions.MediaLinks;
 using Markdig.Extensions.Tables;
@@ -12,11 +14,10 @@ using Nullkooland.Client.Services.Theme;
 
 namespace Nullkooland.Client.Services.Markdown
 {
-    public sealed class ComponentRenderer : RendererBase
+    public sealed class RazorComponentRenderer : RendererBase
     {
         private readonly HtmlRenderer _htmlRenderer;
-
-        public ComponentRenderer(IThemeService themeService)
+        public RazorComponentRenderer(IThemeService themeService, MarkdownPipeline pipeline)
         {
             ThemeService = themeService;
 
@@ -44,10 +45,14 @@ namespace Nullkooland.Client.Services.Markdown
             _htmlRenderer.ObjectRenderers.Add(new HtmlTableRenderer());
 
             var mediaExtension = new MediaLinkExtension();
-            mediaExtension.Setup(null, _htmlRenderer);
+            mediaExtension.Setup(pipeline, _htmlRenderer);
+
+            BuilderStack = new Stack<RenderTreeBuilder>(4);
         }
 
-        public RenderTreeBuilder Builder { get; private set; }
+        public Stack<RenderTreeBuilder> BuilderStack { get; set; }
+
+        public int Sequence { get; set; }
 
         public IThemeService ThemeService { get; private set; }
 
@@ -55,14 +60,18 @@ namespace Nullkooland.Client.Services.Markdown
         {
             return builder =>
             {
-                Builder = builder;
+                BuilderStack.Push(builder);
+                Sequence = 0;
+
                 Write(markdownObject);
+
+                BuilderStack.Clear();
             };
         }
 
-        public string RenderHtml(MarkdownObject obj)
+        public string? RenderHtml(MarkdownObject obj)
         {
-            (_htmlRenderer.Writer as StringWriter).GetStringBuilder().Clear();
+            (_htmlRenderer.Writer as StringWriter)!.GetStringBuilder().Clear();
             _htmlRenderer.Render(obj);
             _htmlRenderer.Writer.Flush();
             return _htmlRenderer.Writer.ToString();

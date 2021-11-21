@@ -5,12 +5,14 @@ using Nullkooland.Client.Views.Components;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
 {
-    public class LinkInlineRenderer : ComponentObjectRenderer<LinkInline>
+    public class LinkInlineRenderer : RazorComponentObjectRenderer<LinkInline>
     {
         public string? BaseUrl { get; set; }
 
-        protected override void Write(ComponentRenderer renderer, LinkInline link)
+        protected override void Write(RazorComponentRenderer renderer, LinkInline link)
         {
+            var builder = renderer.BuilderStack.Peek();
+
             string url = link.Url!.Contains("://") ? link.Url : $"{BaseUrl}/{link.Url}";
             string? captionText = link.FirstChild?.ToString();
 
@@ -18,45 +20,45 @@ namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
             {
                 if (TryParseVideoSource(url, out string? playerUrl))
                 {
-                    renderer.Builder.OpenComponent<VideoBlock>(0);
-                    renderer.Builder.AddAttribute(1, "Source", playerUrl);
-                    renderer.Builder.AddAttribute(2, "Width", "100%");
-                    renderer.Builder.CloseComponent();
+                    builder.OpenComponent<VideoBlock>(renderer.Sequence++);
+                    builder.AddAttribute(renderer.Sequence++, "Source", playerUrl);
+                    builder.AddAttribute(renderer.Sequence++, "Width", "100%");
+                    builder.CloseComponent();
                 }
                 else
                 {
-                    renderer.Builder.OpenComponent<ImageBlock>(3);
-                    renderer.Builder.AddAttribute(4, "Source", url);
-                    renderer.Builder.AddAttribute(5, "Caption", captionText);
-                    renderer.Builder.AddAttribute(6, "Description", link.Title);
+                    builder.OpenComponent<ImageBlock>(renderer.Sequence++);
+                    builder.AddAttribute(renderer.Sequence++, "Source", url);
+                    builder.AddAttribute(renderer.Sequence++, "Caption", captionText);
+                    builder.AddAttribute(renderer.Sequence++, "Description", link.Title);
 
                     bool isInline = (link.PreviousSibling != null && link.PreviousSibling is not LineBreakInline);
-                    renderer.Builder.AddAttribute(7, "Inline", isInline);
+                    builder.AddAttribute(renderer.Sequence++, "Inline", isInline);
 
                     if (!isInline)
                     {
-                        renderer.Builder.AddAttribute(8, "Width", "100%");
-                        renderer.Builder.AddAttribute(9, "MaxHeight", "75vh");
+                        builder.AddAttribute(renderer.Sequence++, "Width", "100%");
+                        builder.AddAttribute(renderer.Sequence++, "MaxHeight", "75vh");
                     }
 
-                    renderer.Builder.CloseComponent();
+                    builder.CloseComponent();
                 }
             }
             else
             {
-                renderer.Builder.OpenComponent<MudLink>(10);
-                renderer.Builder.AddAttribute(11, "Href", url);
+                builder.OpenComponent<MudLink>(renderer.Sequence++);
+                builder.AddAttribute(renderer.Sequence++, "Href", url);
 
                 if (string.IsNullOrEmpty(captionText))
                 {
                     captionText = url;
                 }
 
-                renderer.Builder.AddAttribute(12, "ChildContent",
+                builder.AddAttribute(renderer.Sequence++, "ChildContent",
                     (RenderFragment)(builder => builder.AddContent(13, captionText))
                 );
 
-                renderer.Builder.CloseComponent();
+                builder.CloseComponent();
             }
         }
 

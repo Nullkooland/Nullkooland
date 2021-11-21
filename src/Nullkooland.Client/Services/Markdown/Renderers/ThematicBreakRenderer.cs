@@ -3,16 +3,20 @@ using MudBlazor;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers
 {
-    public class ThematicBreakRenderer : ComponentObjectRenderer<ThematicBreakBlock>
+    public class ThematicBreakRenderer : RazorComponentObjectRenderer<ThematicBreakBlock>
     {
-        protected override void Write(ComponentRenderer renderer, ThematicBreakBlock breakBlock)
+        protected override void Write(RazorComponentRenderer renderer, ThematicBreakBlock breakBlock)
         {
-            if (breakBlock.ThematicChar == '-')
+            if (breakBlock.ThematicChar != '-')
             {
-                renderer.Builder.OpenComponent<MudDivider>(0);
-                renderer.Builder.AddAttribute(1, "Class", "my-4");
-                renderer.Builder.CloseComponent();
+                return;
             }
+
+            var builder = renderer.BuilderStack.Peek();
+
+            builder.OpenComponent<MudDivider>(renderer.Sequence++);
+            builder.AddAttribute(renderer.Sequence++, "Class", "my-4");
+            builder.CloseComponent();
         }
     }
 }

@@ -139,4 +139,4 @@ cmake .. \
 
 ## 坑
 
-需要在 CMake 生成的 `link.txt` 与 `relink.txt` 中在有`-lopenblas` 的地方手动添加链接选项: `-lcblas` `-llapack`，不然运行时找不到一些符号！
+需要在 CMake 生成的 `link.txt` 与 `relink.txt` 中在有 `-lopenblas` 的地方手动添加链接选项: `-lcblas` `-llapack`，不然运行时找不到一些符号！

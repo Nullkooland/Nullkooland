@@ -3,7 +3,7 @@ using Markdig.Syntax;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers
 {
-    public abstract class ComponentObjectRenderer<TObject> : MarkdownObjectRenderer<ComponentRenderer, TObject>
+    public abstract class RazorComponentObjectRenderer<TObject> : MarkdownObjectRenderer<RazorComponentRenderer, TObject>
         where TObject : MarkdownObject
     {
     }

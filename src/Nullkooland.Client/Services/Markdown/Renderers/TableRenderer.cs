@@ -4,21 +4,50 @@ using MudBlazor;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers
 {
-    public class TableRenderer : ComponentObjectRenderer<Table>
+    public class TableRenderer : RazorComponentObjectRenderer<Table>
     {
-        protected override void Write(ComponentRenderer renderer, Table table)
+        protected override void Write(RazorComponentRenderer renderer, Table table)
         {
-            renderer.Builder.OpenComponent<MudSimpleTable>(0);
-            renderer.Builder.AddAttribute(1, "FixedHeader", true);
-            renderer.Builder.AddAttribute(2, "Hover", true);
-            renderer.Builder.AddAttribute(3, "Striped", true);
+            var builder = renderer.BuilderStack.Peek();
 
-            // Render table contents using HtmlRenderer and trim the '<table></table>' tag
-            string tableContent = renderer.RenderHtml(table)[8..^9];
-            renderer.Builder.AddAttribute(4, "ChildContent",
-                (RenderFragment)(builder => builder.AddMarkupContent(5, tableContent)));
+            builder.OpenComponent<MudSimpleTable>(renderer.Sequence++);
+            builder.AddAttribute(renderer.Sequence++, "FixedHeader", true);
+            builder.AddAttribute(renderer.Sequence++, "Hover", true);
+            builder.AddAttribute(renderer.Sequence++, "Striped", true);
 
-            renderer.Builder.CloseComponent();
+            builder.AddAttribute(renderer.Sequence++, "ChildContent", (RenderFragment)(inlineBuilder =>
+            {
+                renderer.BuilderStack.Push(inlineBuilder);
+
+                inlineBuilder.OpenElement(renderer.Sequence++, "thead");
+                RenderTableRow(renderer, (TableRow)table[0], true);
+                inlineBuilder.CloseElement();
+
+                inlineBuilder.OpenElement(renderer.Sequence++, "tbody");
+                for (int i = 1; i < table.Count; i++)
+                {
+                    RenderTableRow(renderer, (TableRow)table[i], false);
+                }
+                inlineBuilder.CloseElement();
+
+                renderer.BuilderStack.Pop();
+            }));
+
+            builder.CloseComponent();
+        }
+
+        private static void RenderTableRow(RazorComponentRenderer renderer, TableRow row, bool isHead)
+        {
+            var builder = renderer.BuilderStack.Peek();
+
+            builder.OpenElement(renderer.Sequence++, "tr");
+            for (int j = 0; j < row.Count; j++)
+            {
+                builder.OpenElement(renderer.Sequence++, isHead ? "th" : "td");
+                renderer.Write(row[j]);
+                builder.CloseElement();
+            }
+            builder.CloseElement();
         }
     }
 }
