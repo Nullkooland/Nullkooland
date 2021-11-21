@@ -9,6 +9,8 @@ namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
     {
         public string? BaseUrl { get; set; }
 
+        public string FontFamily { get; set; } = "sans-serif";
+
         protected override void Write(RazorComponentRenderer renderer, LinkInline link)
         {
             var builder = renderer.BuilderStack.Peek();
@@ -48,6 +50,7 @@ namespace Nullkooland.Client.Services.Markdown.Renderers.Inlines
             {
                 builder.OpenComponent<MudLink>(renderer.Sequence++);
                 builder.AddAttribute(renderer.Sequence++, "Href", url);
+                builder.AddAttribute(renderer.Sequence++, "Style", $"font-family: {FontFamily}");
 
                 if (string.IsNullOrEmpty(captionText))
                 {

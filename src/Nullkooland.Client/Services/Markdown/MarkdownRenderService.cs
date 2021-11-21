@@ -33,11 +33,15 @@ namespace Nullkooland.Client.Services.Markdown
 
         public RenderFragment Render(string markdown, string fontFamily, string? baseUrl = null)
         {
-            var linkRenderer = _renderer.ObjectRenderers.FindExact<LinkInlineRenderer>();
-            linkRenderer!.BaseUrl = baseUrl;
-
             var paragraphRenderer = _renderer.ObjectRenderers.FindExact<ParagraphRenderer>();
+            var autolinkRenderer = _renderer.ObjectRenderers.FindExact<AutolinkInlineRenderer>();
+            var linkRenderer = _renderer.ObjectRenderers.FindExact<LinkInlineRenderer>();
+
             paragraphRenderer!.FontFamily = fontFamily;
+            autolinkRenderer!.FontFamily = fontFamily;
+            linkRenderer!.FontFamily = fontFamily;
+
+            linkRenderer!.BaseUrl = baseUrl;
 
             return (RenderFragment)Markdig.Markdown.Convert(markdown, _renderer, _pipeline);
         }
