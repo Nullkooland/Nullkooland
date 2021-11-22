@@ -1,43 +1,44 @@
+from typing import Any, List, Dict, Iterator
+
 import json
 import io
 import os
 from argparse import ArgumentParser
 
 PROP_KEYS = [
-    "type", "date", "title", "brief", "headerImage", "tags"]
+    "type", "date", "title", "brief", "headerImage", "tags"
+]
 
 
-def get_posts(base_dir: str):
-    """Get all posts markdown files from the base directory
+def get_posts(base_dir: str) -> Iterator[str]:
+    """Get all posts markdown files from base directory.
 
     Args:
-        base_dir (str): Base directory
+        base_dir (str): Base directory.
 
     Yields:
-        str: Path to post markdown file
+        str: Path to a post markdown file.
     """
     for year_dir in os.scandir(base_dir):
-        year_dir: os.DirEntry = year_dir
-        # Find posts only in 20xx directories
+        # Find posts only in 20xx directories.
         if not (year_dir.is_dir() and year_dir.name.startswith("20")):
             continue
 
         for post_dir in os.scandir(year_dir):
-            post_dir: os.DirEntry = post_dir
             md_file = f"{post_dir.path}/{post_dir.name}.md"
-            # Found post markdown file
+            # Yield found markdown file.
             if os.path.isfile(md_file):
                 yield md_file
 
 
-def read_metadata(post_md_file: str):
-    """Read the metadata within a post
+def read_metadata(post_md_file: str) -> Dict[str, Any]:
+    """Read the metadata within a post.
 
     Args:
-        post_md_file (str): Path to post markdown file
+        post_md_file (str): Path to post markdown file.
 
     Returns:
-        dict: {post_id: meta} dictionary
+        Dict[str, Any]: Dictionary of meta_id -> metadata.
     """
     post_meta = {}
     id = os.path.basename(post_md_file)[:-3]
@@ -47,10 +48,10 @@ def read_metadata(post_md_file: str):
         in_metadata_section = False
         for line in f:
             line: str = line
-            # Skip whitespace line
+            # Skip whitespace line.
             if line.isspace():
                 continue
-            # Detect the boundary of metadata section
+            # Detect the boundary of metadata section.
             if line.startswith("---"):
                 if in_metadata_section:
                     break
@@ -58,16 +59,16 @@ def read_metadata(post_md_file: str):
                     in_metadata_section = True
                 continue
 
-            # Now we can read metadata
+            # Now we can read metadata.
             pos_delimiter = line.find(':')
             key = line[:pos_delimiter]
-            value = line[pos_delimiter + 2 :].strip("\"\n")
-            
-            # Must be one of the valid property keys
+            value = line[pos_delimiter + 2:].strip("\"\n")
+
+            # Must be one of the valid property keys.
             if key not in PROP_KEYS:
                 continue
 
-            # Interpret post type
+            # Interpret post type.
             if key == "type":
                 type_str = value.lower()
                 type_index = 0
@@ -94,14 +95,14 @@ def read_metadata(post_md_file: str):
     return post_meta
 
 
-def read_tags(post_metas):
-    """Create tag -> [posts with the tag] mappings
+def read_tags(post_metas: Dict[str, Any]) -> Dict[str, List[str]]:
+    """Create tag -> List[posts with this tag] mappings.
 
     Args:
-        post_metas (dict): {post_id: meta} dictionary
+        post_metas (Dict[str, Any]): {post_id: meta} dictionary.
 
     Returns:
-        dict: {tag: [post_ids]} dictionary
+        Dict[str, str]: Dictionary of tag to list of posts ids.
     """
 
     tags = {}
@@ -116,9 +117,9 @@ def read_tags(post_metas):
 
 
 if __name__ == "__main__":
-    """Main function
+    """Main function.
     """
-    # Read args
+    # Read args.
     parser = ArgumentParser()
     parser.add_argument(
         "-d", "--dir",
@@ -127,7 +128,7 @@ if __name__ == "__main__":
         help="Base directory",)
     args = parser.parse_args()
 
-    # Read metadatas from all posts
+    # Read metadata from all posts.
     post_metas = {}
     for post in get_posts(args.dir):
         meta = read_metadata(post)
@@ -135,18 +136,18 @@ if __name__ == "__main__":
 
     print(f"Finished reading {len(post_metas)} posts with metadata")
 
-    # Create tag -> [posts with tag] mapping
+    # Create tag -> List[posts with this tag] mapping.
     tags = read_tags(post_metas)
 
     print(f"Finished reading {len(tags)} tags")
 
-    # Output json files
+    # Output json files.
     with io.open(f"{args.dir}/index.json", mode="w", encoding="utf-8") as f:
-        json.dump(post_metas, f, ensure_ascii=False, indent=4)
+        json.dump(post_metas, f, ensure_ascii=False, sort_keys=True, indent=4)
 
     print(f"Finished writing index.json")
 
     with io.open(f"{args.dir}/tags.json", mode="w", encoding="utf-8") as f:
-        json.dump(tags, f, ensure_ascii=False, indent=4)
+        json.dump(tags, f, ensure_ascii=False, sort_keys=True, indent=4)
 
     print(f"Finished writing tags.json")
