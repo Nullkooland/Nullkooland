@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Immutable;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
@@ -16,7 +16,7 @@ namespace Nullkooland.Client.Services.Theme
         private readonly HttpClient _client;
         private readonly IJSRuntime _jsRuntime;
 
-        private ImmutableDictionary<OolandThemeType, OolandTheme> _themes;
+        private Dictionary<OolandThemeType, OolandTheme> _themes;
 
         public LocalThemeService(HttpClient client, IJSRuntime jsRuntime)
         {
@@ -36,7 +36,7 @@ namespace Nullkooland.Client.Services.Theme
                 }
             };
 
-            var themes = await _client.GetFromJsonAsync<ImmutableDictionary<OolandThemeType, OolandTheme>>("themes.json", jsonOptions);
+            var themes = await _client.GetFromJsonAsync<Dictionary<OolandThemeType, OolandTheme>>("themes.json", jsonOptions);
             _themes = themes!;
 
             bool isDarkMode = await _jsRuntime.InvokeAsync<bool>("darkModeHelper.isDarkMode");
