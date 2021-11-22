@@ -4,21 +4,21 @@
 
 <PageTitle>@ViewModel.PageTitle</PageTitle>
 
-<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="pa-0">
-    <MudTabs>
+<MudContainer Class="pa-0" MaxWidth="MaxWidth.ExtraLarge">
+    <MudTabs @bind-ActivePanelIndex="@ViewModel.ActiveViewerIndex">
         <MudTabPanel Icon="@Icons.Material.Filled.Memory" Text="Technical">
             <div class="px-6">
-                <Archives Type="@BlogPostType.Technical"/>
+                <ArchivesView Type="@BlogPostType.Technical"/>
             </div>
         </MudTabPanel>
         <MudTabPanel Icon="@Icons.Material.Filled.NaturePeople" Text="Personal">
             <div class="px-6">
-                <Archives Type="@BlogPostType.Personal"/>
+                <ArchivesView Type="@BlogPostType.Personal"/>
             </div>
         </MudTabPanel>
         <MudTabPanel Icon="@Icons.Material.Filled.Grass" Text="Ramblings">
             <div class="px-6">
-                <Archives Type="@BlogPostType.Ramblings"/>
+                <ArchivesView Type="@BlogPostType.Ramblings"/>
             </div>
         </MudTabPanel>
     </MudTabs>

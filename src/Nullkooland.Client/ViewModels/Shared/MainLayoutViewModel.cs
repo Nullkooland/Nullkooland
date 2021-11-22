@@ -29,7 +29,7 @@ namespace Nullkooland.Client.ViewModels.Shared
         };
 
         private static readonly string[] _navYunshanIcons =
-{
+        {
             Icons.Material.Outlined.Terrain,
             Icons.Material.Outlined.Widgets,
             Icons.Material.Outlined.LocalOffer,
