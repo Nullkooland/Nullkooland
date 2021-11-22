@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MudBlazor;
+using Nullkooland.Client.Models.Theme;
 using Nullkooland.Client.Services.Theme;
 
 namespace Nullkooland.Client.ViewModels.Shared
@@ -55,8 +56,8 @@ namespace Nullkooland.Client.ViewModels.Shared
 
         public IEnumerable<(string, string, string)> GetNavItems => _themeService.Type switch
         {
-            ThemeType.Nullko => _navUrls.Zip(_navTitles, _navNullkoIcons),
-            ThemeType.Yunshan => _navUrls.Zip(_navTitles, _navYunshanIcons),
+            OolandThemeType.Nullko => _navUrls.Zip(_navTitles, _navNullkoIcons),
+            OolandThemeType.Yunshan => _navUrls.Zip(_navTitles, _navYunshanIcons),
             _ => Enumerable.Empty<(string, string, string)>()
         };
     }

@@ -1,24 +1,17 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MudBlazor;
+using Nullkooland.Client.Models.Theme;
 
 namespace Nullkooland.Client.Services.Theme
 {
-    public enum ThemeType
-    {
-        // Moonbear of the day
-        Nullko,
-        // Tiger of the night
-        Yunshan,
-    }
-
     public interface IThemeService
     {
         ValueTask InitAsync();
 
-        ThemeType Type { get; }
+        OolandThemeType Type { get; }
 
-        event EventHandler<ThemeType>? ThemeChanged;
+        event EventHandler<OolandThemeType>? ThemeChanged;
 
         bool IsDark { get; }
 

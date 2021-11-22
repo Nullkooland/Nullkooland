@@ -3,6 +3,7 @@ using System.Collections.Immutable;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 using MudBlazor;
@@ -15,7 +16,7 @@ namespace Nullkooland.Client.Services.Theme
         private readonly HttpClient _client;
         private readonly IJSRuntime _jsRuntime;
 
-        private ImmutableDictionary<ThemeType, OolandTheme> _themes;
+        private ImmutableDictionary<OolandThemeType, OolandTheme> _themes;
 
         public LocalThemeService(HttpClient client, IJSRuntime jsRuntime)
         {
@@ -28,34 +29,38 @@ namespace Nullkooland.Client.Services.Theme
             var jsonOptions = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
-                Converters = { new MudColorJsonConverter() }
+                Converters =
+                {
+                    new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
+                    new MudColorJsonConverter() 
+                }
             };
 
-            var themes = await _client.GetFromJsonAsync<ImmutableDictionary<ThemeType, OolandTheme>>("themes.json", jsonOptions);
+            var themes = await _client.GetFromJsonAsync<ImmutableDictionary<OolandThemeType, OolandTheme>>("themes.json", jsonOptions);
             _themes = themes!;
 
             bool isDarkMode = await _jsRuntime.InvokeAsync<bool>("darkModeHelper.isDarkMode");
-            Type = isDarkMode ? ThemeType.Yunshan : ThemeType.Nullko;
+            Type = isDarkMode ? OolandThemeType.Yunshan : OolandThemeType.Nullko;
 
             var thisRef = DotNetObjectReference.Create(this);
             await _jsRuntime.InvokeVoidAsync("darkModeHelper.registerColorSchemeChangedCallback", thisRef);
         }
 
-        public ThemeType Type { get; private set; }
+        public OolandThemeType Type { get; private set; }
 
-        public event EventHandler<ThemeType>? ThemeChanged;
+        public event EventHandler<OolandThemeType>? ThemeChanged;
 
         [JSInvokable]
         public void OnColorSchemeChanged(bool isDarkMode)
         {
-            Type = isDarkMode ? ThemeType.Yunshan : ThemeType.Nullko;
+            Type = isDarkMode ? OolandThemeType.Yunshan : OolandThemeType.Nullko;
             ThemeChanged?.Invoke(this, Type);
         }
 
         public bool IsDark => Type switch
         {
-            ThemeType.Nullko => false,
-            ThemeType.Yunshan => true,
+            OolandThemeType.Nullko => false,
+            OolandThemeType.Yunshan => true,
             _ => false,
         };
 
