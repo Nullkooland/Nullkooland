@@ -2,5 +2,13 @@
 .DS_Store
 _.*
 
+# VS Code configs.
 .vscode/
-tools/avif_converter
+
+# AVIF converter ffi lib.
+tools/_libavif_cffi.*.so
+
+# HEIC images are bound to be converted to AVIFs,
+# so ignore them!
+*.heic
+*.heif
