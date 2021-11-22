@@ -1,20 +1,58 @@
 {
+    "AVIF": [
+        "meandering_souls_ep2"
+    ],
+    "Camera Calibration": [
+        "camera_calib_0"
+    ],
+    "Computer Vision": [
+        "camera_calib_0"
+    ],
+    "Embedded": [
+        "stm32_dev_with_vscode"
+    ],
+    "HEIF": [
+        "use_libheif"
+    ],
+    "Intro": [
+        "intro"
+    ],
+    "Nullkooland": [
+        "intro"
+    ],
+    "OpenCV": [
+        "use_libheif"
+    ],
     "STM32": [
         "stm32_dev_with_vscode"
+    ],
+    "macOS": [
+        "give_vscode_camera_access"
     ],
     "vscode": [
         "stm32_dev_with_vscode",
         "give_vscode_camera_access"
     ],
-    "Embedded": [
-        "stm32_dev_with_vscode"
+    "云山": [
+        "meandering_souls_ep2",
+        "meandering_souls_ep3"
     ],
-    "灯儿晃": [
+    "北碚": [
+        "meandering_souls_ep1"
+    ],
+    "嘉陵江": [
+        "meandering_souls_ep3"
+    ],
+    "川东平行岭谷": [
+        "meandering_souls_ep2",
+        "meandering_souls_ep3"
+    ],
+    "游记": [
         "meandering_souls_ep2",
         "meandering_souls_ep3",
         "meandering_souls_ep1"
     ],
-    "游记": [
+    "灯儿晃": [
         "meandering_souls_ep2",
         "meandering_souls_ep3",
         "meandering_souls_ep1"
@@ -24,45 +62,7 @@
         "intro",
         "meandering_souls_ep1"
     ],
-    "云山": [
-        "meandering_souls_ep2",
-        "meandering_souls_ep3"
-    ],
-    "川东平行岭谷": [
-        "meandering_souls_ep2",
-        "meandering_souls_ep3"
-    ],
-    "AVIF": [
-        "meandering_souls_ep2"
-    ],
-    "Computer Vision": [
-        "camera_calib_0"
-    ],
-    "Camera Calibration": [
-        "camera_calib_0"
-    ],
-    "Nullkooland": [
-        "intro"
-    ],
-    "Intro": [
-        "intro"
-    ],
-    "嘉陵江": [
-        "meandering_souls_ep3"
-    ],
     "鸣虫": [
         "meandering_souls_ep3"
-    ],
-    "OpenCV": [
-        "use_libheif"
-    ],
-    "HEIF": [
-        "use_libheif"
-    ],
-    "北碚": [
-        "meandering_souls_ep1"
-    ],
-    "macOS": [
-        "give_vscode_camera_access"
     ]
 }
