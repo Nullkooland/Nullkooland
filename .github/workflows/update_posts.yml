@@ -51,7 +51,7 @@ jobs:
 
       # Copy the 'posts/' to 'gh-pages/'
       - name: Copy posts over
-        run: rsync -q -av --delete --checksum --progress --exclude={'.gitignore','.github','tools'} posts/ gh-pages/posts/
+        run: rsync -av --recursive --delete --checksum --progress --exclude={'.gitignore','.github','tools'} posts/ gh-pages/posts/
 
       # Commit changes in gh-pages branch
       - name: Commit changes
