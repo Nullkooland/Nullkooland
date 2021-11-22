@@ -7,24 +7,33 @@ headerImage: "bathing_moonbear.avif"
 tags: ["OpenCV", "HEIF"]
 ---
 # Use `libheif` to read HEIF Images
+
 ## Why?
+
 Because the photos I've taken using my 林檎爪机（大嘘）are all in `HEIF/HEIC` format, and I am more than bothered to convert them into antiquated `JPEG` or huge `PNG` formats when I feel like taking some of them as the test images in my computer vision algorithms demos.
 
+**[Update] 2021.11.22**: This post is deprecated since I've moved on to `pyobjc-framework-Quartz` to utilize macOS system APIs to read HEIC images, so no `libheif` anymore!
+
 ## How?
+
 I found a library to decode/encode `HEIF` images here: [libheif](https://github.com/strukturag/libheif) here, great.
 
 On macOS, it is readily available in `homebrew` 🍺
+
 ```shell
 brew install libheif
 ```
 
 ### Use with Python
+
 Install the `pyheif` binding package using `pip`
+
 ```shell
 pip install pyheif
 ```
 
 Sadly this package doesn't provide a method to directly convert the decoded raw pixels into numpy array, so I add a helper method in `site-packages/pyheif/reader.py`:
+
 ```python
 import numpy as np
 from PIL import Image
@@ -43,9 +52,11 @@ def read_as_numpy(fp, apply_transformations=True, convert_hdr_to_8bit=True):
     )
     return np.array(img)
 ```
+
 Yeah, I never liked `Pillow` anyway...
 
 Now we can use it with `OpenCV` or `matplotlib` happily!
+
 ```python
 import cv2
 import matplotlib.pyplot as plt
@@ -62,7 +73,9 @@ cv2.waitKey()
 ```
 
 ### Use with C++
+
 In `CMakeLists.txt` of the `CMake` project, add
+
 ```cmake
 find_package(PkgConfig REQUIRED)
 pkg_search_module(HEIF REQUIRED libheif)
@@ -79,7 +92,9 @@ target_link_libraries(${target_name} PRIVATE
     ${HEIF_LINK_LIBRARIES}
 )
 ```
+
 Then we can use `libheif` in our c++ files:
+
 ```cpp
 #include "libheif/heif.h"
 #include "libheif/heif_cxx.h"
@@ -106,7 +121,9 @@ cv::imshow("HEIF (AVIF: XD) rocks and JPEG sucks", src_img);
 ```
 
 ### Command line tool
+
 The `libheif` also ships with a handy command line tool to convert images in other formats into `HEIF` or `AVIF` images.
+
 ```shell
 heif-enc kingfisher.png -q 80 -o emperorfisher.heic
 heif-enc stone_bunny.png -q 80 --avif -o cool_bunny.avif 

@@ -10,6 +10,7 @@ tags: ["Computer Vision", "Camera Calibration"]
 # Camera Calibration: The Basics
 
 ## 1 Camera geometry
+
 To understand how a 3D point in the real world gets mapped into a 2D pixel in a digital image, we need to know about camera geometry.
 
 ### 1.1 The coordinate systems
@@ -28,9 +29,9 @@ The **pixel coordinates**, which describes a 2D pixel postion on the 2D digital 
 
 So the process of image formation will be:
 $$
-\mathbf{x}_w \xrightarrow{\text{camera rigid motion}} 
-\mathbf{x}_c \xrightarrow{\text{lens projection}} 
-\mathbf{x}_i \xrightarrow{\text{digitization}} 
+\mathbf{x}_w \xrightarrow{\text{camera rigid motion}}
+\mathbf{x}_c \xrightarrow{\text{lens projection}}
+\mathbf{x}_i \xrightarrow{\text{digitization}}
 \mathbf{x}_p
 $$
 
@@ -42,14 +43,15 @@ where
 
 $$
 [x, y, z]^\top = [
-    \frac{\tilde{x}}{\tilde{w}}, 
-    \frac{\tilde{y}}{\tilde{w}}, 
+    \frac{\tilde{x}}{\tilde{w}},
+    \frac{\tilde{y}}{\tilde{w}},
     \frac{\tilde{z}}{\tilde{w}}]^\top
 $$
 
 especially, when $\tilde{w} = 1$, $\overline{\mathbf{x}} = [x, y, z, 1]^\top = [\mathbf{x}, 1]^\top$ is called **augmented vector**.
 
 Homogenous coordinates have these properties:
+
 1. $\tilde{\mathbf{x}} = [\tilde{x}, \tilde{y}, \tilde{z}, \tilde{w}] = \tilde{w}[x, y, z, 1]^\top = \tilde{w}\overline{\mathbf{x}}$
 2. $[k\tilde{x}, k\tilde{y}, k\tilde{z}, k\tilde{w}]^\top = [\tilde{x}, \tilde{y}, \tilde{z}, \tilde{w}]^\top$ scaling invariant
 3. $[\tilde{x}, \tilde{y}, \tilde{z}, 0]^\top$ is a point at infinity
@@ -58,6 +60,7 @@ Homogenous coordinates have these properties:
 This tool will come in handy later.
 
 ### 1.2 Camera rigid motion
+
 First let's see how to map $\mathbf{x}_w$ to $\mathbf{x}_c$.
 
 ![camera_rigid_motion](images/camera_rigid_motion.svg)
@@ -67,25 +70,25 @@ $$
 \begin{aligned}
     \left[\begin{array}{c}
         x_c \\ y_c \\ z_c
-    \end{array}\right] 
-    &= 
+    \end{array}\right]
+    &=
     \left[\begin{array}{ccc}
         r_{11} & r_{12} & r_{13} \\
         r_{21} & r_{22} & r_{23} \\
         r_{31} & r_{32} & r_{33} \\
-    \end{array}\right] 
+    \end{array}\right]
     \left[\begin{array}{c}
         x_w \\ y_w \\ z_w
-    \end{array}\right] 
+    \end{array}\right]
     +
     \left[\begin{array}{c}
         t_x \\ t_y \\ t_z
-    \end{array}\right] 
+    \end{array}\right]
     \\
 \end{aligned}
 $$
 
-denote as $\mathbf{x}_c = \mathbf{R} \mathbf{x}_w + \mathbf{t}$, it is an affine transform. 
+denote as $\mathbf{x}_c = \mathbf{R} \mathbf{x}_w + \mathbf{t}$, it is an affine transform.
 
 How do we find the values in $\mathbf{R}$ and $\mathbf{t}$?
 
@@ -98,31 +101,32 @@ Using homogenous coordinates we can use a single matrix to encapsulate both rota
 $$
 \left[\begin{array}{c}
     x_c \\ y_c \\ z_c
-\end{array}\right] 
-= 
+\end{array}\right]
+=
 \left[\mathbf{R} | \mathbf{t}\right]
 \left[\begin{array}{c}
     x_w \\ y_w \\ z_w \\ 1
-\end{array}\right] 
+\end{array}\right]
 $$
 
 or
 $$
 \left[\begin{array}{c}
     x_c \\ y_c \\ z_c \\ 1
-\end{array}\right]  = 
+\end{array}\right]  =
 \left[\begin{array}{cc}
     \mathbf{R} & \mathbf{t} \\
     \mathbf{0}^\top & 1
-\end{array}\right] 
+\end{array}\right]
 \left[\begin{array}{c}
     x_w \\ y_w \\ z_w \\ 1
-\end{array}\right] 
+\end{array}\right]
 $$
 
 The matrix $\left[\mathbf{R} | \mathbf{t}\right]_{3 \times 4}$ is the **extrinsic matrix**, it has 6 DoF (Degree of Freedom).
 
 ### 1.3 Lens projection & digitization
+
 Now we're viewing the world from the camera's perspective, now let's see how the camera map $\mathbf{x}_c$ to $\mathbf{x}_i$.
 
 ![lens_projection](images/lens_projection.svg)
@@ -139,25 +143,28 @@ $$
 \right.
 $$
 
-expressed in homogeneous coordinates:
+expressed in homogeneous coordinates
+
 $$
 z_c
 \left[\begin{array}{c}
     x_i \\ y_i \\ 1
-\end{array}\right] 
+\end{array}\right]
 =
+
 \left[\begin{array}{c}
     fx_c \\ fy_c \\ z_c
-\end{array}\right] 
-= 
+\end{array}\right]
+=
+
 \left[\begin{array}{cccc}
     f & 0 & 0 \\
     0 & f & 0 \\
     0 & 0 & 1 \\
-\end{array}\right] 
+\end{array}\right]
 \left[\begin{array}{c}
     x_c \\ y_c \\ z_c
-\end{array}\right] 
+\end{array}\right]
 $$
 
 Now that the point has been projected on the image plane, the sensor can convert it into a pixel in the digital image.
@@ -166,42 +173,47 @@ Now that the point has been projected on the image plane, the sensor can convert
 
 where $s_x, s_y$ denotes the spacing between each pixel (or photoreceptor on a sensor), $(o_x, o_y)$ denotes the image center in pixel coordinates, usually we have $o_x = W/2, o_y = H/2$ where $W \times H$ is the resolution of the sensor.
 
-We have:
+We have
+
 $$
 \left[\begin{array}{c}
     u \\ v \\ 1
-\end{array}\right] 
-= 
+\end{array}\right]
+=
+
 \left[\begin{array}{cccc}
     {1}/{s_x} & 0 & o_x \\
     0 & {1}/{s_y} & o_y \\
     0 & 0 & 1\\
-\end{array}\right] 
+\end{array}\right]
 \left[\begin{array}{c}
     x_i \\ y_i \\ 1
-\end{array}\right] 
+\end{array}\right]
 $$
 
-We can combine the projection and digitization, so it maps a 3D point (in camera coordinates) directly to a pixel:
+We can combine the projection and digitization, so it maps a 3D point (in camera coordinates) directly to a pixel
+
 $$
 z_c
 \left[\begin{array}{c}
     u \\ v \\ 1
-\end{array}\right] 
-= 
+\end{array}\right]
+=
+
 \left[\begin{array}{cccc}
     {f}/{s_x} & 0 & o_x \\
     0 & {f}/{s_y} & o_y \\
     0 & 0 & 1\\
-\end{array}\right] 
+\end{array}\right]
 \left[\begin{array}{c}
     x_c \\ y_c \\ z_c
-\end{array}\right] 
+\end{array}\right]
 $$
 
 denote as $z_c \overline{\mathbf{x}}_p = \mathbf{K} \mathbf{x}_c$, where $\mathbf{K}_{3 \times 3}$ is **intrinsic matrix**, it destribes the internal properties of the camera. $\mathbf{K}$ has 5 DoF.
 
 ### 1.4 Putting all together
+
 Now we can put the camera extrinsics and intrinsics together to obtain a direct mapping from $\mathbf{x}_w$ to $\mathbf{x}_p$:
 $$
 z_c\overline{\mathbf{x}}_p = \mathbf{K}[\mathbf{R}|\mathbf{t}]\overline{\mathbf{x}}_w = \mathbf{P}\overline{\mathbf{x}}
@@ -210,6 +222,7 @@ $$
 where $\mathbf{P} = \mathbf{K}[\mathbf{R}|\mathbf{t}]$ is the **camera matrix**, it has 11 DoF.
 
 ## 2 Radial distortion
+
 Real world optical systems could introduce **radial distortion** that make a point on the image plane deviate from its expected position in the ideal pinhole camera model along the radial line from the center. The amount of deviation increases as the point is further from the center.
 
 We can model the distortion as a polynomial function of the distance $r = x_i^2 + y_i^2$ from the principal point:
