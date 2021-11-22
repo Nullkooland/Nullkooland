@@ -1,20 +1,20 @@
-using Nullkooland.Client.Controls;
+using MathBlock = Nullkooland.Client.Views.Components.MathBlock;
 using MathBlockSyntax = Markdig.Extensions.Mathematics.MathBlock;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers
 {
-    public class MathBlockRenderer : ComponentObjectRenderer<MathBlockSyntax>
+    public class MathBlockRenderer : RazorComponentObjectRenderer<MathBlockSyntax>
     {
-        protected override void Write(ComponentRenderer renderer, MathBlockSyntax mathBlock)
+        protected override void Write(RazorComponentRenderer renderer, MathBlockSyntax mathBlock)
         {
-            renderer.Builder.OpenComponent<MathBlock>(0);
-
-            renderer.Builder.AddAttribute(1, "Inline", false);
-
             string mathText = mathBlock.Lines.ToString();
-            renderer.Builder.AddAttribute(2, "MathText", mathText);
 
-            renderer.Builder.CloseComponent();
+            var builder = renderer.BuilderStack.Peek();
+
+            builder.OpenComponent<MathBlock>(renderer.Sequence++);
+            builder.AddAttribute(renderer.Sequence++, "MathText", mathText);
+            builder.AddAttribute(renderer.Sequence++, "Inline", false);
+            builder.CloseComponent();
         }
     }
 }

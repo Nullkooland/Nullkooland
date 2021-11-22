@@ -1,24 +1,26 @@
 using System.Text;
 using Markdig.Syntax;
-using CodeBlock = Nullkooland.Client.Controls.CodeBlock;
+using CodeBlock = Nullkooland.Client.Views.Components.CodeBlock;
 using CodeBlockSyntax = Markdig.Syntax.CodeBlock;
 
 namespace Nullkooland.Client.Services.Markdown.Renderers
 {
-    public class CodeBlockRenderer : ComponentObjectRenderer<CodeBlockSyntax>
+    public class CodeBlockRenderer : RazorComponentObjectRenderer<CodeBlockSyntax>
     {
-        protected override void Write(ComponentRenderer renderer, CodeBlockSyntax codeBlock)
+        protected override void Write(RazorComponentRenderer renderer, CodeBlockSyntax codeBlock)
         {
             if (codeBlock is FencedCodeBlock fencedCodeBlock)
             {
-                renderer.Builder.OpenComponent<CodeBlock>(0);
-
-                string language = fencedCodeBlock.Info;
-                renderer.Builder.AddAttribute(1, "Language", language);
                 string code = ExtractSourceCode(codeBlock);
-                renderer.Builder.AddAttribute(2, "Code", code);
+                string? language = fencedCodeBlock.Info;
 
-                renderer.Builder.CloseComponent();
+                var builder = renderer.BuilderStack.Peek();
+
+                builder.OpenComponent<CodeBlock>(renderer.Sequence++);
+                builder.AddAttribute(renderer.Sequence++, "Code", code);
+                builder.AddAttribute(renderer.Sequence++, "Language", language);
+                builder.AddAttribute(renderer.Sequence++, "Inline", false);
+                builder.CloseComponent();
             }
         }
 
@@ -31,10 +33,16 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
             {
                 var line = lines[i];
                 var slice = line.Slice;
-                if (slice.Text == null) continue;
+                if (slice.Text == null)
+                {
+                    continue;
+                }
 
                 string lineText = slice.Text.Substring(slice.Start, slice.Length);
-                if (i > 0) code.AppendLine();
+                if (i > 0)
+                {
+                    code.AppendLine();
+                }
 
                 code.Append(lineText);
             }

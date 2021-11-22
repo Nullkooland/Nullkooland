@@ -1,0 +1,26 @@
+@page "/archives"
+@using Nullkooland.Client.ViewModels.Pages
+@inject ArchivesPageViewModel ViewModel
+
+<PageTitle>@ViewModel.PageTitle</PageTitle>
+
+<MudContainer Class="pa-0" MaxWidth="MaxWidth.ExtraLarge">
+    <MudTabs @bind-ActivePanelIndex="@ViewModel.ActiveViewerIndex">
+        <MudTabPanel Icon="@Icons.Material.Filled.Memory" Text="Technical">
+            <div class="px-6">
+                <ArchivesView Type="@BlogPostType.Technical"/>
+            </div>
+        </MudTabPanel>
+        <MudTabPanel Icon="@Icons.Material.Filled.NaturePeople" Text="Personal">
+            <div class="px-6">
+                <ArchivesView Type="@BlogPostType.Personal"/>
+            </div>
+        </MudTabPanel>
+        <MudTabPanel Icon="@Icons.Material.Filled.Grass" Text="Ramblings">
+            <div class="px-6">
+                <ArchivesView Type="@BlogPostType.Ramblings"/>
+            </div>
+        </MudTabPanel>
+    </MudTabs>
+</MudContainer>
+<Footer/>

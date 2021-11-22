@@ -1,0 +1,31 @@
+@inject IJSRuntime JS
+
+@if (Inline)
+{
+    <span @ref="_mathElement"/>
+}
+else
+{
+    <div @ref="_mathElement"/>
+}
+
+@code {
+    [EditorRequired]
+    [Parameter]
+    public string? MathText { get; set; }
+
+    [Parameter]
+    public bool Inline { get; set; } = false;
+
+    private ElementReference _mathElement;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var options = new {displayMode = !Inline, output = "html"};
+            await JS.InvokeVoidAsync("katex.render", MathText, _mathElement, options);
+        }
+    }
+
+}

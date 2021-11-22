@@ -8,6 +8,7 @@ namespace Nullkooland.Client.Services.Post
     public interface IBlogPostService
     {
         int Count { get; }
+
         ValueTask<int> LoadAsync();
 
         IEnumerable<BlogPost> GetAll();

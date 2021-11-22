@@ -1,0 +1,59 @@
+{
+    "yunshan": {
+        "siteTitle": "Yunshan's Lair",
+        "avatarImage": "images/yunshan.png",
+        "backgroundPattern": "images/bg_pattern_yunshan.svg",
+        "greetingsTitle": "云山虎穴",
+        "greetingsContent": "where T : IRuabaoable<Tiger>",
+        "colors": {
+            "primary": "#FF9800",
+            "primaryLighten": "#ECCC68",
+            "primaryDarken": "#D88100",
+            "primaryContrastText": "#101010",
+            "secondary": "#FF6348",
+            "tertiary": "#ECCC68",
+            "appbarText": "#000000AA",
+            "appbarBackground": "#FFAB00BD",
+            "black": "#101010",
+            "background": "#181818",
+            "backgroundGrey": "#242424",
+            "surface": "#282828",
+            "drawerBackground": "#323232",
+            "drawerText": "rgba(255,255,255, 0.50)",
+            "drawerIcon": "rgba(255,255,255, 0.50)",
+            "textPrimary": "rgba(255,255,255, 0.70)",
+            "textSecondary": "rgba(255,255,255, 0.50)",
+            "actionDefault": "#adadad",
+            "actionDisabled": "rgba(255,255,255, 0.26)",
+            "actionDisabledBackground": "rgba(255,255,255, 0.12)",
+            "divider": "rgba(255,255,255, 0.12)",
+            "dividerLight": "rgba(255,255,255, 0.06)",
+            "tableLines": "rgba(255,255,255, 0.12)",
+            "tableStriped": "#FFFFFF05",
+            "tableHover": "#FFFFFF0a",
+            "linesDefault": "rgba(255,255,255, 0.12)",
+            "linesInputs": "rgba(255,255,255, 0.3)",
+            "textDisabled": "rgba(255,255,255, 0.2)"
+        },
+        "borderRadius": "0px"
+    },
+    "nullko": {
+        "siteTitle": "Nullkooland",
+        "avatarImage": "images/nullko.png",
+        "backgroundPattern": "images/bg_pattern_nullko.svg",
+        "greetingsTitle": "Hey, you've found my ooland!",
+        "greetingsContent": "It's winter again, gotta get myself a cup of hot tea. 🍵",
+        "colors": {
+            "primary": "#60306C",
+            "primaryLighten": "#E1C8F0",
+            "primaryDarken": "#482451",
+            "primaryContrastText": "#FFFFFF",
+            "secondary": "#8C48A0",
+            "tertiary": "#E1C8F0",
+            "appbarText": "#FFFFFFFF",
+            "appbarBackground": "#60306CEE",
+            "drawerBackground": "#F8F8F8"
+        },
+        "borderRadius": "4px"
+    }
+}

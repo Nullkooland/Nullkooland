@@ -1,0 +1,20 @@
+<div class="px-6 my-6 d-flex flex-column">
+    <MudDivider Class="my-6" />
+    <div class="d-flex flex-wrap justify-center align-center">
+        <MudText Typo="Typo.body2">Powered by</MudText>
+        <MudLink Class="ml-1"
+                 Typo="Typo.body2"
+                 Color="Color.Primary"
+                 Href="https://blazor.net">
+                 Blazor WebAssembly
+        </MudLink>
+        <MudIcon Class="ml-1"
+                 Style="height: 20px; width: 20px;"
+                 Icon="@CustomIcons.Blazor" Color="Color.Primary" />
+
+        <MudText Class="ml-2"
+                 Typo="Typo.body2">Copyright © 2020-@(DateTime.Today.Year) Goose Bomb</MudText>
+        <MudIcon Class="ml-1"
+                 Style="height: 14px; width: 14px; fill: var(--mud-palette-primary-darken)" Icon="@CustomIcons.PawWithClaws" />
+    </div>
+</div>

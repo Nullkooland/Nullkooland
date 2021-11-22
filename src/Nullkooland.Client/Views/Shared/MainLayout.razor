@@ -1,0 +1,83 @@
+@inherits LayoutComponentBase
+@inject IThemeService ThemeService
+@inject MainLayoutViewModel ViewModel
+<style>
+    .blur-behind {
+        backdrop-filter: saturate(150%) blur(16px);
+        -webkit-backdrop-filter: saturate(150%) blur(16px);
+    }
+</style>
+
+<MudThemeProvider Theme="@ViewModel.Theme" />
+<MudDialogProvider />
+
+<MudLayout>
+    <MudAppBar Fixed="true" Class="blur-behind">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
+                       OnClick="@ViewModel.OnNavMenuButtonClicked" />
+        <MudText Class="mx-2" Typo="Typo.h5">
+            @ViewModel.AppBarTitle
+        </MudText>
+        <MudIcon Icon="@CustomIcons.PawWithClaws" Color="Color.Inherit" Size="@Size.Medium" />
+        <MudSpacer />
+
+        <div class="d-none d-md-flex align-center">
+            <MudTooltip Text="GitHub">
+                <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit"
+                               Link="https://github.com/Goose-Bomb" />
+            </MudTooltip>
+            <MudTooltip Text="Twitter">
+                <MudIconButton Icon="@Icons.Custom.Brands.Twitter" Color="Color.Inherit"
+                               Link="https://twitter.com/goose_bomb" />
+            </MudTooltip>
+            <MudTooltip Text="YouTube">
+                <MudIconButton Icon="@Icons.Custom.Brands.YouTube" Color="Color.Inherit"
+                               Link="https://www.youtube.com/channel/UCQHgWIkGEddRLtvvCxRcqPw" />
+            </MudTooltip>
+        </div>
+
+        <MudMenu Class="d-md-none" Icon="@Icons.Material.Filled.MoreVert"
+                 Color="Color.Inherit" Dense="true" Direction="Direction.Right" OffsetY="true">
+            <MudNavLink Icon="@Icons.Custom.Brands.GitHub"
+                        Href="https://github.com/Goose-Bomb">
+                GitHub
+            </MudNavLink>
+            <MudNavLink Icon="@Icons.Custom.Brands.Twitter"
+                        Href="https://twitter.com/goose_bomb">
+                Twitter
+            </MudNavLink>
+            <MudNavLink Icon="@Icons.Custom.Brands.YouTube"
+                        Href="https://www.youtube.com/channel/UCQHgWIkGEddRLtvvCxRcqPw">
+                YouTube
+            </MudNavLink>
+        </MudMenu>
+    </MudAppBar>
+
+    <MudDrawer @bind-Open="@ViewModel.IsNavMenuOpened" ClipMode="DrawerClipMode.Docked" Elevation="2">
+        <MudNavMenu>
+            @foreach (var (url, title, icon) in ViewModel.GetNavItems)
+            {
+                <MudNavLink Href="@url" Icon="@icon" Match="NavLinkMatch.All">
+                    @title
+                </MudNavLink>
+            }
+        </MudNavMenu>
+    </MudDrawer>
+
+    <MudMainContent Class="d-flex flex-column justify-space-between"
+                    Style="min-height: 100vh">
+        @Body
+        <MudScrollToTop Style="opacity: 0.9"
+                        TopOffset="600"
+                        ScrollBehavior="ScrollBehavior.Smooth">
+            <MudFab Icon="@Icons.Material.Filled.KeyboardArrowUp" Color="Color.Primary" />
+        </MudScrollToTop>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    protected override void OnInitialized()
+    {
+        ThemeService.ThemeChanged += (_, themeType) => StateHasChanged();
+    }
+}

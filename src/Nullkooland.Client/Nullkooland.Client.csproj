@@ -1,23 +1,30 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<InvariantGlobalization>true</InvariantGlobalization>
+		<BlazorEnableCompression>false</BlazorEnableCompression>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Markdig.Signed" Version="0.26.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.11" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.11" PrivateAssets="all" />
-    <PackageReference Include="MudBlazor" Version="5.2.0-rc3" />
-    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\Nullkooland.Shared\Nullkooland.Shared.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Markdig" Version="0.26.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0" PrivateAssets="all" />
+		<PackageReference Include="MudBlazor" Version="6.0.2" />
+		<PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Update="wwwroot\posts\**" CopyToPublishDirectory="Never" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Nullkooland.Shared\Nullkooland.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Update="wwwroot\posts\**" CopyToPublishDirectory="Never" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Models\Components\" />
+	</ItemGroup>
 
 </Project>

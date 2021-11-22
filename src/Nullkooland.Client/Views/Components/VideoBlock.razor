@@ -1,0 +1,62 @@
+﻿<style>
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0;
+        overflow: hidden;
+    }
+
+        .video-wrapper > iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+</style>
+
+
+<div class="video-wrapper rounded mud-elevation-1"
+     style="height: @Height;
+            max-height: @MaxHeight;
+            width: @Width;
+            max-width: @MaxWidth;">
+
+    <iframe src="@Source"
+            loading="lazy"
+            @onload="@(() => _isLoading = false)"
+            frameborder="0"
+            allow="fullscreen;
+                   autoplay;
+                   encrypted-media;
+                   accelerometer;
+                   gyroscope;
+                   picture-in-picture;">
+    </iframe>
+
+    <MudOverlay Visible="@_isLoading" Absolute="true" DarkBackground="true">
+        <MudProgressCircular Indeterminate="true"></MudProgressCircular>
+    </MudOverlay>
+</div>
+
+
+
+@code {
+    [EditorRequired]
+    [Parameter]
+    public string? Source { get; set; }
+
+    [Parameter]
+    public string Height { get; set; } = "fit-content";
+
+    [Parameter]
+    public string MaxHeight { get; set; } = "100%";
+
+    [Parameter]
+    public string Width { get; set; } = "fit-content";
+
+    [Parameter]
+    public string MaxWidth { get; set; } = "100%";
+
+    private bool _isLoading = true;
+}

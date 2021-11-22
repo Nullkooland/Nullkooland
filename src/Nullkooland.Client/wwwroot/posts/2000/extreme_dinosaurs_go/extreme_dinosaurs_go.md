@@ -7,7 +7,7 @@ headerImage: "extreme_team.webp"
 tags: ["Extreme Dinosaurs", "星际恐龙", "🦕", "🦖", "网站部署测试"]
 ---
 
-# Extreme Dinosaurs, Go!
+# Extreme Dinosaurs, Go
 
 **God I love the 90s' cartoons!**
 
@@ -83,7 +83,7 @@ EXTREME DINOSAURS!!!
 The crash and smash Jurassic four:
 不可阻挡的侏罗纪四龙组
 
-EXTREME DINOSAURS——! 
+EXTREME DINOSAURS——!
 终极恐龙——！！！
 
 ## The protagonists
