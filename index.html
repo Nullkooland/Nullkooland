@@ -2,57 +2,43 @@
 <html>
 
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>Nullkooland</title>
-    <base href="/"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <base href="/" />
     <link rel="icon" type="image/png" href="images/icon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto+Mono&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <link rel="stylesheet" href="https://unpkg.com/firacode/distr/fira_code.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@0/style.min.css" />
 
     <!-- MudBlazor -->
-    <link rel="stylesheet" href="_content/MudBlazor/MudBlazor.min.css"/>
+    <link rel="stylesheet" href="_content/MudBlazor/MudBlazor.min.css" />
 
     <!-- Other stylesheets -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
     <link rel="stylesheet" type="text/css" href="css/prism.css">
-    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/katex.css">
 </head>
 
 <body>
-<app>Loading...</app>
+    <app>Loading...</app>
 
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-</div>
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
 
-<script src="_framework/blazor.webassembly.js"></script>
-<script src="_content/MudBlazor/MudBlazor.min.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
 
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script>
-<script src="js/prism.js"></script>
-
-<script>
-    window.utterancesHelper = {
-        render: function (element, theme) {
-            let utterances = document.createElement('script');
-            utterances.type = 'text/javascript';
-            utterances.src = 'https://utteranc.es/client.js';
-            utterances.async = true;
-            utterances.crossorigin = 'anonymous';
-            utterances.setAttribute('issue-term', 'pathname')
-            utterances.setAttribute('theme', 'github-light')
-            utterances.setAttribute('repo', 'Goose-Bomb/Nullkooland')
-            element.appendChild(utterances);
-        }
-    };
-</script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js"></script>
+    <script src="js/prism.js"></script>
+    <script src="js/dark-mode-helper.js"></script>
+    <script src="js/utterances-helper.js"></script>
 </body>
 
 </html>
