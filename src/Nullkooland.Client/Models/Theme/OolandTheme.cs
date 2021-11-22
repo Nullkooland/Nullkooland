@@ -2,6 +2,14 @@
 
 namespace Nullkooland.Client.Models.Theme
 {
+    public enum OolandThemeType
+    {
+        // Moonbear of the day.
+        Nullko,
+        // Tiger of the night.
+        Yunshan,
+    }
+
     public record OolandTheme
     {
         public string? SiteTitle { get; init; }

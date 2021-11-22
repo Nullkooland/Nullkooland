@@ -4,6 +4,7 @@ using MudBlazor;
 using Nullkooland.Client.Services.Markdown;
 using Nullkooland.Client.Services.Post;
 using Nullkooland.Client.Services.Theme;
+using Nullkooland.Client.Models.Theme;
 using Nullkooland.Shared.Models.Post;
 
 namespace Nullkooland.Client.ViewModels.Pages
@@ -30,8 +31,8 @@ namespace Nullkooland.Client.ViewModels.Pages
 
         public string TagsIcon => _themeService.Type switch
         {
-            ThemeType.Yunshan => Icons.Material.Sharp.LocalOffer,
-            ThemeType.Nullko => Icons.Material.Filled.Style,
+            OolandThemeType.Yunshan => Icons.Material.Sharp.LocalOffer,
+            OolandThemeType.Nullko => Icons.Material.Filled.Style,
             _ => string.Empty,
         };
 
