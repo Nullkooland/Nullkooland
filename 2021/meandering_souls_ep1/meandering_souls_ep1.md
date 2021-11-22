@@ -3,7 +3,7 @@ type: "personal"
 date: "2021-02-14T08:30:00+08:00"
 title: "灯儿晃记：2021年 第一期"
 brief: "2021 年寒假的灯儿晃记录"
-headerImage: "candy_old_community.jpg"
+headerImage: "candy_old_community.avif"
 tags: ["灯儿晃", "游记", "随想", "北碚"]
 ---
 
