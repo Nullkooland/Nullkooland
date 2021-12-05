@@ -1,4 +1,4 @@
-from Foundation import NSData, NSURL, NSMutableData
+from Foundation import NSURL, NSMutableData
 import Quartz
 from Quartz import CIContext, CIImage, CIFilter
 
@@ -23,14 +23,18 @@ class AVIFConverter():
     requres 'pyobjc-framework-Quartz' package for the bridging.
     """
 
-    def __init__(self,
-                 depth_bits: int = 8,
-                 chroma_subsampling: str = "420",
-                 lossless: bool = False,
-                 min_q: int = 8,
-                 max_q: int = 16,
-                 max_size: int = 1920,
-                 ignore_icc: bool = False) -> None:
+    def __init__(
+        self,
+        depth_bits: int,
+        chroma_subsampling: str,
+        lossless: bool,
+        min_q: int,
+        max_q: int,
+        av1_codec: str,
+        speed: int,
+        max_size: int,
+        ignore_icc: bool,
+    ) -> None:
         # Setup CIContext.
         options = {
             Quartz.kCIContextWorkingColorSpace: Quartz.CGColorSpaceCreateWithName(
@@ -47,6 +51,8 @@ class AVIFConverter():
         self.lossless = lossless
         self.min_q = 0 if lossless else min_q
         self.max_q = 0 if lossless else max_q
+        self.av1_codec = avif.avifCodecChoiceFromName(av1_codec.encode("utf-8"))
+        self.speed = speed
 
         self.max_size = max_size
         self.num_threads = os.cpu_count()
@@ -140,7 +146,8 @@ class AVIFConverter():
         encoder.maxQuantizer = self.max_q
         encoder.minQuantizerAlpha = self.min_q
         encoder.maxQuantizerAlpha = self.max_q
-        encoder.speed = avif.AVIF_SPEED_DEFAULT
+        encoder.codecChoice = self.av1_codec
+        encoder.speed = self.speed
 
         # Add single image.
         err = avif.avifEncoderAddImage(
@@ -252,7 +259,7 @@ def parse_args():
         help="Enable lossless compression."
     )
     parser.add_argument(
-        "--chroma", "-c",
+        "--yuv", "-y",
         type=str,
         default="420",
         help="Chroma subsampling mode [400, 420, 422, 444]."
@@ -270,7 +277,19 @@ def parse_args():
         help="Max quantization level (0-63)."
     )
     parser.add_argument(
-        "--max_size", "-s",
+        "--speed", "-s",
+        type=int,
+        default=5,
+        help="Encoder speed (0-10)."
+    )
+    parser.add_argument(
+        "--codec", "-c",
+        type=str,
+        default="svt",
+        help="AV1 codec to use."
+    )
+    parser.add_argument(
+        "--max_size", "-ms",
         type=int,
         default=2048,
         help="Max longside length."
@@ -288,10 +307,12 @@ if __name__ == "__main__":
     args = parse_args()
     converter = AVIFConverter(
         depth_bits=args.depth,
-        chroma_subsampling=args.chroma,
+        chroma_subsampling=args.yuv,
         lossless=args.lossless,
         min_q=args.min_q,
         max_q=args.max_q,
+        av1_codec=args.codec,
+        speed=args.speed,
         max_size=args.max_size,
         ignore_icc=args.ignore_icc,
     )
