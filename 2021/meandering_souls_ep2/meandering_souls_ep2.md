@@ -15,7 +15,7 @@ tags: ["灯儿晃", "游记", "随想", "云山", "川东平行岭谷", "AVIF"]
 
 利用 [libheif](https://github.com/strukturag/libheif) 连夜撸了个 HEIC 到 AVIF 的批量缩小与转换工具，以后 Nullkooland 的图像，well，至少是我自己拍的照片，都直接用 AVIF 格式！不会 fallback 到 JPEG 啥的，也不会用什么 avifjs (以前折腾过，垃圾死了！)，反正现在铬儿和小狐狸都原生支持，Edge 应该也快了，就不去整这些所谓的向后兼容的💩⛰️了！
 
-**【更新】2021.11.22**：`libheif` 🐶 都不用！既然 `macOS` 可以原生支持 HEIC 图像的解码我干嘛还要用依赖第三方软件解码器 `libde265` 的 `libheif` 呢！所以我撸了个 py 写的转换器，读取和缩小图像就用林檎系统的 `Core Image` API，而编码 AVIF 用了 [libavif](https://github.com/AOMediaCodec/libavif)，而且还能保留 ICC 色彩空间信息（虽然也可以映射成视频编解码世界的 CICP tuple），这下就能在 Web 上展示我用林檎爪机拍出来的 Display P3 色域的图啦！~~*写到这里有点蚌埠住了日决一哈 QQ，都 1202 年辣，害搁这儿无视原图的色彩空间直接按照 sRGB 压成 JPEG 呢，林檎爪机拍的照一发群里就褪色，你们 QQ 团队就没有个懂色彩管理的人吗，白瞎了 iOS 的系统级色彩管理！tx 实在是过于无能😅。*~~
+**【更新】2021.11.22**：`libheif` 🐶 都不用！既然 `macOS` 可以原生支持 HEIC 图像的解码我干嘛还要用依赖第三方软件解码器 `libde265` 的 `libheif` 呢！所以我撸了个 py 写的[转换器](https://github.com/Goose-Bomb/Nullkooland/blob/posts/tools/avif_converter.py)，读取和缩小图像就用林檎系统的 `Core Image` API，而编码 AVIF 用了 [libavif](https://github.com/AOMediaCodec/libavif)，而且还能保留 ICC 色彩空间信息（虽然也可以映射成视频编解码世界的 CICP tuple），这下就能在 Web 上展示我用林檎爪机拍出来的 Display P3 色域的图啦！~~*写到这里有点蚌埠住了日决一哈 QQ，都 1202 年辣，害搁这儿无视原图的色彩空间直接按照 sRGB 压成 JPEG 呢，林檎爪机拍的照一发群里就褪色，你们 QQ 团队就没有个懂色彩管理的人吗，白瞎了 iOS 的系统级色彩管理！tx 实在是过于无能😅。*~~
 
 没错，格老子就是不吊你果的 Safari，还有你歌的 `WebP` 我也不想用！（到 macOS *Bug Sur* 上的 Safari 才开始支持 `WebP`，以至于留在*特卡琳娜*养老的我也没办法用现在的 Safari 看 `WebP` 的图片。算球了，`WebP` 也好，Safari 也好，全都给 👴 爪巴！See ya, chumps!
 
