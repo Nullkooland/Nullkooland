@@ -14,7 +14,7 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
             {
                 var item = (listBlock[i] as ListItemBlock)!;
                 builder.OpenElement(renderer.Sequence++, "div");
-                builder.AddAttribute(renderer.Sequence++, "class", "ml-4 d-flex flex-row justify-start align-center");
+                builder.AddAttribute(renderer.Sequence++, "class", "ml-4 d-flex flex-row justify-start align-start");
 
                 builder.OpenComponent<MudText>(renderer.Sequence++);
                 builder.AddAttribute(renderer.Sequence++, "Class", "mr-2");

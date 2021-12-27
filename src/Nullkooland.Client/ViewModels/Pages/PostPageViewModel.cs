@@ -45,9 +45,9 @@ namespace Nullkooland.Client.ViewModels.Pages
         public string? TitleFontFamily => Post?.Type switch
         {
             BlogPostType.Technical => "Roboto Slab",
-            BlogPostType.Personal => "LXGW WenKai",
-            BlogPostType.Ramblings => "LXGW WenKai",
-            _ => "Roboto",
+            BlogPostType.Personal => "Noto Serif SC",
+            BlogPostType.Ramblings => "Noto Serif SC",
+            _ => "sans-serif",
         };
 
         public string? CommentTitle => Post?.Type switch
@@ -81,9 +81,9 @@ namespace Nullkooland.Client.ViewModels.Pages
             string? fontFamily = Post?.Type switch
             {
                 BlogPostType.Technical => "Roboto, sans-serif",
-                BlogPostType.Personal => "LXGW WenKai",
-                BlogPostType.Ramblings => "LXGW WenKai",
-                _ => "Roboto",
+                BlogPostType.Personal => "Noto Serif SC",
+                BlogPostType.Ramblings => "Noto Serif SC",
+                _ => "sans-serif",
             };
 
             Markdown = _markdownRenderService.Render(content, fontFamily, Post.Url);
