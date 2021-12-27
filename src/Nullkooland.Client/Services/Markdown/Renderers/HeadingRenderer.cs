@@ -7,6 +7,8 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
 {
     public class HeadingsRenderer : RazorComponentObjectRenderer<HeadingBlock>
     {
+        public string FontFamily { get; set; } = "sans-serif";
+
         private static readonly Typo[] _headingTypos =
         {
             Typo.h4, // Level 2
@@ -40,6 +42,7 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
             builder.AddAttribute(renderer.Sequence++, "id", id);
             builder.AddAttribute(renderer.Sequence++, "Class", $"my-{6 - level}");
             builder.AddAttribute(renderer.Sequence++, "Typo", _headingTypos[level - 2]);
+            builder.AddAttribute(renderer.Sequence++, "Style", $"font-family: {FontFamily}");
 
             if (level == 2)
             {

@@ -36,10 +36,12 @@ namespace Nullkooland.Client.Services.Markdown
             var paragraphRenderer = _renderer.ObjectRenderers.FindExact<ParagraphRenderer>();
             var autolinkRenderer = _renderer.ObjectRenderers.FindExact<AutolinkInlineRenderer>();
             var linkRenderer = _renderer.ObjectRenderers.FindExact<LinkInlineRenderer>();
+            var headingsRenderer = _renderer.ObjectRenderers.FindExact<HeadingsRenderer>();
 
             paragraphRenderer!.FontFamily = fontFamily;
             autolinkRenderer!.FontFamily = fontFamily;
             linkRenderer!.FontFamily = fontFamily;
+            headingsRenderer!.FontFamily = fontFamily;
 
             linkRenderer!.BaseUrl = baseUrl;
 
