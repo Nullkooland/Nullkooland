@@ -51,7 +51,8 @@ https://prismjs.com/download.html#themes=prism&languages=markup+clike+bash+c+csh
 
     /* Inline code */
     :not(pre) > code[class*="language-"] {
-        padding: 0.2em;
+        padding-left: 0.25em;
+        padding-right: 0.25em;
         white-space: normal;
     }
 
@@ -200,17 +201,15 @@ https://prismjs.com/download.html#themes=prism&languages=markup+clike+bash+c+csh
     pre[class*="language-"] {
         padding: 1em;
         overflow: auto;
-    }
-
-    :not(pre) > code[class*="language-"],
-    pre[class*="language-"] {
         background: #f8f8f8;
     }
 
     /* Inline code */
     :not(pre) > code[class*="language-"] {
-        padding: 0.25em;
+        padding-left: 0.25em;
+        padding-right: 0.25em;
         white-space: normal;
+        background: #f0f0f0;
     }
 
     .token.comment,
