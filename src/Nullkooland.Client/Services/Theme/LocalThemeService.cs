@@ -32,7 +32,7 @@ namespace Nullkooland.Client.Services.Theme
                 Converters =
                 {
                     new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
-                    new MudColorJsonConverter() 
+                    new MudColorJsonConverter()
                 }
             };
 
@@ -82,6 +82,13 @@ namespace Nullkooland.Client.Services.Theme
             LayoutProperties = new LayoutProperties
             {
                 DefaultBorderRadius = _themes[Type].BorderRadius
+            },
+            Typography = new Typography
+            {
+                H3 = new H3 { FontWeight = 500 },
+                H4 = new H4 { FontWeight = 500 },
+                H5 = new H5 { FontWeight = 500 },
+                H6 = new H6 { FontWeight = 700 },
             }
         };
     }
