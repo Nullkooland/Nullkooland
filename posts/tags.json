@@ -6,7 +6,11 @@
         "camera_calib_0"
     ],
     "Computer Vision": [
-        "camera_calib_0"
+        "camera_calib_0",
+        "gather_scatter_ops_in_dnn"
+    ],
+    "Deep Learning": [
+        "gather_scatter_ops_in_dnn"
     ],
     "Embedded": [
         "stm32_dev_with_vscode"
@@ -26,12 +30,15 @@
     "STM32": [
         "stm32_dev_with_vscode"
     ],
+    "Vectorization": [
+        "gather_scatter_ops_in_dnn"
+    ],
     "macOS": [
         "give_vscode_camera_access"
     ],
     "vscode": [
-        "give_vscode_camera_access",
-        "stm32_dev_with_vscode"
+        "stm32_dev_with_vscode",
+        "give_vscode_camera_access"
     ],
     "云山": [
         "meandering_souls_ep3",
@@ -59,8 +66,8 @@
     ],
     "随想": [
         "meandering_souls_ep1",
-        "meandering_souls_ep2",
-        "intro"
+        "intro",
+        "meandering_souls_ep2"
     ],
     "鸣虫": [
         "meandering_souls_ep3"

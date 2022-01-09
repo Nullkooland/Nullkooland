@@ -11,6 +11,19 @@
         "title": "Camera Calibration 0: The Basics",
         "type": 0
     },
+    "gather_scatter_ops_in_dnn": {
+        "brief": "反正搞点！",
+        "date": "2022-01-10T01:00:00+08:00",
+        "headerImage": "bullzeye_on_vr.avif",
+        "id": "gather_scatter_ops_in_dnn",
+        "tags": [
+            "Deep Learning",
+            "Computer Vision",
+            "Vectorization"
+        ],
+        "title": "Gather-Scatter Operations in DNN",
+        "type": 0
+    },
     "give_vscode_camera_access": {
         "brief": "VS Code is nice, we should set it loose!",
         "date": "2021-02-21T21:53:00+08:00",
