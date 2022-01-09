@@ -12,3 +12,6 @@ tools/_libavif_cffi.*.so
 # so ignore them!
 *.heic
 *.heif
+
+# Temporary working directory
+.temp/
