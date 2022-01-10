@@ -13,13 +13,13 @@ Sometimes we need to grab some values from a tensor using indices given by antho
 
 Here is a table of various Gather-Scatter ops in common DL frameworks and inference libraries, where ops in each row are considered to have the same functionality, although their implementation details may differ.
 
-| ONNX            | PyTorch            | TensorFlow   | TVM Relay        | TIM-VX    |
-| --------------- | ------------------ | ------------ | ---------------- | --------- |
-| GatherElements  | torch.gather       |              | relay.gather     |           |
-| ScatterElements | torch.scatter      |              | relay.scatter    |           |
-| Gather          | torch.index_select | tf.gather    | relay.take       | Gather    |
-| GatherND        |                    | tf.gather_nd | relay.gather_nd  | GatherND  |
-| ScatterND       |                    |              | relay.scatter_nd | ScatterND |
+| ONNX            | PyTorch            | TensorFlow    | TVM Relay        | TIM-VX    |
+| --------------- | ------------------ | ------------- | ---------------- | --------- |
+| GatherElements  | torch.gather       |               | relay.gather     |           |
+| ScatterElements | torch.scatter      |               | relay.scatter    |           |
+| Gather          | torch.index_select | tf.gather     | relay.take       | Gather    |
+| GatherND        |                    | tf.gather_nd  | relay.gather_nd  | GatherND  |
+| ScatterND       |                    | tf.scatter_nd | relay.scatter_nd | ScatterND |
 
 Let's take a look at them one by one.
 
@@ -216,7 +216,7 @@ $$
 \mathbf{Y}_{m, :} \gets \mathbf{X}_{\hat{i}, \hat{j}, :},  (\hat{i}, \hat{j}) = \Omega_{m,:}
 $$
 
-We should view $\Omega$ as $N_0' \times \cdots \times N'_{q-2}$ (rank $q - 1$) indexing tuples (defined by the innermost dimension of $\Omega$) stacked together, each tuple has rank $T$. Well bummer, the TVM's `relay.gather_nd` defines the indexing tuples by the outtermost dimension of $\Omega$, following the MXNet (an obsolete DL framework that nobody gives a 💩about ) convention. To cope with this peculiar 😅behavior, we need to **transpose** the indices tensor prior to each `relay.gather_nd` when mapping `GatherND` ops from other DL frameworks to TVM. I do hope that TVM can get rid of this nasty holdover in the future!
+We should view $\Omega$ as $N_0' \times \cdots \times N'_{q-2}$ (rank $q - 1$) indexing tuples (defined by the innermost dimension of $\Omega$) stacked together, each tuple has rank $T$. Well bummer, the TVM's `relay.gather_nd` defines the indexing tuples by the outtermost dimension of $\Omega$, following the MXNet (an obsolete DL framework that nobody gives a 💩 about ) convention. To cope with this peculiar 😅 behavior, we need to **transpose** the indices tensor prior to each `relay.gather_nd` when mapping `GatherND` ops from other DL frameworks to TVM. I do hope that TVM can get rid of this nasty holdover in the future!
 
 Alright back to topic, for each rank $T$ indexing tuple, we use it to index $\mathbf{X}$ from the outtermost dimension (since there's no `axis` parameter anymore) and take out a slice of rank $r - T$ (e.g., when $r - T = 0, 1, 2, 3, \cdots$, the slice is an element, a line, a sheet, a cube and so on). Finally we stack the slices the same way as the indexing tuples are stacked in $\Omega$ to get the output $\mathbf{Y}$ of rank $(q - 1) + (r - T)$.
 
@@ -290,9 +290,32 @@ With $r = 3, q = 2, T = 1$
 
 ## Applications
 
-### Select features by top-k scores
+### Decoder for keypoint-based object detection CNN
 
-TODO
+The *TopK-and-Gather* pattern often appears in the decoder (or post-processing module, whatever you like to call it) of keypoint-based object detection CNN models. For instance, the [CenterNet](https://arxiv.org/abs/1904.07850) has three heads, which produce a per-class score map, a shared offset map and a shared size map, respectively. To retrieve $K$ bounding boxes from these feature maps, the decoder needs to select $K$ centers with largest scores, then extract their corresponding offsets and sizes, and finally combine these information to compute $K$ tuples in the form of $(x_c, y_c, w, h)$ as output bounding box representations. The CenterNet decoder structure is shown in the following diagram (for simplicity, some operations like spatial NMS are omitted)
+
+![Decoder for CenterNet](images/centernet_decoder.svg)
+
+At some point, the decoder needs to select $K$ out of $H \times W$ rank $2$ offsets and sizes tuples using the $K$ spatial indices computed from `TopK`. Also the selection should be carried out independently across $N$ batches. We can use `Gather` op with `batch_dims == 1` to achieve this. Alternatively, we can use a combination of `Unsqueeze` + `Expand` + `GatherElements` to achieve the same functionality. This is common practice in PyTorch since PyTorch's `Gather` op `torch.index_select` haven't supported batching yet.
+
+The follwing code is a simple PyTorch implementation of batched `Gather`, which can be a drop-in replacement for the `Gather` op in the aforementioned decoder.
+
+```python
+def _batched_gather(
+    data: Tensor,   # shape: [N, L, D]
+    indices: Tensor # shape: [N, K]
+) -> Tensor:        # shape: [N, K, D]
+    """
+    Gathers K out of L features (with rank D) in each batch.
+    dim 0: batches.
+    dim 1: features.
+    dim 2: elements in each feature.
+    """
+    n, _, d = data.shape
+    k = indices.shape[1]
+    indices_expanded = indices.unsqueeze(dim=2).expand(n, k, d)
+    return data.gather(dim=1, index=indices_expanded)
+```
 
 ## Conclusion
 
@@ -300,7 +323,7 @@ Alas, vectorization is never easy! At least using these Gather-Scatter operation
 
 ## References
 
-1. [All About Gather-Scatter Operation in Deep Learning Framework](https://www.pathpartnertech.com/gather-scatter-operation-in-deep-learning-framework/)
+1. [All About Gather-Scatter Operation in Deep Learning Framework](https://www.pathpartnertech.com/gather-scatter-operation-in-deep-learning-framework)
 
 2. [ONNX Operations Reference](https://github.com/onnx/onnx/blob/master/docs/Operations.md#Gather)
 
@@ -311,3 +334,5 @@ Alas, vectorization is never easy! At least using these Gather-Scatter operation
 5. [PyTorch Operations Reference](https://pytorch.org/docs/stable/torch.html)
 
 6. [TensorFlow Operations Reference](https://www.tensorflow.org/api_docs/python/tf)
+
+7. [CenterNet: Objects as Points](https://github.com/xingyizhou/CenterNet)
