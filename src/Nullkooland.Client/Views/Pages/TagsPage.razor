@@ -54,7 +54,7 @@ else
                                    Link="@post.Url">
                             <div class="pa-4 d-flex flex-column align-start" 
                                  style="height: 25vh; width: 40%; background-color: var(--mud-palette-surface)">
-                                <MudText Typo="Typo.h5" Color="Color.Primary">
+                                <MudText Typo="Typo.subtitle1" Color="Color.Primary">
                                     @post.Title
                                 </MudText>
                                 <MudText Class="mt-2 d-none d-sm-flex" Typo="Typo.body2">
@@ -63,7 +63,7 @@ else
 
                                 <div class="mt-auto d-flex flex-row align-center">
                                     <MudIcon Icon="@Icons.Material.Filled.Event" Size="Size.Small"/>
-                                    <MudText Class="ml-2" Typo="Typo.subtitle2">@post.Date.ToString("yyyy/MM/dd")</MudText>
+                                    <MudText Class="ml-2" Typo="Typo.button">@post.Date.ToString("yyyy/MM/dd")</MudText>
                                 </div>
                             </div>
 

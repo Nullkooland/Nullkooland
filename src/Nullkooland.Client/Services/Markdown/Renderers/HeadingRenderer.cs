@@ -7,13 +7,12 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
 {
     public class HeadingsRenderer : RazorComponentObjectRenderer<HeadingBlock>
     {
-        public string FontFamily { get; set; } = "sans-serif";
-
         private static readonly Typo[] _headingTypos =
         {
-            Typo.h4, // Level 2
-            Typo.h5, // Level 3
-            Typo.h6, // Level 4
+            Typo.h3, // Level 2
+            Typo.h4, // Level 3
+            Typo.h5, // Level 4
+            Typo.h6, // Level 5
         };
 
         protected override void Write(RazorComponentRenderer renderer, HeadingBlock heading)
@@ -23,8 +22,8 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
                 return;
             }
 
-            // Only supports 1/2/3/4 level.
-            int level = Math.Min(Math.Max(heading.Level, 1), 4);
+            // Only supports 1-5 level.
+            int level = Math.Min(Math.Max(heading.Level, 1), 5);
 
             // Ignore the post (level 1) title,
             // let PostPage component to render it with greater flexibilities.
@@ -42,7 +41,6 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
             builder.AddAttribute(renderer.Sequence++, "id", id);
             builder.AddAttribute(renderer.Sequence++, "Class", $"my-{6 - level}");
             builder.AddAttribute(renderer.Sequence++, "Typo", _headingTypos[level - 2]);
-            builder.AddAttribute(renderer.Sequence++, "Style", $"font-family: {FontFamily}");
 
             if (level == 2)
             {

@@ -6,8 +6,6 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
 {
     public class ParagraphRenderer : RazorComponentObjectRenderer<ParagraphBlock>
     {
-        public string FontFamily { get; set; } = "sans-serif";
-
         protected override void Write(RazorComponentRenderer renderer, ParagraphBlock paragraphBlock)
         {
             if (paragraphBlock.Inline == null)
@@ -24,8 +22,6 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
                 // Only add vertical margin for non-inlined paragraph blocks.
                 builder.AddAttribute(renderer.Sequence++, "Class", "my-4");
             }
-            
-            builder.AddAttribute(renderer.Sequence++, "Style", $"font-family: {FontFamily}");
 
             builder.AddAttribute(renderer.Sequence++, "ChildContent", (RenderFragment)(inlineBuilder =>
             {

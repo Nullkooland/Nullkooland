@@ -72,7 +72,7 @@
 
                 <div class="d-flex flex-row align-center">
                     <MudIcon Class="ml-2" Icon=@Icons.Material.Filled.Event Size="Size.Small" />
-                    <MudText Class="ml-2" Typo="Typo.subtitle2">
+                    <MudText Class="ml-2" Typo="Typo.button">
                         @ViewModel.Post.Date.ToString("yyyy/MM/dd")
                     </MudText>
 
@@ -96,8 +96,7 @@
 
             <div class="pa-6">
                 <MudText Class="mt-6"
-                     Typo="@ViewModel.TitleTypo"
-                     Style="@($"font-family: {ViewModel.TitleFontFamily}")">
+                     Typo="@ViewModel.TitleTypo">
                     @ViewModel.Post?.Title
                 </MudText>
                 <MudDivider Class="my-6" />
@@ -106,15 +105,13 @@
 
             <MudDivider Class="mx-6" />
 
-            <div class="py-6 d-flex flex-row justify-center align-center post-papper">
-                <MudIcon Icon="@CustomIcons.ClawScratch" Color="Color.Tertiary" Size="Size.Large" />
-                <MudText Class="mx-4"
-                         Typo="Typo.h4"
-                         Color="Color.Tertiary"
-                         Style="font-family: Roboto Slab; font-style: italic;">
-                    EOF
-                </MudText>
-            </div>
+            <MudText Class="py-6"
+                     Typo="Typo.h3"
+                     Align="Align.Center"
+                     Color="Color.Tertiary"
+                     Style="letter-spacing: 0.1em">
+                @ViewModel.EndingWord
+            </MudText>
         </MudPaper>
 
         <MudPaper Class="mt-2 mt-sm-6 pa-6 d-flex flex-column post-papper" Elevation="3">

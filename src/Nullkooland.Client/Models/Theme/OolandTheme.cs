@@ -24,6 +24,8 @@ namespace Nullkooland.Client.Models.Theme
 
         public Palette? Colors { get; init; }
 
-        public string? BorderRadius { get; set; }
+        public string? BorderRadius { get; init; }
+
+        public Typography? Typography { get; init; }
     }
 }

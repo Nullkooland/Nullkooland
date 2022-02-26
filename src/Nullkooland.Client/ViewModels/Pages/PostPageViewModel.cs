@@ -36,19 +36,18 @@ namespace Nullkooland.Client.ViewModels.Pages
             _ => string.Empty,
         };
 
+        public string EndingWord => _themeService.Type switch
+        {
+            OolandThemeType.Yunshan => ">>> EOF <<<",
+            OolandThemeType.Nullko => "完",
+            _ => string.Empty,
+        };
+
         public BlogPost? Post { get; private set; }
 
         public RenderFragment? Markdown { get; set; }
 
-        public Typo TitleTypo => Post?.Title.Length > 12 ? Typo.h3 : Typo.h2;
-
-        public string? TitleFontFamily => Post?.Type switch
-        {
-            BlogPostType.Technical => "Roboto Slab",
-            BlogPostType.Personal => "Noto Serif SC",
-            BlogPostType.Ramblings => "Noto Serif SC",
-            _ => "sans-serif",
-        };
+        public Typo TitleTypo => Post?.Title.Length > 12 ? Typo.h2 : Typo.h1;
 
         public string? CommentTitle => Post?.Type switch
         {
@@ -78,15 +77,7 @@ namespace Nullkooland.Client.ViewModels.Pages
 
             string? content = await _blogPostService.GetContentAsync(Post);
 
-            string? fontFamily = Post?.Type switch
-            {
-                BlogPostType.Technical => "Roboto, sans-serif",
-                BlogPostType.Personal => "Noto Serif SC",
-                BlogPostType.Ramblings => "Noto Serif SC",
-                _ => "sans-serif",
-            };
-
-            Markdown = _markdownRenderService.Render(content, fontFamily, Post.Url);
+            Markdown = _markdownRenderService.Render(content, Post.Url);
 
             IsLoading = false;
         }

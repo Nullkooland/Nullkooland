@@ -20,10 +20,13 @@
     <MudPaper Class="my-6 pa-6 d-block d-sm-flex flex-row greetings-box">
         <MudAvatar Image="@ViewModel.AvatarImage" Color="Color.Dark" Style="height: 20vh; width: 20vh;" />
         <div class="ml-6 d-flex flex-column">
-            <MudText Class="mt-2" Typo="Typo.h3" Style="font-family: Roboto Slab">
+            <MudText Class="mt-2" 
+                     Typo="Typo.h2">
                 @ViewModel.GreetingsTitle
             </MudText>
-            <MudText Class="mt-2" Typo="Typo.h5" Color="Color.Primary">
+            <MudText Class="mt-2"
+                     Typo="Typo.subtitle1" 
+                     Color="Color.Primary">
                 @ViewModel.GreetingsContent
             </MudText>
         </div>
@@ -44,7 +47,7 @@
                     <MudCard>
                         <MudCardHeader>
                             <CardHeaderContent>
-                                <MudLink Typo="Typo.h5" Color="Color.Secondary" Href="@post.Url">@post.Title</MudLink>
+                                <MudLink Typo="Typo.subtitle1" Color="Color.Secondary" Href="@post.Url">@post.Title</MudLink>
                             </CardHeaderContent>
                             <CardHeaderActions>
                                 <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Default" Link="@post.Url" />

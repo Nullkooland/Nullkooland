@@ -32,7 +32,7 @@
                                Link="@post.Url">
                         <div class="pa-4 d-flex flex-column align-start"
                              style="height: 25vh; width: 60%; background-color: var(--mud-palette-surface)">
-                            <MudLink Typo="Typo.h5" Href="@post.Url">
+                            <MudLink Typo="Typo.subtitle1" Href="@post.Url">
                                 <MudHighlighter Class="mud-error-text" Style="font-size: x-large; background-color: transparent; font-weight:bold"
                                                 Text="@post.Title" HighlightedText="@keyword"/>
                             </MudLink>
@@ -45,7 +45,7 @@
 
                             <div class="mt-auto d-flex flex-row align-center">
                                 <MudIcon Icon="@Icons.Material.Filled.DateRange" Size="Size.Small"/>
-                                <MudText Class="ml-2" Typo="Typo.body2">@post.Date.ToString("dddd yyyy-MM-dd")</MudText>
+                                <MudText Class="ml-2" Typo="Typo.button">@post.Date.ToString("dddd yyyy-MM-dd")</MudText>
                             </div>
                         </div>
 
