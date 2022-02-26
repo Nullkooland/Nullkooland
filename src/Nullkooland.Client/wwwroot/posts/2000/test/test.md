@@ -29,7 +29,7 @@ $\{X(t), t \in T\} \in \mathcal{H}$, if:
 
 then we call $\{X(t), t \in T\} \in \mathcal{H}$ a weak (generalize) stationary process, or simply, stationary process.
 
-$R_X(\tau)$ is the **auto-correlation function** of $\{X(t), t \in T\}$, and its covariance function is $C_X(\tau) = R_X(\tau) - |m_X|^2$, both are irrelevant of starting time.
+$R_X(\tau)$ is the *auto-correlation function* of $\{X(t), t \in T\}$, and its covariance function is $C_X(\tau) = R_X(\tau) - |m_X|^2$, both are irrelevant of starting time.
 
 ### 4.1.3 Relationship between Strict and Weak Stationarity
 
@@ -116,9 +116,9 @@ as the time average estimate of $R_X(\tau)$ on $\R$, it is a **stochastic proces
 
 Note that $X(t)$ must be mean square integrable on any finite interval
 
-If $P\{\hat{m}_X = m_X\} = 1$, $X(t)$ is said to be **mean-ergodic**
+If $P\{\hat{m}_X = m_X\} = 1$, $X(t)$ is said to be *mean-ergodic*
 
-If $\forall \tau, P\{\hat{R}_X(\tau) = R_X(\tau)\} = 1$, $X(t)$ is said to be **autocorrelation-ergodic**
+If $\forall \tau, P\{\hat{R}_X(\tau) = R_X(\tau)\} = 1$, $X(t)$ is said to be *autocorrelation-ergodic*
 
 If $X(t)$ is both mean-ergodic and autocorrelation-ergodic, it is an **ergodic process**
 

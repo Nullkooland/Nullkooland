@@ -35,7 +35,105 @@
             "linesInputs": "rgba(255,255,255, 0.3)",
             "textDisabled": "rgba(255,255,255, 0.2)"
         },
-        "borderRadius": "0px"
+        "borderRadius": "0px",
+        "typography": {
+            "default": {
+                "fontFamily": [
+                    "Roboto Slab",
+                    "-apple-system",
+                    "Segoe UI",
+                    "sans-serif"
+                ],
+                "fontWeight": 400,
+                "fontSize": "1.0rem",
+                "lineHeight": 1.5,
+                "letterSpacing": null,
+                "textTransform": null
+            },
+            "body1": {
+                "fontFamily": [
+                    "Saira",
+                    "-apple-system",
+                    "Segoe UI",
+                    "sans-serif"
+                ],
+                "fontWeight": 400,
+                "fontSize": "1.2rem",
+                "lineHeight": 1.5
+            },
+            "body2": {
+                "fontFamily": [
+                    "Saira",
+                    "-apple-system",
+                    "Segoe UI",
+                    "sans-serif"
+                ],
+                "fontWeight": 400,
+                "fontSize": "1.0rem",
+                "lineHeight": 1.25
+            },
+            "caption": {
+                "fontWeight": 400,
+                "fontSize": "0.8rem",
+                "lineHeight": 1.25,
+                "fontFamily": [
+                    "Saira",
+                    "-apple-system",
+                    "Segoe UI",
+                    "sans-serif"
+                ]
+            },
+            "h1": {
+                "fontWeight": 600,
+                "fontSize": "3.6rem",
+                "lineHeight": 1.25
+            },
+            "h2": {
+                "fontWeight": 700,
+                "fontSize": "2.4rem",
+                "lineHeight": 1.5
+            },
+            "h3": {
+                "fontWeight": 500,
+                "fontSize": "2.0rem",
+                "lineHeight": 2
+            },
+            "h4": {
+                "fontWeight": 600,
+                "fontSize": "1.6rem",
+                "lineHeight": 2
+            },
+            "h5": {
+                "fontWeight": 700,
+                "fontSize": "1.4rem",
+                "lineHeight": 1.5
+            },
+            "h6": {
+                "fontWeight": 500,
+                "fontSize": "1.2rem",
+                "lineHeight": 1.25
+            },
+            "subtitle1": {
+                "fontWeight": 400,
+                "fontSize": "1.4rem",
+                "lineHeight": 1.25
+            },
+            "subtitle2": {
+                "fontWeight": 500,
+                "fontSize": "1.2rem",
+                "lineHeight": 1.0
+            },
+            "button": {
+                "fontWeight": 500,
+                "fontSize": "0.8rem",
+                "lineHeight": 1.75
+            },
+            "overline": {
+                "fontWeight": 400,
+                "fontSize": "0.8rem",
+                "lineHeight": 2.5
+            }
+        }
     },
     "nullko": {
         "siteTitle": "Nullkooland",
@@ -44,6 +142,7 @@
         "greetingsTitle": "Hey, you've found my ooland!",
         "greetingsContent": "It's winter again, gotta get myself a cup of hot tea. 🍵",
         "colors": {
+            "textPrimary": "#333333",
             "primary": "#60306C",
             "primaryLighten": "#E1C8F0",
             "primaryDarken": "#482451",
@@ -54,6 +153,84 @@
             "appbarBackground": "#60306CEE",
             "drawerBackground": "#F8F8F8"
         },
-        "borderRadius": "4px"
+        "borderRadius": "4px",
+        "typography": {
+            "default": {
+                "fontFamily": [
+                    "Newsreader",
+                    "Noto Serif SC",
+                    "ui-serif",
+                    "serif"
+                ],
+                "fontWeight": 400,
+                "fontSize": "1rem",
+                "lineHeight": 1.5
+            },
+            "body1": {
+                "fontWeight": 400,
+                "fontSize": "1.25rem",
+                "lineHeight": 1.75
+            },
+            "body2": {
+                "fontWeight": 400,
+                "fontSize": "1rem",
+                "lineHeight": 1.25
+            },
+            "caption": {
+                "fontWeight": 500,
+                "fontSize": "0.875rem",
+                "lineHeight": 1.25
+            },
+            "h1": {
+                "fontWeight": 600,
+                "fontSize": "3.5rem",
+                "lineHeight": 1.1
+            },
+            "h2": {
+                "fontWeight": 700,
+                "fontSize": "2.75rem",
+                "lineHeight": 1.2
+            },
+            "h3": {
+                "fontWeight": 500,
+                "fontSize": "2.25rem",
+                "lineHeight": 1.3
+            },
+            "h4": {
+                "fontWeight": 600,
+                "fontSize": "2.0rem",
+                "lineHeight": 1.4
+            },
+            "h5": {
+                "fontWeight": 500,
+                "fontSize": "1.75rem",
+                "lineHeight": 1.5
+            },
+            "h6": {
+                "fontWeight": 600,
+                "fontSize": "1.5rem",
+                "lineHeight": 1.6
+            },
+            "subtitle1": {
+                "fontWeight": 400,
+                "fontSize": "1.5rem",
+                "lineHeight": 1.25
+            },
+            "subtitle2": {
+                "fontWeight": 500,
+                "fontSize": "1.25rem",
+                "lineHeight": 1.0
+            },
+            "button": {
+                "fontWeight": 500,
+                "fontSize": "1.0rem",
+                "lineHeight": 1.0
+            },
+            "overline": {
+                "fontWeight": 400,
+                "fontSize": "0.875rem",
+                "lineHeight": 2.5
+            }
+        }
     }
 }

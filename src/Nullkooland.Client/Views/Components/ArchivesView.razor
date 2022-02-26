@@ -36,17 +36,17 @@ else
             <MudExpansionPanel>
                 <TitleContent>
                     <div class="d-flex flex-row align-center">
-                        <MudLink Typo="Typo.h5" Color="Color.Secondary" Class="ml-1 mr-auto"
+                        <MudLink Typo="Typo.subtitle1" Color="Color.Secondary" Class="ml-1 mr-auto"
                                  Href="@post.Url">
                             @post.Title
                         </MudLink>
                         <MudIcon Icon="@Icons.Material.Filled.Event" Size="Size.Small" Class="mx-1"/>
-                        <MudText Typo="Typo.subtitle2" Class="mx-1">@post.Date.ToString("yyyy/MM/dd")</MudText>
+                        <MudText Typo="Typo.button" Class="mx-1">@post.Date.ToString("yyyy/MM/dd")</MudText>
                     </div>
                 </TitleContent>
                 <ChildContent>
                     <div class="d-flex flex-column">
-                        <MudText Class="mb-2">@post.Brief</MudText>
+                        <MudText Typo="Typo.body2" Class="mb-2">@post.Brief</MudText>
                         <MudButton Class="pa-0 mud-elevation-2" Style="width: 100%; overflow: hidden;"
                                    Link="@post.Url">
                             <img src="@post.HeaderImagePath" alt="@post.Id" style="height: 40vh; width: 100%; object-fit: cover"/>

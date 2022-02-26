@@ -31,17 +31,9 @@ namespace Nullkooland.Client.Services.Markdown
             return Markdig.Markdown.ToHtml(markdown, _pipeline);
         }
 
-        public RenderFragment Render(string markdown, string fontFamily, string? baseUrl = null)
+        public RenderFragment Render(string markdown, string? baseUrl = null)
         {
-            var paragraphRenderer = _renderer.ObjectRenderers.FindExact<ParagraphRenderer>();
-            var autolinkRenderer = _renderer.ObjectRenderers.FindExact<AutolinkInlineRenderer>();
             var linkRenderer = _renderer.ObjectRenderers.FindExact<LinkInlineRenderer>();
-            var headingsRenderer = _renderer.ObjectRenderers.FindExact<HeadingsRenderer>();
-
-            paragraphRenderer!.FontFamily = fontFamily;
-            autolinkRenderer!.FontFamily = fontFamily;
-            linkRenderer!.FontFamily = fontFamily;
-            headingsRenderer!.FontFamily = fontFamily;
 
             linkRenderer!.BaseUrl = baseUrl;
 
