@@ -4,7 +4,7 @@ date: "2021-02-24T12:15:48+08:00"
 title: "灯儿晃记：2021年 第二期"
 brief: "这次从后面上云山（¿"
 headerImage: "feet_in_mountain_spring_stream.avif"
-tags: ["灯儿晃", "游记", "随想", "云山", "川东平行岭谷", "AVIF"]
+tags: ["灯儿晃", "缙云山", "川东平行岭谷", "北碚", "AVIF"]
 ---
 
 # 灯儿晃记：2021年 第二期

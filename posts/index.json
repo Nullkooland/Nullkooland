@@ -70,10 +70,9 @@
         "id": "meandering_souls_ep2",
         "tags": [
             "灯儿晃",
-            "游记",
-            "随想",
-            "云山",
+            "缙云山",
             "川东平行岭谷",
+            "北碚",
             "AVIF"
         ],
         "title": "灯儿晃记：2021年 第二期",
@@ -86,13 +85,28 @@
         "id": "meandering_souls_ep3",
         "tags": [
             "灯儿晃",
-            "游记",
-            "云山",
+            "缙云山",
             "川东平行岭谷",
             "嘉陵江",
+            "北碚",
             "鸣虫"
         ],
         "title": "灯儿晃记：2021年 第三期",
+        "type": 1
+    },
+    "meandering_souls_three_explorations_of_the_cloud_and_mist_mountain": {
+        "brief": "沥鼻峡侧寻炭坝，云雾山巅会石狮",
+        "date": "2021-02-15T17:07:30+08:00",
+        "headerImage": "amid_cloud_and_mist.avif",
+        "id": "meandering_souls_three_explorations_of_the_cloud_and_mist_mountain",
+        "tags": [
+            "灯儿晃",
+            "川东平行岭谷",
+            "云雾山",
+            "北碚",
+            "合川"
+        ],
+        "title": "灯儿晃记：三探云雾山",
         "type": 1
     },
     "stm32_dev_with_vscode": {
