@@ -1,6 +1,6 @@
 ---
 type: "personal"
-date: "2021-02-15T17:07:30+08:00"
+date: "2022-02-15T17:07:30+08:00"
 title: "灯儿晃记：三探云雾山"
 brief: "沥鼻峡侧寻炭坝，云雾山巅会石狮"
 headerImage: "amid_cloud_and_mist.avif"
