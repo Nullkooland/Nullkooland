@@ -6,8 +6,8 @@
         "camera_calib_0"
     ],
     "Computer Vision": [
-        "gather_scatter_ops_in_dnn",
-        "camera_calib_0"
+        "camera_calib_0",
+        "gather_scatter_ops_in_dnn"
     ],
     "Deep Learning": [
         "gather_scatter_ops_in_dnn"
@@ -20,6 +20,9 @@
     ],
     "Intro": [
         "intro"
+    ],
+    "Monstercat": [
+        "wishful_thinking"
     ],
     "Nullkooland": [
         "intro"
@@ -44,10 +47,10 @@
         "meandering_souls_three_explorations_of_the_cloud_and_mist_mountain"
     ],
     "北碚": [
-        "meandering_souls_three_explorations_of_the_cloud_and_mist_mountain",
         "meandering_souls_ep1",
         "meandering_souls_ep2",
-        "meandering_souls_ep3"
+        "meandering_souls_ep3",
+        "meandering_souls_three_explorations_of_the_cloud_and_mist_mountain"
     ],
     "合川": [
         "meandering_souls_three_explorations_of_the_cloud_and_mist_mountain"
@@ -56,26 +59,35 @@
         "meandering_souls_ep3"
     ],
     "川东平行岭谷": [
-        "meandering_souls_three_explorations_of_the_cloud_and_mist_mountain",
         "meandering_souls_ep2",
-        "meandering_souls_ep3"
+        "meandering_souls_ep3",
+        "meandering_souls_three_explorations_of_the_cloud_and_mist_mountain"
+    ],
+    "歌词翻译": [
+        "wishful_thinking"
     ],
     "游记": [
         "meandering_souls_ep1"
     ],
     "灯儿晃": [
-        "meandering_souls_three_explorations_of_the_cloud_and_mist_mountain",
         "meandering_souls_ep1",
         "meandering_souls_ep2",
-        "meandering_souls_ep3"
+        "meandering_souls_ep3",
+        "meandering_souls_three_explorations_of_the_cloud_and_mist_mountain"
+    ],
+    "电子音乐": [
+        "wishful_thinking"
     ],
     "缙云山": [
         "meandering_souls_ep2",
         "meandering_souls_ep3"
     ],
+    "自我探索": [
+        "wishful_thinking"
+    ],
     "随想": [
-        "meandering_souls_ep1",
-        "intro"
+        "intro",
+        "meandering_souls_ep1"
     ],
     "鸣虫": [
         "meandering_souls_ep3"

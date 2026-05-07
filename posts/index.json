@@ -133,5 +133,19 @@
         ],
         "title": "Use libheif to read HEIF Images",
         "type": 0
+    },
+    "wishful_thinking": {
+        "brief": "Is it wishful thinking, that I'll see better days?",
+        "date": "2026-05-04T19:20:42+08:00",
+        "headerImage": "mount_jinyun_dusk_20260504.avif",
+        "id": "wishful_thinking",
+        "tags": [
+            "电子音乐",
+            "Monstercat",
+            "歌词翻译",
+            "自我探索"
+        ],
+        "title": "Wishful Thinking",
+        "type": 1
     }
 }
