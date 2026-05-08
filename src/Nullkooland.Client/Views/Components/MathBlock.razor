@@ -10,12 +10,9 @@ else
 }
 
 @code {
-    [EditorRequired]
-    [Parameter]
-    public string? MathText { get; set; }
+    [EditorRequired] [Parameter] public string? MathText { get; set; }
 
-    [Parameter]
-    public bool Inline { get; set; } = false;
+    [Parameter] public bool Inline { get; set; } = false;
 
     private ElementReference _mathElement;
 
@@ -23,7 +20,7 @@ else
     {
         if (firstRender)
         {
-            var options = new {displayMode = !Inline, output = "html"};
+            var options = new { displayMode = !Inline, output = "html" };
             await JS.InvokeVoidAsync("katex.render", MathText, _mathElement, options);
         }
     }

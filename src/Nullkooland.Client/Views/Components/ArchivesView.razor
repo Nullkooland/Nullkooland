@@ -31,7 +31,7 @@ else
     <MudDivider Class="mt-4 mb-6"/>
 
     <MudExpansionPanels>
-        @foreach (var post in ViewModel.Posts)
+        @foreach (var post in ViewModel.Posts!)
         {
             <MudExpansionPanel>
                 <TitleContent>
@@ -48,20 +48,20 @@ else
                     <div class="d-flex flex-column">
                         <MudText Typo="Typo.body2" Class="mb-2">@post.Brief</MudText>
                         <MudButton Class="pa-0 mud-elevation-2" Style="width: 100%; overflow: hidden;"
-                                   Link="@post.Url">
+                                   Href="@post.Url">
                             <img src="@post.HeaderImagePath" alt="@post.Id" style="height: 40vh; width: 100%; object-fit: cover"/>
                         </MudButton>
                         <div class="d-flex flex-row mt-2">
                             <MudButton Class="mr-auto" StartIcon="@Icons.Material.Filled.DoubleArrow"
                                        Variant="Variant.Text" Color="Color.Primary" Size="Size.Medium"
-                                       Link="@post.Url">
+                                       Href="@post.Url">
                                 Read Now
                             </MudButton>
 
                             <div class="d-flex align-content-end flex-wrap pa-0" style="max-width: 60%">
                                 @foreach (string tag in post.Tags)
                                 {
-                                    <MudChip Variant="Variant.Outlined" Size="Size.Small" Class="ml-1" Link="@($"tags/{tag}")">
+                                    <MudChip T="string" Variant="Variant.Outlined" Size="Size.Small" Class="ml-1" Href="@($"tags/{tag}")">
                                         @tag
                                     </MudChip>
                                 }

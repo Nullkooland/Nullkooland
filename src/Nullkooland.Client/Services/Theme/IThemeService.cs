@@ -9,11 +9,9 @@ namespace Nullkooland.Client.Services.Theme
     {
         ValueTask InitAsync();
 
-        OolandThemeType Type { get; }
+        bool IsDarkMode { get; set; }
 
-        event EventHandler<OolandThemeType>? ThemeChanged;
-
-        bool IsDark { get; }
+        OolandThemeType ThemeType { get; }
 
         string SiteTitle { get; }
 
@@ -24,8 +22,6 @@ namespace Nullkooland.Client.Services.Theme
         string GreetingsTitle { get; }
 
         string GreetingsContent { get; }
-
-        Palette Colors { get; }
 
         MudTheme MudTheme { get; }
     }

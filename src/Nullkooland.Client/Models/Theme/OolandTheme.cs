@@ -6,6 +6,7 @@ namespace Nullkooland.Client.Models.Theme
     {
         // Moonbear of the day.
         Nullko,
+
         // Tiger of the night.
         Yunshan,
     }
@@ -22,7 +23,9 @@ namespace Nullkooland.Client.Models.Theme
 
         public string? GreetingsContent { get; init; }
 
-        public Palette? Colors { get; init; }
+        public PaletteDark? DarkColors { get; init; }
+
+        public PaletteLight? LightColors { get; init; }
 
         public string? BorderRadius { get; init; }
 

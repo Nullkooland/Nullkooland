@@ -28,6 +28,7 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
                 {
                     RenderTableRow(renderer, (TableRow)table[i], false);
                 }
+
                 inlineBuilder.CloseElement();
 
                 renderer.BuilderStack.Pop();
@@ -47,6 +48,7 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
                 renderer.Write(row[j]);
                 builder.CloseElement();
             }
+
             builder.CloseElement();
         }
     }

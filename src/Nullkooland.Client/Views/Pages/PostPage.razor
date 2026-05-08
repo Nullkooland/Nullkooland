@@ -11,29 +11,29 @@
         overflow: hidden;
     }
 
-        .post-header > img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
+    .post-header>img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 
-        .post-header > div {
-            position: absolute;
-            bottom: 0px;
-            height: 2.5rem;
-            width: 100%;
-            background-color: @ThemeService.Colors.BackgroundGrey.SetAlpha(0.5);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.2);
-        }
+    .post-header>div {
+        position: absolute;
+        bottom: 0px;
+        height: 2.5rem;
+        width: 100%;
+        background-color: rgba(var(--mud-palette-background-gray), 0.5);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.2);
+    }
 
-            .post-header > div > span {
-                height: fit-content;
-                max-width: 75%;
-                overflow-x: hidden;
-            }
+    .post-header>div>span {
+        height: fit-content;
+        max-width: 75%;
+        overflow-x: hidden;
+    }
 
     .post-papper {
         overflow: hidden;
@@ -47,19 +47,19 @@
     @if (ViewModel.IsLoading)
     {
         <MudPaper Class="post-papper" Elevation="3">
-            <MudSkeleton SkeletonType="SkeletonType.Rectangle" Height="50vh" />
+            <MudSkeleton SkeletonType="SkeletonType.Rectangle" Height="50vh"/>
             <div class="d-flex flex-column pa-4">
-                <MudSkeleton Width="30%" Height="60px;" />
-                <MudDivider Class="my-6" />
+                <MudSkeleton Width="30%" Height="60px;"/>
+                <MudDivider Class="my-6"/>
 
-                <MudSkeleton Width="60%" />
-                <MudSkeleton Width="60%" />
-                <MudSkeleton Width="60%" />
-                <MudSkeleton Width="100%" />
+                <MudSkeleton Width="60%"/>
+                <MudSkeleton Width="60%"/>
+                <MudSkeleton Width="60%"/>
+                <MudSkeleton Width="100%"/>
 
                 <div class="d-flex flex-row align-self-end px-2">
-                    <MudSkeleton Width="60px" Height="40px" Class="ml-2" />
-                    <MudSkeleton Width="120px" Height="40px" Class="ml-3" />
+                    <MudSkeleton Width="60px" Height="40px" Class="ml-2"/>
+                    <MudSkeleton Width="120px" Height="40px" Class="ml-3"/>
                 </div>
             </div>
         </MudPaper>
@@ -68,25 +68,26 @@
     {
         <MudPaper Class="post-papper" Elevation="3">
             <div class="post-header">
-                <img src="@ViewModel.Post.HeaderImagePath" alt="@ViewModel.Post.HeaderImage" />
+                <img src="@ViewModel.Post.HeaderImagePath" alt="@ViewModel.Post.HeaderImage"/>
 
                 <div class="d-flex flex-row align-center">
-                    <MudIcon Class="ml-2" Icon=@Icons.Material.Filled.Event Size="Size.Small" />
+                    <MudIcon Class="ml-2" Icon=@Icons.Material.Filled.Event Size="Size.Small"/>
                     <MudText Class="ml-2" Typo="Typo.button">
                         @ViewModel.Post.Date.ToString("yyyy/MM/dd")
                     </MudText>
 
                     <MudIconButton Class="ml-auto"
-                               Icon=@ViewModel.TagsIcon
-                               Size="Size.Small"
-                               Link="tags" />
+                                   Icon=@ViewModel.TagsIcon
+                                   Size="Size.Small"
+                                   Href="tags"/>
                     <span class="mr-1 d-flex flex-row">
                         @foreach (string tag in ViewModel.Post.Tags)
                         {
                             <MudChip Class="ml-1"
-                             Label="true"
-                             Size="Size.Small"
-                             Link="@($"tags/{tag}")">
+                                     T="string"
+                                     Label="true"
+                                     Size="Size.Small"
+                                     Href="@($"tags/{tag}")">
                                 @tag
                             </MudChip>
                         }
@@ -96,14 +97,14 @@
 
             <div class="pa-6">
                 <MudText Class="mt-6"
-                     Typo="@ViewModel.TitleTypo">
+                         Typo="@ViewModel.TitleTypo">
                     @ViewModel.Post?.Title
                 </MudText>
-                <MudDivider Class="my-6" />
+                <MudDivider Class="my-6"/>
                 @ViewModel.Markdown
             </div>
 
-            <MudDivider Class="mx-6" />
+            <MudDivider Class="mx-6"/>
 
             <MudText Class="py-6"
                      Typo="Typo.h3"
@@ -116,25 +117,25 @@
 
         <MudPaper Class="mt-2 mt-sm-6 pa-6 d-flex flex-column post-papper" Elevation="3">
             <div class="d-flex flex-row align-center">
-                <MudIcon Icon="@Icons.Material.Filled.Chat" Size="Size.Large" Color="Color.Primary" />
+                <MudIcon Icon="@Icons.Material.Filled.Chat" Size="Size.Large" Color="Color.Primary"/>
                 <MudText Class="ml-4" Typo="Typo.h5"
-                     Style="text-transform: uppercase; font-weight: bold">
+                         Style="text-transform: uppercase; font-weight: bold">
                     @ViewModel.CommentTitle
                 </MudText>
             </div>
 
-            <MudDivider Class="my-4" />
+            <MudDivider Class="my-4"/>
 
-            <Comment />
+            <Comment/>
         </MudPaper>
     }
-    </MudContainer>
+</MudContainer>
 
-    @if (!ViewModel.IsLoading && ViewModel.Post == null)
+@if (!ViewModel.IsLoading && ViewModel.Post == null)
 {
     <img src="images/amid_the_zhongliang_mountain.avif"
-     title="29° 52′ 16″ N 106° 31′ 12″ E"
-     style="position:fixed;
+         title="29° 52′ 16″ N 106° 31′ 12″ E"
+         style="position:fixed;
                 top:0;
                 left:0;
                 bottom:0;
@@ -142,21 +143,14 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                object-position: center" />
+                object-position: center"/>
 }
 
 @code
 {
-    [Parameter]
-    public int Year { get; set; }
+    [Parameter] public int Year { get; set; }
 
-    [Parameter]
-    public string Id { get; set; }
-
-    protected override void OnInitialized()
-    {
-        ThemeService.ThemeChanged += (_, themeType) => StateHasChanged();
-    }
+    [Parameter] public string Id { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {

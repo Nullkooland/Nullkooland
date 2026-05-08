@@ -54,7 +54,7 @@ namespace Nullkooland.Client.ViewModels.Shared
             IsNavMenuOpened = !IsNavMenuOpened;
         }
 
-        public IEnumerable<(string, string, string)> GetNavItems => _themeService.Type switch
+        public IEnumerable<(string, string, string)> GetNavItems => _themeService.ThemeType switch
         {
             OolandThemeType.Nullko => _navUrls.Zip(_navTitles, _navNullkoIcons),
             OolandThemeType.Yunshan => _navUrls.Zip(_navTitles, _navYunshanIcons),

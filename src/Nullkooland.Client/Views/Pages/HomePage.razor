@@ -7,25 +7,27 @@
     .greetings-box {
         background-attachment: fixed;
         background-size: contain;
-        background-image: linear-gradient(to right, 
-        @ThemeService.Colors.BackgroundGrey.SetAlpha(0.75) 50%, 
-        @ThemeService.Colors.BackgroundGrey.SetAlpha(0.0)), 
-        url("@ViewModel.BackgroundPattern");
-    }
+        background-image: linear-gradient(to right,
+                rgba(var(--mud-palette-background-gray), 0.75) 50%,
+                rgba(var(--mud-palette-background-gray), 0.0),
+                url("@ViewModel.BackgroundPattern");
+        }
 </style>
 
 <PageTitle>@ViewModel.PageTitle</PageTitle>
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge">
     <MudPaper Class="my-6 pa-6 d-block d-sm-flex flex-row greetings-box">
-        <MudAvatar Image="@ViewModel.AvatarImage" Color="Color.Dark" Style="height: 20vh; width: 20vh;" />
+        <MudAvatar Color="Color.Dark" Style="height: 20vh; width: 20vh;">
+            <MudImage Src="@ViewModel.AvatarImage" />
+        </MudAvatar>
         <div class="ml-6 d-flex flex-column">
-            <MudText Class="mt-2" 
+            <MudText Class="mt-2"
                      Typo="Typo.h2">
                 @ViewModel.GreetingsTitle
             </MudText>
             <MudText Class="mt-2"
-                     Typo="Typo.subtitle1" 
+                     Typo="Typo.subtitle1"
                      Color="Color.Primary">
                 @ViewModel.GreetingsContent
             </MudText>
@@ -35,7 +37,7 @@
     @if (ViewModel.IsLoading)
     {
         <div class="mt-8 d-flex flex-row justify-center align-center">
-            <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true" />
+            <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true"/>
         </div>
     }
     else
@@ -50,10 +52,10 @@
                                 <MudLink Typo="Typo.subtitle1" Color="Color.Secondary" Href="@post.Url">@post.Title</MudLink>
                             </CardHeaderContent>
                             <CardHeaderActions>
-                                <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Default" Link="@post.Url" />
+                                <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Default" Href="@post.Url"/>
                             </CardHeaderActions>
                         </MudCardHeader>
-                        <MudCardMedia Image="@post.HeaderImagePath" />
+                        <MudCardMedia Image="@post.HeaderImagePath"/>
                         <MudCardContent>
                             <MudText Typo="Typo.body2">@post.Brief</MudText>
                         </MudCardContent>
@@ -63,13 +65,12 @@
         </MudGrid>
     }
 </MudContainer>
-<Footer />
+<Footer/>
 
 @code
 {
     protected override async Task OnInitializedAsync()
     {
-        ThemeService.ThemeChanged += (_, themeType) => StateHasChanged();
         await ViewModel.LoadRecentPostsAsync();
     }
 }

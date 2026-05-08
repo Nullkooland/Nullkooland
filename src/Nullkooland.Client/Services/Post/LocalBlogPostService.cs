@@ -24,7 +24,7 @@ namespace Nullkooland.Client.Services.Post
         public async ValueTask<int> LoadAsync()
         {
             // Metadata already loaded, return immediately
-            if (_posts?.Any() ?? false)
+            if (_posts?.Count > 0)
             {
                 return _posts.Count;
             }

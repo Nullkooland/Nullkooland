@@ -7,9 +7,9 @@ namespace Nullkooland.Client.Models.Theme
 {
     public class MudColorJsonConverter : JsonConverter<MudColor>
     {
-        public override MudColor? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override MudColor Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            return new MudColor(reader.GetString());
+            return new MudColor(reader.GetString()!);
         }
 
         public override void Write(Utf8JsonWriter writer, MudColor value, JsonSerializerOptions options)

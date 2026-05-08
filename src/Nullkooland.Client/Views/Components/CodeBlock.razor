@@ -15,15 +15,11 @@ else
 
 
 @code {
-    [EditorRequired]
-    [Parameter]
-    public string? Code { get; set; }
+    [EditorRequired] [Parameter] public string? Code { get; set; }
 
-    [Parameter]
-    public string Language { get; set; } = "none";
+    [Parameter] public string Language { get; set; } = "none";
 
-    [Parameter]
-    public bool Inline { get; set; } = false;
+    [Parameter] public bool Inline { get; set; }
 
     private ElementReference _codeElement;
 

@@ -14,14 +14,12 @@ namespace Nullkooland.Client.Services.Theme
     public class LocalThemeService : IThemeService
     {
         private readonly HttpClient _client;
-        private readonly IJSRuntime _jsRuntime;
 
         private Dictionary<OolandThemeType, OolandTheme> _themes;
 
-        public LocalThemeService(HttpClient client, IJSRuntime jsRuntime)
+        public LocalThemeService(HttpClient client)
         {
             _client = client;
-            _jsRuntime = jsRuntime;
         }
 
         public async ValueTask InitAsync()
@@ -36,54 +34,34 @@ namespace Nullkooland.Client.Services.Theme
                 }
             };
 
-            var themes = await _client.GetFromJsonAsync<Dictionary<OolandThemeType, OolandTheme>>("themes.json", jsonOptions);
+            var themes =
+                await _client.GetFromJsonAsync<Dictionary<OolandThemeType, OolandTheme>>("themes.json", jsonOptions);
             _themes = themes!;
-
-            bool isDarkMode = await _jsRuntime.InvokeAsync<bool>("darkModeHelper.isDarkMode");
-            Type = isDarkMode ? OolandThemeType.Yunshan : OolandThemeType.Nullko;
-
-            var thisRef = DotNetObjectReference.Create(this);
-            await _jsRuntime.InvokeVoidAsync("darkModeHelper.registerColorSchemeChangedCallback", thisRef);
         }
 
-        public OolandThemeType Type { get; private set; }
+        public bool IsDarkMode { get; set; }
 
-        public event EventHandler<OolandThemeType>? ThemeChanged;
+        public OolandThemeType ThemeType => IsDarkMode ? OolandThemeType.Yunshan : OolandThemeType.Nullko;
 
-        [JSInvokable]
-        public void OnColorSchemeChanged(bool isDarkMode)
+        public string SiteTitle => _themes[ThemeType].SiteTitle!;
+
+        public string AvatarImage => _themes[ThemeType].AvatarImage!;
+
+        public string BackgroundPattern => _themes[ThemeType].BackgroundPattern!;
+
+        public string GreetingsTitle => _themes[ThemeType].GreetingsTitle!;
+
+        public string GreetingsContent => _themes[ThemeType].GreetingsContent!;
+
+        public MudTheme MudTheme => new()
         {
-            Type = isDarkMode ? OolandThemeType.Yunshan : OolandThemeType.Nullko;
-            ThemeChanged?.Invoke(this, Type);
-        }
-
-        public bool IsDark => Type switch
-        {
-            OolandThemeType.Nullko => false,
-            OolandThemeType.Yunshan => true,
-            _ => false,
-        };
-
-        public string SiteTitle => _themes[Type].SiteTitle!;
-
-        public string AvatarImage => _themes[Type].AvatarImage!;
-
-        public string BackgroundPattern => _themes[Type].BackgroundPattern!;
-
-        public string GreetingsTitle => _themes[Type].GreetingsTitle!;
-
-        public string GreetingsContent => _themes[Type].GreetingsContent!;
-
-        public Palette Colors => _themes[Type].Colors!;
-
-        public MudTheme MudTheme => new MudTheme
-        {
-            Palette = _themes[Type].Colors,
+            PaletteDark = _themes[OolandThemeType.Yunshan].DarkColors!,
+            PaletteLight = _themes[OolandThemeType.Nullko].LightColors!,
             LayoutProperties = new LayoutProperties
             {
-                DefaultBorderRadius = _themes[Type].BorderRadius
+                DefaultBorderRadius = _themes[ThemeType].BorderRadius!
             },
-            Typography = _themes[Type].Typography
+            Typography = _themes[ThemeType].Typography!
         };
     }
 }
