@@ -26,17 +26,16 @@ jobs:
     steps:
       # Checks-out posts branch
       - name: Checkout posts
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
         with: 
           ref: posts
           path: posts
 
       # Read metadata from posts and generate indexing json
       - name: Setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.x' # Python version range
-          architecture: x64
+          python-version: '3.14' # Python version range
 
       # Read metadata from posts and generate indexing json
       - name: Read metadata and generate index
@@ -44,7 +43,7 @@ jobs:
 
       # Checks-out gh-pages branch
       - name: Checkout gh-pages
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
         with: 
           ref: gh-pages
           path: gh-pages
