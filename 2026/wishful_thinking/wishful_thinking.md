@@ -10,7 +10,7 @@ tags: ["电子音乐", "Monstercat", "歌词翻译", "自我探索"]
 
 > by WRLD & Keepsake
 
-![Wishful Thinking](https://www.youtube.com/watch?v=9VYTtTVXELw)
+![Wishful Thinking](https://www.bilibili.com/video/BV1Q44y1q7dj)
 
 I'm counting on the answer  
 我盼望着能有一个答案  
