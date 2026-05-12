@@ -5,7 +5,7 @@
         "backgroundPattern": "images/bg_pattern_yunshan.svg",
         "greetingsTitle": "云山虎穴",
         "greetingsContent": "where T : IRuabaoable<Tiger>",
-        "darkColors": {
+        "colors": {
             "primary": "#FF9800",
             "primaryLighten": "#ECCC68",
             "primaryDarken": "#D88100",
@@ -16,7 +16,7 @@
             "appbarBackground": "#FFAB00BD",
             "black": "#101010",
             "background": "#181818",
-            "backgroundGray": "#242424",
+            "backgroundGrey": "#242424",
             "surface": "#282828",
             "drawerBackground": "#323232",
             "drawerText": "rgba(255,255,255, 0.50)",
@@ -35,46 +35,47 @@
             "linesInputs": "rgba(255,255,255, 0.3)",
             "textDisabled": "rgba(255,255,255, 0.2)"
         },
-        "lightColors": {},
         "borderRadius": "0px",
         "typography": {
-            "defaultTypography": {
+            "default": {
                 "fontFamily": [
                     "Roboto Slab",
                     "-apple-system",
                     "Segoe UI",
                     "sans-serif"
                 ],
-                "fontWeight": "400",
+                "fontWeight": 400,
                 "fontSize": "1.0rem",
-                "lineHeight ": "1.5"
+                "lineHeight": 1.5,
+                "letterSpacing": null,
+                "textTransform": null
             },
-            "body1Typography": {
+            "body1": {
                 "fontFamily": [
                     "Saira",
                     "-apple-system",
                     "Segoe UI",
                     "sans-serif"
                 ],
-                "fontWeight": "400",
+                "fontWeight": 400,
                 "fontSize": "1.2rem",
-                "lineHeight": "1.5"
+                "lineHeight": 1.5
             },
-            "body2Typography": {
+            "body2": {
                 "fontFamily": [
                     "Saira",
                     "-apple-system",
                     "Segoe UI",
                     "sans-serif"
                 ],
-                "fontWeight": "400",
+                "fontWeight": 400,
                 "fontSize": "1.0rem",
-                "lineHeight": "1.25"
+                "lineHeight": 1.25
             },
-            "captionTypography": {
-                "fontWeight": "400",
+            "caption": {
+                "fontWeight": 400,
                 "fontSize": "0.8rem",
-                "lineHeight": "1.25",
+                "lineHeight": 1.25,
                 "fontFamily": [
                     "Saira",
                     "-apple-system",
@@ -82,55 +83,55 @@
                     "sans-serif"
                 ]
             },
-            "h1Typography": {
-                "fontWeight": "600",
+            "h1": {
+                "fontWeight": 600,
                 "fontSize": "3.6rem",
-                "lineHeight": "1.25"
+                "lineHeight": 1.25
             },
-            "h2Typography": {
-                "fontWeight": "700",
+            "h2": {
+                "fontWeight": 700,
                 "fontSize": "2.4rem",
-                "lineHeight": "1.5"
+                "lineHeight": 1.5
             },
-            "h3Typography": {
-                "fontWeight": "500",
+            "h3": {
+                "fontWeight": 500,
                 "fontSize": "2.0rem",
-                "lineHeight": "2.0"
+                "lineHeight": 2
             },
-            "h4Typography": {
-                "fontWeight": "600",
+            "h4": {
+                "fontWeight": 600,
                 "fontSize": "1.6rem",
-                "lineHeight": "2.0"
+                "lineHeight": 2
             },
-            "h5Typography": {
-                "fontWeight": "700",
+            "h5": {
+                "fontWeight": 700,
                 "fontSize": "1.4rem",
-                "lineHeight": "1.5"
+                "lineHeight": 1.5
             },
-            "h6Typography": {
-                "fontWeight": "500",
+            "h6": {
+                "fontWeight": 500,
                 "fontSize": "1.2rem",
-                "lineHeight": "1.25"
+                "lineHeight": 1.25
             },
-            "subtitle1Typography": {
-                "fontWeight": "400",
+            "subtitle1": {
+                "fontWeight": 400,
                 "fontSize": "1.4rem",
-                "lineHeight": "1.25"
+                "lineHeight": 1.25
             },
-            "subtitle2Typography": {
-                "fontWeight": "500",
+            "subtitle2": {
+                "fontWeight": 500,
                 "fontSize": "1.2rem",
-                "lineHeight": "1.0"
+                "lineHeight": 1.0
             },
-            "buttonTypography": {
-                "fontWeight": "500",
+            "button": {
+                "fontWeight": 500,
                 "fontSize": "0.8rem",
-                "lineHeight": "1.75"
+                "lineHeight": 1.75
             },
-            "overlineTypography": {
-                "fontWeight": "400",
+            "overline": {
+                "fontWeight": 400,
                 "fontSize": "0.8rem",
-                "lineHeight": "2.5"
+                "lineHeight": 2.5
             }
         }
     },
@@ -140,7 +141,7 @@
         "backgroundPattern": "images/bg_pattern_nullko.svg",
         "greetingsTitle": "Hey, you've found my ooland!",
         "greetingsContent": "It's winter again, gotta get myself a cup of hot tea. 🍵",
-        "lightColors": {
+        "colors": {
             "textPrimary": "#333333",
             "primary": "#60306C",
             "primaryLighten": "#E1C8F0",
@@ -152,84 +153,83 @@
             "appbarBackground": "#60306CEE",
             "drawerBackground": "#F8F8F8"
         },
-        "darkColors": {},
         "borderRadius": "4px",
         "typography": {
-            "defaultTypography": {
+            "default": {
                 "fontFamily": [
                     "Newsreader",
                     "Noto Serif SC",
                     "ui-serif",
                     "serif"
                 ],
-                "fontWeight": "400",
+                "fontWeight": 400,
                 "fontSize": "1rem",
-                "lineHeight": "1.5"
+                "lineHeight": 1.5
             },
-            "body1Typography": {
-                "fontWeight": "400",
+            "body1": {
+                "fontWeight": 400,
                 "fontSize": "1.25rem",
-                "lineHeight": "1.75"
+                "lineHeight": 1.75
             },
-            "body2Typography": {
-                "fontWeight": "400",
+            "body2": {
+                "fontWeight": 400,
                 "fontSize": "1rem",
-                "lineHeight": "1.25"
+                "lineHeight": 1.25
             },
-            "captionTypography": {
-                "fontWeight": "500",
+            "caption": {
+                "fontWeight": 500,
                 "fontSize": "0.875rem",
-                "lineHeight": "1.25"
+                "lineHeight": 1.25
             },
-            "h1Typography": {
-                "fontWeight": "600",
+            "h1": {
+                "fontWeight": 600,
                 "fontSize": "3.5rem",
-                "lineHeight": "1.1"
+                "lineHeight": 1.1
             },
-            "h2Typography": {
-                "fontWeight": "700",
+            "h2": {
+                "fontWeight": 700,
                 "fontSize": "2.75rem",
-                "lineHeight": "1.2"
+                "lineHeight": 1.2
             },
-            "h3Typography": {
-                "fontWeight": "500",
+            "h3": {
+                "fontWeight": 500,
                 "fontSize": "2.25rem",
-                "lineHeight": "1.3"
+                "lineHeight": 1.3
             },
-            "h4Typography": {
-                "fontWeight": "600",
+            "h4": {
+                "fontWeight": 600,
                 "fontSize": "2.0rem",
-                "lineHeight": "1.4"
+                "lineHeight": 1.4
             },
-            "h5Typography": {
-                "fontWeight": "500",
+            "h5": {
+                "fontWeight": 500,
                 "fontSize": "1.75rem",
-                "lineHeight": "1.5"
+                "lineHeight": 1.5
             },
-            "h6Typography": {
-                "fontWeight": "600",
+            "h6": {
+                "fontWeight": 600,
                 "fontSize": "1.5rem",
-                "lineHeight": "1.6"
+                "lineHeight": 1.6
             },
-            "subtitle1Typography": {
-                "fontWeight": "400",
+            "subtitle1": {
+                "fontWeight": 400,
                 "fontSize": "1.5rem",
-                "lineHeight": "1.25"
+                "lineHeight": 1.25
             },
-            "subtitle2Typography": {
-                "fontWeight": "500",
+            "subtitle2": {
+                "fontWeight": 500,
                 "fontSize": "1.25rem",
-                "lineHeight": "1.0"
+                "lineHeight": 1.0
             },
-            "buttonTypography": {
-                "fontWeight": "500",
+            "button": {
+                "fontWeight": 500,
                 "fontSize": "1.0rem",
-                "lineHeight": "1.0"
+                "lineHeight": 1.0
             },
-            "overlineTypography": {
-                "fontWeight": "400",
+            "overline": {
+                "fontWeight": 400,
                 "fontSize": "0.875rem",
-                "lineHeight": "2.5"
+                "lineHeight": 2.5
             }
         }
     }

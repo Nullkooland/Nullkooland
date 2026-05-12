@@ -7,7 +7,7 @@
         utterances.crossorigin = "anonymous";
         utterances.setAttribute("issue-term", "pathname")
         utterances.setAttribute("theme", "preferred-color-scheme")
-        utterances.setAttribute("repo", "Nullkooland/Nullkooland")
+        utterances.setAttribute("repo", "Goose-Bomb/Nullkooland")
         element.appendChild(utterances);
     }
 };
