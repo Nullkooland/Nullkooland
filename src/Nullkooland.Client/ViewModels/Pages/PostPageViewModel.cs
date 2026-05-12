@@ -29,14 +29,14 @@ namespace Nullkooland.Client.ViewModels.Pages
 
         public string PageTitle => $"{(IsLoading ? "Loading" : Post?.Title ?? "(ﾟ∀ﾟ )是想去静观镇吗？")} - {_themeService.SiteTitle}";
 
-        public string TagsIcon => _themeService.Type switch
+        public string TagsIcon => _themeService.ThemeType switch
         {
             OolandThemeType.Yunshan => Icons.Material.Sharp.LocalOffer,
             OolandThemeType.Nullko => Icons.Material.Filled.Style,
             _ => string.Empty,
         };
 
-        public string EndingWord => _themeService.Type switch
+        public string EndingWord => _themeService.ThemeType switch
         {
             OolandThemeType.Yunshan => ">>> EOF <<<",
             OolandThemeType.Nullko => "完",

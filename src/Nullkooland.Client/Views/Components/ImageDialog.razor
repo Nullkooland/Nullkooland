@@ -9,29 +9,29 @@
         overflow: hidden;
     }
 
-        .img-view-dialog > img {
-            max-height: 96vh;
-            max-width: 96vw;
-            object-fit: contain;
-            object-position: center;
-        }
+    .img-view-dialog>img {
+        max-height: 96vh;
+        max-width: 96vw;
+        object-fit: contain;
+        object-position: center;
+    }
 
-        .img-view-dialog > div {
-            position: absolute;
-            top: 0px;
-            height: 2.5rem;
-            width: 100%;
-            background-color: @ThemeService.Colors.BackgroundGrey.SetAlpha(0.3);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
-        }
+    .img-view-dialog>div {
+        position: absolute;
+        top: 0px;
+        height: 2.5rem;
+        width: 100%;
+        background-color: rgba(var(--mud-palette-background-gray), 0.3);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+    }
 </style>
 
 <div class="d-flex pa-0 rounded img-view-dialog">
 
     <img src="@Source"
-         alt="@Caption" />
+         alt="@Caption"/>
 
     <div class="d-flex flex-row align-center">
         <MudIcon Class="ml-2" Icon="@Icons.Material.Rounded.Image" Size="Size.Small"/>
@@ -42,27 +42,20 @@
                        Icon="@Icons.Material.Filled.Close"
                        Color="Color.Inherit"
                        Size="Size.Small"
-                       OnClick="OnClose" />
+                       OnClick="OnClose"/>
     </div>
 </div>
 
 @code {
-    [CascadingParameter]
-    MudDialogInstance? MudDialog { get; set; }
+    [CascadingParameter] IMudDialogInstance? MudDialog { get; set; }
 
-    [Parameter]
-    public string? Source { get; set; }
+    [Parameter] public string? Source { get; set; }
 
-    [Parameter]
-    public string? Caption { get; set; }
+    [Parameter] public string? Caption { get; set; }
 
-    [Parameter]
-    public string? Description { get; set; }
+    [Parameter] public string? Description { get; set; }
 
     void OnClose() => MudDialog!.Close(DialogResult.Ok(true));
 
-    protected override void OnInitialized()
-    {
-        ThemeService.ThemeChanged += (_, themeType) => StateHasChanged();
-    }
+
 }

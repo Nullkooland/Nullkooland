@@ -236,7 +236,7 @@ as the spectrum function of $X(t)$, is monotonically increasing (just like CDF)
 1. $S(\omega) \in \R, S(\omega) \geq 0$
 2. For **real** stationary process $X(t)$, $S_X(\omega) = S_X(-\omega)$
 
-See <https://github.com/users/Goose-Bomb> for more.
+See <https://github.com/users/Nullkooland> for more.
 
 ## Code *blocks*
 

@@ -1,3 +1,4 @@
+@using Nullkooland.Client.Models.Theme
 @inherits LayoutComponentBase
 @inject IThemeService ThemeService
 @inject MainLayoutViewModel ViewModel
@@ -8,47 +9,49 @@
     }
 </style>
 
-<MudThemeProvider Theme="@ViewModel.Theme" />
-<MudDialogProvider />
+<MudThemeProvider @ref="_mudThemeProvider" @bind-IsDarkMode="@ThemeService.IsDarkMode" Theme="@ViewModel.Theme"/>
+<MudDialogProvider/>
+<MudPopoverProvider/>
 
 <MudLayout>
     <MudAppBar Fixed="true" Class="blur-behind">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
-                       OnClick="@ViewModel.OnNavMenuButtonClicked" />
-        <MudText Class="mx-2" Typo="Typo.h5">
+                       OnClick="@ViewModel.OnNavMenuButtonClicked"/>
+        <MudText Class="mx-2" Typo="Typo.h4" Inline="true" >
             @ViewModel.AppBarTitle
         </MudText>
-        <MudIcon Icon="@CustomIcons.PawWithClaws" Color="Color.Inherit" Size="@Size.Medium" />
-        <MudSpacer />
+        @* <MudIcon Icon="@CustomIcons.PawWithClaws" Color="Color.Inherit" Size="@Size.Medium"/> *@
+        <MudImage Src="@ViewModel.AppBarIcon" Height="40"></MudImage>
+        <MudSpacer/>
 
         <div class="d-none d-md-flex align-center">
             <MudTooltip Text="GitHub">
                 <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit"
-                               Link="https://github.com/Goose-Bomb" />
+                               Href="https://github.com/Nullkooland"/>
             </MudTooltip>
             <MudTooltip Text="Twitter">
                 <MudIconButton Icon="@Icons.Custom.Brands.Twitter" Color="Color.Inherit"
-                               Link="https://twitter.com/goose_bomb" />
+                               Href="https://twitter.com/_nullko"/>
             </MudTooltip>
             <MudTooltip Text="YouTube">
                 <MudIconButton Icon="@Icons.Custom.Brands.YouTube" Color="Color.Inherit"
-                               Link="https://www.youtube.com/channel/UCQHgWIkGEddRLtvvCxRcqPw" />
+                               Href="https://space.bilibili.com/2441899"/>
             </MudTooltip>
         </div>
 
         <MudMenu Class="d-md-none" Icon="@Icons.Material.Filled.MoreVert"
-                 Color="Color.Inherit" Dense="true" Direction="Direction.Right" OffsetY="true">
+                 Color="Color.Inherit" Dense="true">
             <MudNavLink Icon="@Icons.Custom.Brands.GitHub"
-                        Href="https://github.com/Goose-Bomb">
+                        Href="https://github.com/Nullkooland">
                 GitHub
             </MudNavLink>
             <MudNavLink Icon="@Icons.Custom.Brands.Twitter"
-                        Href="https://twitter.com/goose_bomb">
+                        Href="https://twitter.com/_nullko">
                 Twitter
             </MudNavLink>
             <MudNavLink Icon="@Icons.Custom.Brands.YouTube"
-                        Href="https://www.youtube.com/channel/UCQHgWIkGEddRLtvvCxRcqPw">
-                YouTube
+                        Href="https://space.bilibili.com/2441899">
+                Bilibili
             </MudNavLink>
         </MudMenu>
     </MudAppBar>
@@ -70,14 +73,30 @@
         <MudScrollToTop Style="opacity: 0.9"
                         TopOffset="600"
                         ScrollBehavior="ScrollBehavior.Smooth">
-            <MudFab Icon="@Icons.Material.Filled.KeyboardArrowUp" Color="Color.Primary" />
+            <MudFab StartIcon="@Icons.Material.Filled.KeyboardArrowUp" Color="Color.Primary"/>
         </MudScrollToTop>
     </MudMainContent>
 </MudLayout>
 
 @code {
-    protected override void OnInitialized()
+
+    private MudThemeProvider _mudThemeProvider = null!;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        ThemeService.ThemeChanged += (_, themeType) => StateHasChanged();
+        if (firstRender)
+        {
+            await _mudThemeProvider.WatchSystemDarkModeAsync(OnSystemDarkModeChanged);
+            ThemeService.IsDarkMode = await _mudThemeProvider.GetSystemDarkModeAsync();
+            StateHasChanged();
+        }
     }
+
+    private Task OnSystemDarkModeChanged(bool isDarkMode)
+    {
+        ThemeService.IsDarkMode = isDarkMode;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
 }
