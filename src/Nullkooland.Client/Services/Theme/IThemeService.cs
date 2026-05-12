@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MudBlazor;
 using Nullkooland.Client.Models.Theme;
 
@@ -16,6 +15,8 @@ namespace Nullkooland.Client.Services.Theme
         string SiteTitle { get; }
 
         string AvatarImage { get; }
+
+        string AppBarIcon { get; }
 
         string BackgroundPattern { get; }
 

@@ -47,6 +47,8 @@ namespace Nullkooland.Client.ViewModels.Shared
 
         public string AppBarTitle => _themeService.SiteTitle;
 
+        public string AppBarIcon => _themeService.AppBarIcon;
+
         public bool IsNavMenuOpened { get; set; }
 
         public void OnNavMenuButtonClicked()

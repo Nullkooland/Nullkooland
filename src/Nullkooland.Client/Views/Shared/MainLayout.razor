@@ -9,7 +9,7 @@
     }
 </style>
 
-<MudThemeProvider @ref="_mudThemeProvider" @bind-IsDarkMode="_isDarkMode" Theme="@ViewModel.Theme"/>
+<MudThemeProvider @ref="_mudThemeProvider" @bind-IsDarkMode="@ThemeService.IsDarkMode" Theme="@ViewModel.Theme"/>
 <MudDialogProvider/>
 <MudPopoverProvider/>
 
@@ -17,10 +17,11 @@
     <MudAppBar Fixed="true" Class="blur-behind">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
                        OnClick="@ViewModel.OnNavMenuButtonClicked"/>
-        <MudText Class="mx-2" Typo="Typo.h5">
+        <MudText Class="mx-2" Typo="Typo.h4" Inline="true" >
             @ViewModel.AppBarTitle
         </MudText>
-        <MudIcon Icon="@CustomIcons.PawWithClaws" Color="Color.Inherit" Size="@Size.Medium"/>
+        @* <MudIcon Icon="@CustomIcons.PawWithClaws" Color="Color.Inherit" Size="@Size.Medium"/> *@
+        <MudImage Src="@ViewModel.AppBarIcon" Height="40"></MudImage>
         <MudSpacer/>
 
         <div class="d-none d-md-flex align-center">
@@ -79,7 +80,6 @@
 
 @code {
 
-    private bool _isDarkMode;
     private MudThemeProvider _mudThemeProvider = null!;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -87,6 +87,7 @@
         if (firstRender)
         {
             await _mudThemeProvider.WatchSystemDarkModeAsync(OnSystemDarkModeChanged);
+            ThemeService.IsDarkMode = await _mudThemeProvider.GetSystemDarkModeAsync();
             StateHasChanged();
         }
     }

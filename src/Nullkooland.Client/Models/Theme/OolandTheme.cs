@@ -17,18 +17,13 @@ namespace Nullkooland.Client.Models.Theme
 
         public string? AvatarImage { get; init; }
 
+        public string? AppBarIcon { get; init; }
+
         public string? BackgroundPattern { get; init; }
 
         public string? GreetingsTitle { get; init; }
 
         public string? GreetingsContent { get; init; }
 
-        public PaletteDark? DarkColors { get; init; }
-
-        public PaletteLight? LightColors { get; init; }
-
-        public string? BorderRadius { get; init; }
-
-        public Typography? Typography { get; init; }
     }
 }
