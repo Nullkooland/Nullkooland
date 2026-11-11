@@ -17,6 +17,7 @@ namespace Nullkooland.Client.Services.Markdown
     public sealed class RazorComponentRenderer : RendererBase
     {
         private readonly HtmlRenderer _htmlRenderer;
+
         public RazorComponentRenderer(IThemeService themeService, MarkdownPipeline pipeline)
         {
             ThemeService = themeService;

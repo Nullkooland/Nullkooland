@@ -1,4 +1,4 @@
-namespace Nullkooland.Client.Models.Components
+namespace Nullkooland.Client.Models.Theme
 {
     public static class CustomIcons
     {

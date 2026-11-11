@@ -1,4 +1,5 @@
 @page "/about"
+@using Nullkooland.Client.Models.Theme
 @using Nullkooland.Client.ViewModels.Pages
 @inject AboutPageViewModel ViewModel
 
@@ -16,14 +17,24 @@
     <MudText Typo="Typo.h3">About me</MudText>
     <MudText Class="mt-4" Typo="Typo.body1">Ah terrific, you've found my lair. ∠( ᐛ 」∠ )＿</MudText>
     <MudText Class="mt-2" Typo="Typo.body1">汝觅得吾穴，甚好。</MudText>
-    <MudText Class="mt-2" Typo="Typo.body1">I'm a utilitarian, an introvert who is into nature and anthropomorphic animals.</MudText>
-    <MudText Class="mt-2" Typo="Typo.body1">我是个实用主义者，一个内向的人，一个喜欢自然的人。<s>（老三次元了）</s></MudText>
-    <MudText Class="mt-2" Typo="Typo.body1">I have an affinity for roaming, asian bell cricket (Meloimorpha japonica) and the parallel ridge-valley area in eastern Sichuan.</MudText>
-    <MudText Class="mt-2" Typo="Typo.body1">我爱灯儿晃，金钟儿还有川东平行岭谷。</MudText>
-    <MudText Class="mt-2" Typo="Typo.body1">I mainly use C#, C/C++ and Python. No, no disgusting Java-ish thingies.</MudText>
-    <MudText Class="mt-2" Typo="Typo.body1">我主要使用 C#，C/C++ 以及 Python。不想碰名字带 Java 的什么玩意儿。</MudText>
-    <MudText Class="mt-2" Typo="Typo.body1">I am too indolent to work in 996 style. Fu😅k the capitalists.</MudText>
-    <MudText Class="mt-2" Typo="Typo.body1">咸鱼，这辈子都不会去 996 的。RUA!</MudText>
+    <MudText Class="mt-2" Typo="Typo.body1">I'm a tiger and moonbear, intertwined.</MudText>
+    <MudText Class="mt-2" Typo="Typo.body1">我是一只老虎和月熊，交织在一起。</MudText>
+    <MudText Class="mt-2" Typo="Typo.body1">I'm hanging around south-west China.</MudText>
+    <MudText Class="mt-2" Typo="Typo.body1">我出没在华山之阳。</MudText>
+    <MudText Class="mt-2" Typo="Typo.body1">I love roaming, but am learning to settle down.</MudText>
+    <MudText Class="mt-2" Typo="Typo.body1">我爱灯儿晃，但也在学会安定。</MudText>
+    <MudText Class="mt-2" Typo="Typo.body1">As a programmer, I mainly use C/C++ and Python, MLIR, maybe a liitle Rust 🦀. No, no disgusting Java-ish thingies.</MudText>
+    <MudText Class="mt-2" Typo="Typo.body1">作为开发者，我主要使用 C/C++、Python、MLIR，也许一丢丢 Rust。才不想碰名字带 Java 的什么玩意儿。</MudText>
+    <MudText Class="mt-2" Typo="Typo.body1">Feel free to befriend me, I could use some cuddling~</MudText>
+    <MudText Class="mt-2" Typo="Typo.body1">欢迎来和我交朋友，说不定能够抱抱~</MudText>
+
+    <MudImage 
+        Class="my-4"
+        Src="images/yunshan_nullko_on_the_road.png"
+        Alt="云山和努克在路上"
+        Fluid="true"
+    />
+
     <MudText Class="mt-2" Typo="Typo.h6">Observation concluded. Society research 🌐 +8 </MudText>
     <MudText Class="mt-2" Typo="Typo.h6">观察完成。社会学点数 🌐 +8</MudText>
 
@@ -40,6 +51,7 @@
     </div>
     <MudText Typo="Typo.caption" Color="Color.Tertiary">
         Well, not exactly JS-free, since it still uses some JS-based libraries. But hey, at least I don't need to write JS by myself, sweet!
+        Okay, I am considering switch the whole blog to Rust WASM, maybe using Leptos? We shall find out~
     </MudText>
 
     <MudText Class="mt-6 mb-4" Typo="Typo.h4">Dependencies</MudText>
@@ -50,7 +62,7 @@
                     <CardHeaderAvatar>
                         <svg class="dependency-logo rounded">
                             <image xlink:href="https://raw.github.com/MudBlazor/MudBlazor/master/content/MudBlazor.svg"
-                                   width="100%" height="100%" />
+                                   width="100%" height="100%"/>
                         </svg>
                     </CardHeaderAvatar>
                     <CardHeaderContent>
@@ -73,7 +85,7 @@
                     <CardHeaderAvatar>
                         <svg class="dependency-logo">
                             <image xlink:href="https://raw.github.com/xoofx/markdig/master/img/markdig.svg"
-                                   width="100%" height="100%" />
+                                   width="100%" height="100%"/>
                         </svg>
                     </CardHeaderAvatar>
                     <CardHeaderContent>
@@ -118,7 +130,7 @@
                     <CardHeaderAvatar>
                         <svg class="dependency-logo">
                             <image xlink:href="https://raw.github.com/PrismJS/prism/master/assets/logo.svg"
-                                   width="100%" height="100%" filter="drop-shadow(0 0 0.15rem grey)" />
+                                   width="100%" height="100%" filter="drop-shadow(0 0 0.15rem grey)"/>
                         </svg>
                     </CardHeaderAvatar>
                     <CardHeaderContent>
@@ -139,7 +151,7 @@
             <MudCard Elevation="2" Style="height: 96px">
                 <MudCardHeader>
                     <CardHeaderAvatar>
-                        <div class="dependency-logo"    
+                        <div class="dependency-logo"
                              style="font-size: 36pt; 
                                     text-align: center;">
                             🔮
@@ -165,7 +177,7 @@
                     <CardHeaderAvatar>
                         <svg class="dependency-logo">
                             <image xlink:href="https://raw.github.com/AOMediaCodec/artwork/master/avif-logo-rgb.svg"
-                                   width="100%" height="100%" />
+                                   width="100%" height="100%"/>
                         </svg>
                     </CardHeaderAvatar>
                     <CardHeaderContent>
@@ -184,4 +196,4 @@
     </MudGrid>
 
 </MudContainer>
-<Footer />
+<Footer/>

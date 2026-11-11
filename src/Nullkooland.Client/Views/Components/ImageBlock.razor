@@ -5,16 +5,16 @@
     <img src="@Source"
          alt="@Caption"
          title="@Caption"
-         loading="lazy" />
+         loading="lazy"/>
 }
 else
 {
     <MudButton Class="pa-0 mud-elevation-1"
                Style="overflow: hidden; "
                FullWidth="true"
-               DisableRipple="true"
+               Variant="Variant.Text"
                OnClick="OnClick">
-        <img src="@Source" 
+        <img src="@Source"
              alt="@Caption"
              title="@Caption"
              loading="lazy"
@@ -24,7 +24,7 @@ else
                     width: 100%;
                     max-width: @MaxWidth;
                     object-fit: cover;
-                    object-position: center" />
+                    object-position: center"/>
 
         <MudOverlay Visible="@_isLoading" Absolute="true" DarkBackground="true">
             <MudProgressCircular Indeterminate="true"></MudProgressCircular>
@@ -33,37 +33,26 @@ else
 }
 
 
-
 @code {
-    [EditorRequired]
-    [Parameter]
-    public string? Source { get; set; }
+    [EditorRequired] [Parameter] public string? Source { get; set; }
 
-    [EditorRequired]
-    [Parameter]
-    public string? Caption { get; set; }
+    [EditorRequired] [Parameter] public string? Caption { get; set; }
 
-    [Parameter]
-    public string? Description { get; set; }
+    [Parameter] public string? Description { get; set; }
 
-    [Parameter]
-    public bool Inline { get; set; } = false;
+    [Parameter] public bool Inline { get; set; }
 
-    [Parameter]
-    public string Height { get; set; } = "fit-content";
+    [Parameter] public string Height { get; set; } = "fit-content";
 
-    [Parameter]
-    public string MaxHeight { get; set; } = "100%";
+    [Parameter] public string MaxHeight { get; set; } = "100%";
 
-    [Parameter]
-    public string Width { get; set; } = "fit-content";
+    [Parameter] public string Width { get; set; } = "fit-content";
 
-    [Parameter]
-    public string MaxWidth { get; set; } = "100%";
+    [Parameter] public string MaxWidth { get; set; } = "100%";
 
     private bool _isLoading = true;
 
-    private void OnClick()
+    private async Task OnClick()
     {
         var parameters = new DialogParameters();
         parameters.Add("Source", Source);
@@ -72,11 +61,12 @@ else
 
         var options = new DialogOptions
         {
-            MaxWidth=MudBlazor.MaxWidth.ExtraLarge,
+            MaxWidth = MudBlazor.MaxWidth.ExtraLarge,
             FullWidth = false,
-            NoHeader=true
+            NoHeader = true
         };
 
-        DialogService.Show<ImageDialog>(Caption, parameters, options);
+        await DialogService.ShowAsync<ImageDialog>(Caption, parameters, options);
     }
+
 }

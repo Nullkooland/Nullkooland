@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MudBlazor;
 using Nullkooland.Client.Models.Theme;
 
@@ -9,23 +8,21 @@ namespace Nullkooland.Client.Services.Theme
     {
         ValueTask InitAsync();
 
-        OolandThemeType Type { get; }
+        bool IsDarkMode { get; set; }
 
-        event EventHandler<OolandThemeType>? ThemeChanged;
-
-        bool IsDark { get; }
+        OolandThemeType ThemeType { get; }
 
         string SiteTitle { get; }
 
         string AvatarImage { get; }
+
+        string AppBarIcon { get; }
 
         string BackgroundPattern { get; }
 
         string GreetingsTitle { get; }
 
         string GreetingsContent { get; }
-
-        Palette Colors { get; }
 
         MudTheme MudTheme { get; }
     }

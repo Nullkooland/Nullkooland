@@ -7,7 +7,7 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
 {
     public class HeadingsRenderer : RazorComponentObjectRenderer<HeadingBlock>
     {
-        private static readonly Typo[] _headingTypos =
+        private static readonly Typo[] HeadingTypos =
         {
             Typo.h3, // Level 2
             Typo.h4, // Level 3
@@ -40,7 +40,7 @@ namespace Nullkooland.Client.Services.Markdown.Renderers
             builder.OpenComponent<MudText>(renderer.Sequence++);
             builder.AddAttribute(renderer.Sequence++, "id", id);
             builder.AddAttribute(renderer.Sequence++, "Class", $"my-{6 - level}");
-            builder.AddAttribute(renderer.Sequence++, "Typo", _headingTypos[level - 2]);
+            builder.AddAttribute(renderer.Sequence++, "Typo", HeadingTypos[level - 2]);
 
             if (level == 2)
             {

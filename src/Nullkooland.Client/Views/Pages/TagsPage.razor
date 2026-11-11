@@ -19,7 +19,7 @@ else
             <MudTextField Label="Filter tags"
                           Variant="Variant.Outlined"
                           Adornment="Adornment.End"
-                          AdornmentIcon="@Icons.Outlined.FilterAlt"
+                          AdornmentIcon="@Icons.Material.Outlined.FilterAlt"
                           Immediate="true"
                           @bind-Value="@ViewModel.FilterKeyword"/>
 
@@ -28,7 +28,7 @@ else
             <div class="d-flex flex-wrap align-content-start">
                 @foreach ((string tag, int count) in ViewModel.Tags)
                 {
-                    <MudChip Variant="Variant.Outlined" Link="@($"tags/{tag}")">
+                    <MudChip T="string" Variant="Variant.Outlined" Href="@($"tags/{tag}")">
                         @tag ✕ @count.ToString()
                     </MudChip>
                 }
@@ -51,8 +51,8 @@ else
                     <MudItem xs="12" lg="6">
                         <MudButton Class="pa-0 pa-xs-0 d-flex flex-row mud-elevation-2"
                                    Style="height: 25vh; text-transform: none; overflow: hidden;"
-                                   Link="@post.Url">
-                            <div class="pa-4 d-flex flex-column align-start" 
+                                   Href="@post.Url">
+                            <div class="pa-4 d-flex flex-column align-start"
                                  style="height: 25vh; width: 40%; background-color: var(--mud-palette-surface)">
                                 <MudText Typo="Typo.subtitle1" Color="Color.Primary">
                                     @post.Title
@@ -80,8 +80,7 @@ else
 
 @code
 {
-    [Parameter]
-    public string? Tag { get; set; }
+    [Parameter] public string? Tag { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {
